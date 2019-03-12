@@ -9,7 +9,7 @@ type: panos
 extends:
 
 labels:
-  service_type: homeskillet_panos
+  collection: homeskillet_panos
 
 variables:
   - name: INTF_TRUST
