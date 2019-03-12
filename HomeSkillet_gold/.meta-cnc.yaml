@@ -12,10 +12,6 @@ labels:
   service_type: homeskillet_panos
 
 variables:
-  - name: FW_NAME
-    description: Device Name
-    default: panos-01
-    type_hint: text
   - name: INTF_TRUST
     description: Trust Interface
     default: ethernet1/1
