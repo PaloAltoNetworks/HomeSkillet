@@ -1,0 +1,43 @@
+<ethernet>
+                  <entry name="{{ INTF_UNTRUST }}">
+                    <layer3>
+                      <ipv6>
+                        <neighbor-discovery>
+                          <router-advertisement>
+                            <enable>no</enable>
+                          </router-advertisement>
+                        </neighbor-discovery>
+                      </ipv6>
+                      <ndp-proxy>
+                        <enabled>no</enabled>
+                      </ndp-proxy>
+                      <lldp>
+                        <enable>no</enable>
+                      </lldp>
+                      <interface-management-profile>MSSP management untrust</interface-management-profile>
+                      <dhcp-client/>
+                    </layer3>
+                    <comment>Untrust interface using DHCP client access</comment>
+                  </entry>
+                  <entry name="{{ INTF_TRUST }}">
+                    <layer3>
+                      <ipv6>
+                        <neighbor-discovery>
+                          <router-advertisement>
+                            <enable>no</enable>
+                          </router-advertisement>
+                        </neighbor-discovery>
+                      </ipv6>
+                      <ndp-proxy>
+                        <enabled>no</enabled>
+                      </ndp-proxy>
+                      <lldp>
+                        <enable>no</enable>
+                      </lldp>
+                      <interface-management-profile>MSSP management trust</interface-management-profile>
+                      <ip>
+                        <entry name="{{ IP_12 }}"/>
+                      </ip>
+                    </layer3>
+    </entry>
+</ethernet>

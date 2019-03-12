@@ -1,0 +1,18 @@
+          <monitor-profile>
+            <entry name="default">
+              <interval>3</interval>
+              <threshold>5</threshold>
+              <action>wait-recover</action>
+            </entry>
+          </monitor-profile>
+          <interface-management-profile>
+            <entry name="MSSP management untrust">
+              <ping>yes</ping>
+            </entry>
+            <entry name="MSSP management trust">
+              <https>yes</https>
+              <ssh>yes</ssh>
+              <ping>yes</ping>
+              <response-pages>yes</response-pages>
+            </entry>
+          </interface-management-profile>

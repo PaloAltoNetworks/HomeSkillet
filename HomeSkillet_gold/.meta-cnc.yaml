@@ -1,0 +1,69 @@
+# gold security templates for top level security including threat, URL, or WF subscriptions
+# includes an additional security rule for strict file blocking of unknown url category
+# this is the master directory for xml snippets shared by silver and bronze
+
+name: homeskillet_gold_panos_v90
+label: v9.0 HomeSkillet Gold Security policy
+description: Home Skillet Gold Internet Gateway v90 that loads after HomeSKillet baseline
+type: panos
+extends:
+
+labels:
+  service_type: homeskillet_panos
+
+variables:
+  - name: FW_NAME
+    description: Device Name
+    default: panos-01
+    type_hint: text
+  - name: INTF_TRUST
+    description: Trust Interface
+    default: ethernet1/1
+    type_hint: text
+  - name: INTF_UNTRUST
+    description: Untrust Interface
+    default: ethernet1/2
+    type_hint: text
+  - name: IP_12
+    description: IP 12
+    default: 192.168.1.1/24
+    type_hint: ip_address
+  - name: ZONE_TRUST
+    description: trust zone
+    default: trust
+    type_hint: text
+  - name: ZONE_UNTRUST
+    description: untrust zone name
+    default: untrust
+    type_hint: text
+
+snippets:
+  - name: network_profiles-network-profiles
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/profiles
+    file: network_profiles.xml
+  - name: interface
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface
+    file: interface.xml
+  - name: virtual_router
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-router
+    file: virtual_router.xml
+  - name: vsys_imports
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/import
+    file: vsys_imports.xml
+  - name: zone
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
+    file: zone.xml
+  - name: nat-source-nat-to-untrust
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/nat
+    file: source_nat_to_untrust.xml
+  - name: profile_group_unknown_url
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profile-group
+    file: profile_group_unknown_url.xml
+  - name: tag
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/tag
+    file: tag.xml
+  - name: security_rules-security-rules-gold
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security
+    file: security_rules_gold.xml
+
+
