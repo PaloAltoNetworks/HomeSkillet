@@ -22,7 +22,7 @@ variables:
     type_hint: text
   - name: IP_12
     description: IP 12
-    default: 192.168.1.1/24
+    default: 192.168.10.1/24
     type_hint: ip_address
   - name: ZONE_TRUST
     description: trust zone
@@ -36,9 +36,13 @@ variables:
     description: dhcp pool netmask
     default: 255.255.255.0
     type_hint: ip_address
+  - name: DHCP_GATEWAY
+    description: dhcp pool default gateway ip address
+    default: 192.168.10.1
+    type_hint: ip_address
   - name: DHCP_POOL_RANGE
     description: dhcp pool ip address range
-    default: 192.0.6.100-192.0.6.250
+    default: 192.168.10.100-192.168.10.250
     type_hint: text
 
 snippets:

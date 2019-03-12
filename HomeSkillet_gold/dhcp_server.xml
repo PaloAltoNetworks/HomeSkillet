@@ -12,7 +12,7 @@
         <lease>
           <timeout>1440</timeout>
         </lease>
-        <gateway>{{ IP_12 }}</gateway>
+        <gateway>{{ DHCP_GATEWAY }}</gateway>
         <subnet-mask>{{ DHCP_NETMASK }}</subnet-mask>
       </option>
       <ip-pool>
