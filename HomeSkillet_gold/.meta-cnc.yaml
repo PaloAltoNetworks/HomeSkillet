@@ -3,7 +3,7 @@
 # this is the master directory for xml snippets shared by silver and bronze
 
 name: homeskillet_gold_panos_v90
-label: v9.0 HomeSkillet Gold Security policy
+label: v9.0 HomeSkillet Gold Security network and policy
 description: Home Skillet Gold Internet Gateway v90 that loads after HomeSKillet baseline
 type: panos
 extends:
@@ -32,6 +32,14 @@ variables:
     description: untrust zone name
     default: untrust
     type_hint: text
+  - name: DHCP_NETMASK
+    description: dhcp pool netmask
+    default: 255.255.255.0
+    type_hint: ip_address
+  - name: DHCP_POOL_RANGE
+    description: dhcp pool ip address range
+    default: 192.0.6.100-192.0.6.250
+    type_hint: text
 
 snippets:
   - name: network_profiles-network-profiles
@@ -43,9 +51,9 @@ snippets:
   - name: virtual_router
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-router
     file: virtual_router.xml
-  - name: vsys_imports
-    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/import
-    file: vsys_imports.xml
+#  - name: vsys_imports
+#    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/import
+#    file: vsys_imports.xml
   - name: zone
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
     file: zone.xml
