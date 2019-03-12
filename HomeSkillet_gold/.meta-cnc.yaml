@@ -69,5 +69,8 @@ snippets:
   - name: security_rules-security-rules-gold
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security
     file: security_rules_gold.xml
+  - name: dhcp_server
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/dhcp
+    file: dhcp_server.xml
 
 
