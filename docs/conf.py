@@ -158,7 +158,7 @@ texinfo_documents = [
 
 # github file path that changes across repo and branches
 
-extlinks = {'panosrepo': ('https://github.com/PaloAltoNetworks/HomeSkillet/tree/panos_v9.0/%s', 'PAN-OS template:   ')
+extlinks = {'panosrepo': ('https://github.com/PaloAltoNetworks/HomeSkillet/tree/panos_v9.0/HomeSkillet_gold/%s', 'PAN-OS template:   ')
             }
 
 # load config file name that changes across repo and branches
