@@ -9,7 +9,7 @@ type: panos
 extends:
 
 labels:
-  collection: homeskillet_panos
+  collection: homeskillet
 
 variables:
   - name: INTF_TRUST
