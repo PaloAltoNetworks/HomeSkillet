@@ -1,4 +1,4 @@
-HomeSKillet Overview
+HomeSkillet Overview
 ===================
 
 The HomeSkillet configuration templates are for a simple Internet Gateway, 2-zone configuration.
@@ -28,7 +28,7 @@ The variations include:
 
 More information about IronSkillet can be found at:
 
-|skilletdocs|
+|IronSkilletdocs|
 
 
 Required Subscriptions

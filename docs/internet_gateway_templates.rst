@@ -12,7 +12,7 @@ specific to their environment.
 The templates are incremental to and reference the IronSkillet day one configurations. The details of the IronSkillet
 templates can be found at:
 
-|skilletpanoramatemplates|.
+|IronSkilletdocs|.
 
 The .meta-cnc.yaml file in each configuration directory contains:
 
@@ -20,13 +20,9 @@ The .meta-cnc.yaml file in each configuration directory contains:
 
     + load order including the xpaths and snippet file names
 
-.. Note::
-    SET commands are also included with the panos templates for users requiring quick configuration to sandbox or test.
-    These can also be used for network deployments where Panorama is not leveraged.
 
-
-Internet Gateway Baseline
--------------------------
+HomeSkillet Gold Configuration
+------------------------------
 
 ----------------------------------------------------------------------
 
@@ -39,7 +35,7 @@ The Internet gateway deployment is a 2-zone, 2-interface model with IP routing.
 Interface settings
 ~~~~~~~~~~~~~~~~~~
 
-:panosrepo:`internet_gateway_base/interface.xml`
+:panosrepo:`interface.xml`
 
 Sample interface configurations with one for external/untrust and one internal/trust.
 
@@ -52,7 +48,7 @@ Sample interface configurations with one for external/untrust and one internal/t
 Zones
 ~~~~~
 
-:panosrepo:`internet_gateway_base/zone.xml`
+:panosrepo:`zone.xml`
 
 
 Two zones are provided in the template. The names are variables with default values set to trust and internet.
@@ -61,7 +57,7 @@ Two zones are provided in the template. The names are variables with default val
 Virtual Router
 ~~~~~~~~~~~~~~
 
-:panosrepo:`internet_gateway_base/virtual_router.xml`
+:panosrepo:`virtual_router.xml`
 
 
 The internet gateway deployment uses L3 zones and interfaces so routing configuration is required.
@@ -74,17 +70,32 @@ The internet gateway deployment uses L3 zones and interfaces so routing configur
 Source NAT
 ~~~~~~~~~~
 
-:panosrepo:`internet_gateway_base/source_nat_to_untrust.xml`
+:panosrepo:`source_nat_to_untrust.xml`
 
 
 Provides dynamic ip and port mapping using the public internet interface address.
 
 
+DHCP Server
+~~~~~~~~~~~
+
+:panosrepo:`dhcp_server.xml`
+
+Simple DHCP server mapped to the trust interface
+
+    + use of IP address range located in the trust subnet
+
+    + inherits DNS information from the untrust interface
+
+.. Note::
+        This skillet does not include Dynamic DNS (DDNS) although it is a supported feature in PAN-OS v9.0.
+        DDNS is recommended if GlobalProtect other configurations using the public IP are used.
+
 
 Network Profiles
 ~~~~~~~~~~~~~~~~
 
-:panosrepo:`internet_gateway_base/network_profiles.xml`
+:panosrepo:`network_profiles.xml`
 
 
 Interface management profiles
@@ -102,7 +113,7 @@ Interface management profiles
 Unknown URL Category Profile Group
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:panosrepo:`gold/profile_group_unknown_url.xml`
+:panosrepo:`profile_group_unknown_url.xml`
 
 This adds additional protections with a more aggressive file blocking posture when the URL category is unknown. It is
 referenced in the gold security rules.
@@ -111,7 +122,7 @@ referenced in the gold security rules.
 Security Rules
 ~~~~~~~~~~~~~~
 
-:panosrepo:`gold/security_rules_gold.xml`
+:panosrepo:`security_rules_gold.xml`
 
 These are outbound-specific rules levering the IronSkillet security profile groups.
 

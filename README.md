@@ -1,5 +1,24 @@
 # HomeSkillet
 
+## Overview
+
+HomeSkillet is a home-based deployment configuration as an Internet Gateway
+using 2 zones, the untrust zone as a dhcp-client.
+
+The security policy provides for outbound policies using IronSkillet
+best practice security profiles and groups.
+
+More details can be found at the
+[Home Skillet docs page](https://HomeSkillet.readthedocs.io)
+
+## HomeSkillet and panhandler
+
+HomeSkillet is designed to be used with the panhandler application to API
+load structured configurations. It also captures web form data to semi-customize
+the configuration for local use.
+
+[panhandler](https://panhandler.readthedocs.io)
+
 
 ## Support Policy
 The code and templates in the repo are released under an as-is, best effort, support policy.

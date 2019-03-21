@@ -1,10 +1,9 @@
 # gold security templates for top level security including threat, URL, or WF subscriptions
 # includes an additional security rule for strict file blocking of unknown url category
-# this is the master directory for xml snippets shared by silver and bronze
 
 name: homeskillet_gold_panos_v90
 label: v9.0 HomeSkillet Gold Security network and policy
-description: Home Skillet Gold Internet Gateway v90 that loads after HomeSKillet baseline
+description: v9.0 Home Skillet Gold Internet Gateway that loads after HomeSKillet baseline
 type: panos
 extends:
 
@@ -55,9 +54,6 @@ snippets:
   - name: virtual_router
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-router
     file: virtual_router.xml
-#  - name: vsys_imports
-#    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/import
-#    file: vsys_imports.xml
   - name: zone
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
     file: zone.xml
