@@ -158,29 +158,21 @@ texinfo_documents = [
 
 # github file path that changes across repo and branches
 
-#extlinks = {'panosrepo': ('https://github.com/scotchoaf/HomeSkillet/tree/90dev/internet_gateway/panos/%s', 'PAN-OS template:   '),
-#            'panoramarepo': ('https://github.com/scotchoaf/HomeSkillet/tree/90dev/internet_gateway/panorama/%s', 'Panorama template:   '),
-#            'setcommands': ('https://github.com/scotchoaf/HomeSkillet/tree/90dev/internet_gateway/%s/set_commands', 'set commands '),
-#            }
+extlinks = {'panosrepo': ('https://github.com/PaloAltoNetworks/HomeSkillet/tree/90dev/%s', 'PAN-OS template:   ')
+            }
 
 # load config file name that changes across repo and branches
 
 rst_prolog = """
 .. |branch| replace:: 90dev
 .. |skilletdocs| replace:: https://HomeSkillet.readthedocs.io/en/90dev/
-.. |clonessh| replace:: git@github.com:scotchoaf/HomeSkillet.git
-.. |clonehttps| replace:: https://github.com/scotchoaf/HomeSkillet.git
-.. |repourl| replace:: https://github.com/scotchoaf/HomeSkillet/tree/90dev
-.. |repotools| replace:: https://github.com/scotchoaf/HomeSkillet/tree/90dev/tools
-.. |panosxpaths| replace:: https://github.com/scotchoaf/HomeSkillet/blob/90dev/templates/panos/snippets/.meta-cnc.yaml
-.. |panossnippets| replace:: https://github.com/scotchoaf/HomeSkillet/tree/90dev/templates/panos/snippets
-.. |panosloadorder| replace:: https://github.com/scotchoaf/HomeSkillet/blob/90dev/templates/panos/snippets/.meta-cnc.yaml
-.. |panoramaxpaths| replace:: https://github.com/scotchoaf/HomeSkillet/blob/90dev/templates/panorama/snippets/.meta-cnc.yaml
-.. |panoramasnippets| replace:: https://github.com/scotchoaf/HomeSkillet/tree/90dev/templates/panorama/snippets
-.. |panoramaloadorder| replace:: https://github.com/scotchoaf/HomeSkillet/blob/90dev/templates/panorama/snippets/.meta-cnc.yaml
-.. |panoramaset| replace:: https://github.com/scotchoaf/HomeSkillet/tree/90dev/templates/panorama/set_commands
-.. |panosset| replace:: https://github.com/scotchoaf/HomeSkillet/tree/90dev/templates/panos/set_commands
-.. |skilletpanoramatemplates| replace:: https://HomeSkillet.readthedocs.io/en/90dev/panorama_template_guide.html
+.. |IronSkilletdocs| replace:: https://IronSkillet.readthedocs.io/en/90dev/
+.. |clonessh| replace:: git@github.com:PaloAltoNetworks/HomeSkillet.git
+.. |clonehttps| replace:: https://github.com/PaloAltoNetworks/HomeSkillet.git
+.. |repourl| replace:: https://github.com/PaloAltoNetworks/HomeSkillet/tree/90dev
+.. |panosxpaths| replace:: https://github.com/PaloAltoNetworks/HomeSkillet/blob/90dev/templates/panos/snippets/.meta-cnc.yaml
+.. |panossnippets| replace:: https://github.com/PaloAltoNetworks/HomeSkillet/tree/90dev/templates/panos/snippets
+.. |panosloadorder| replace:: https://github.com/PaloAltoNetworks/HomeSkillet/blob/90dev/templates/panos/snippets/.meta-cnc.yaml
 .. |skilletpanostemplates| replace: https://HomeSkillet.readthedocs.io/en/90dev/panos_template_guide.html
 """
 

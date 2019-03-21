@@ -1,9 +1,0 @@
-
-      <network>
-        <interface>
-          <member>{{ INTF_UNTRUST }}</member>
-          <member>{{ INTF_TRUST }}</member>
-        </interface>
-      </network>
-
-

@@ -1,21 +1,16 @@
 # gold security templates for top level security including threat, URL, or WF subscriptions
 # includes an additional security rule for strict file blocking of unknown url category
-# this is the master directory for xml snippets shared by silver and bronze
 
 name: homeskillet_gold_panos_v90
-label: v9.0 HomeSkillet Gold Security policy
-description: Home Skillet Gold Internet Gateway v90 that loads after HomeSKillet baseline
+label: v9.0 HomeSkillet Gold Security network and policy
+description: v9.0 Home Skillet Gold Internet Gateway that loads after HomeSKillet baseline
 type: panos
 extends:
 
 labels:
-  service_type: homeskillet_panos
+  collection: homeskillet
 
 variables:
-  - name: FW_NAME
-    description: Device Name
-    default: panos-01
-    type_hint: text
   - name: INTF_TRUST
     description: Trust Interface
     default: ethernet1/1
@@ -26,7 +21,7 @@ variables:
     type_hint: text
   - name: IP_12
     description: IP 12
-    default: 192.168.1.1/24
+    default: 192.168.10.1/24
     type_hint: ip_address
   - name: ZONE_TRUST
     description: trust zone
@@ -35,6 +30,18 @@ variables:
   - name: ZONE_UNTRUST
     description: untrust zone name
     default: untrust
+    type_hint: text
+  - name: DHCP_NETMASK
+    description: dhcp pool netmask
+    default: 255.255.255.0
+    type_hint: ip_address
+  - name: DHCP_GATEWAY
+    description: dhcp pool default gateway ip address
+    default: 192.168.10.1
+    type_hint: ip_address
+  - name: DHCP_POOL_RANGE
+    description: dhcp pool ip address range
+    default: 192.168.10.100-192.168.10.250
     type_hint: text
 
 snippets:
@@ -47,9 +54,6 @@ snippets:
   - name: virtual_router
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-router
     file: virtual_router.xml
-  - name: vsys_imports
-    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/import
-    file: vsys_imports.xml
   - name: zone
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
     file: zone.xml
@@ -65,5 +69,8 @@ snippets:
   - name: security_rules-security-rules-gold
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security
     file: security_rules_gold.xml
+  - name: dhcp_server
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/dhcp
+    file: dhcp_server.xml
 
 
