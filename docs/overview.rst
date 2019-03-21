@@ -1,100 +1,57 @@
-MSSP Templates Overview
-=======================
+HomeSKillet Overview
+===================
 
-The Palo Alto Networks MSSP templates are provided to simplify the deployment of security services. Instead of extensive and detailed 'how to'
-documentation, the MSSP templates provide an easy to implement configuration model.
+The HomeSkillet configuration templates are for a simple Internet Gateway, 2-zone configuration.
 
-The benefits of this template model include:
+It is based on PAN-OS version 9.0.
 
-    + Faster time to implement
-    + Reduce configuration errors
-    + Improve security posture
+Key features of the skillet
+---------------------------
 
-For the MSSP, the focus of templating is on the repeatable aspects of deployment. This can include day one starter configs
-for bespoke deployments, branch deployments, or SMB Internet Gateway offerings bundle with network services.
-
-With the emphasis on repeatability, the templates provided cover:
-
-    + Panorama-based internet gateway services
-
-    + Direct firewall internet gateway configs (xml and set snippets)
-
-    + GPCS core and remote_branch using Panorama
-
-    + Sample CPE IPSEC tunnel snippets for GCPS remote networks
+        * IronSkillet foundation providing security profiles and device hardening
+        * 2 zones and interfaces, one untrust and one trust
+        * L3 routed mode with virtual router configuration
+        * Outbound port-based NAT policy
+        * Outbound security policies referencing the Outbound security profile group
+        * DHCP client interface for the untrust interface
+        * Simple DHCP server configuration inheriting DNS from the untrust interface
 
 
 Relationship to the IronSkillet Project
 ----------------------------------------
-Instead of a complete set of configuration snippets, the MSSP templates are incremental to the IronSkillet day one
-best practice configurations.
+The configuration is based extensively on the IronSkillet configuration with a few variations designed for basic home use.
+
+The variations include:
+
+        * No certificate checks for the no-decrypt traffic that may cause issues with in-home devices
+        * No email alert configuration elements
 
 More information about IronSkillet can be found at:
 
 |skilletdocs|
 
 
-The day one configuration provides reference configurations primarily including security profiles, logging, reporting,
-device hardening, and dynamic update scheduling. It is use-case agnostic and relies on additional configuration elements
-such as the MSSP internet gateway templates to be deployment ready.
+Required Subscriptions
+----------------------
 
+The configuration assumes all subscriptions are enabled including:
 
-Gold-Silver-Bronze Variants
----------------------------
+        * Threat Protection
+        * URL Filtering
+        * Wildfire Analysis
+        * DNS Cloud Service
 
-IronSkillet assume that users have all subscriptions (Threat Protection, URL Filtering, Wildfire) enabled to meet the
-criteria of best practice. However, the MSSP can elect to tier services with incremental price points based on subscriptions.
+Using HomeSkillet
+-----------------
 
-The template tiers using the generic Gold/Silver/Bronze naming convention provide alignment to subscription tiers:
+This skillet is designed for xml-based API configuration. It requires the uses of the panhandler application for variable
+substitution and API interfactions.
 
-    + Gold: includes all subscriptions (Threat, URL, Wildfire)
-
-    + Silver: includes Threat (no URL or Wildfire)
-
-    + Bronze: No subscriptions providing for limited or port-based protections
-
-
-
-Using the templates
--------------------
-
-The templates are available on GitHub at |repourl|.
-
-Select the branch specific to the software release for your deployment.
-
-The library consists of a set of xml and set configuration templates grouped by:
-
-    + ``panos`` for stand-alone next-gen firewall deployments
-    + ``panorama`` for Panorama system and managed device configurations
-
-The templates in each device-type folder include:
-
-    + ``snippets`` for more granular configuration elements
-    + ``set commands`` for traditional CLI configuration
+More information can be found at panhandler.readthedocs.io
 
 
 
-PAN-OS Excel set command spreadsheet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Also included for easy loading is an Excel formula-based spreadsheet with set commands. A variable value worksheet can be
-edited to update the spreadsheet using localized values for various configuratino attributes.
-
-More information for using the spreadsheet can be found at: :ref:`using_the_spreadsheet`.
-
-.. NOTE::
-        The spreadsheet set commands are specific to the firewall for sandboxing and non-Panorama deployments. The current
-        Panorama model is focused on API-based xml configuration elements.
-
-
-Jinja-based xml snippet and set command templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Scripting or automation-centric users may prefer to use the base template files.
-These are variable-based templates using a jinja ``{{ variable }}`` notation.
-
-The xml snippets with metadata are designed to use API-based configuration loading into Panorama or the firewall and
-can be coupled with workflow tools for repeatable deployments.
 
 
 
