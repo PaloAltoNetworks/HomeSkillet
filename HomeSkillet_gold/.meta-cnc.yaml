@@ -3,7 +3,7 @@
 
 name: homeskillet_gold_panos_v90
 label: v9.0 HomeSkillet Gold Security network and policy
-description: !! LOAD BASELINE FIRST !! v9.0 Home Skillet Gold Internet Gateway that loads after HomeSKillet baseline
+description: "** LOAD BASELINE FIRST ** v9.0 Home Skillet Gold Internet Gateway that loads after HomeSKillet baseline"
 type: panos
 extends:
 
