@@ -164,15 +164,15 @@ extlinks = {'panosrepo': ('https://github.com/PaloAltoNetworks/HomeSkillet/tree/
 # load config file name that changes across repo and branches
 
 rst_prolog = """
-.. |branch| replace:: 90dev
-.. |skilletdocs| replace:: https://HomeSkillet.readthedocs.io/en/90dev/
-.. |IronSkilletdocs| replace:: https://IronSkillet.readthedocs.io/en/90dev/
+.. |branch| replace:: panos_v9.0
+.. |skilletdocs| replace:: https://HomeSkillet.readthedocs.io/en/panos_v9.0/
+.. |IronSkilletdocs| replace:: https://IronSkillet.readthedocs.io/en/panos_v9.0/
 .. |clonessh| replace:: git@github.com:PaloAltoNetworks/HomeSkillet.git
 .. |clonehttps| replace:: https://github.com/PaloAltoNetworks/HomeSkillet.git
-.. |repourl| replace:: https://github.com/PaloAltoNetworks/HomeSkillet/tree/90dev
-.. |panosxpaths| replace:: https://github.com/PaloAltoNetworks/HomeSkillet/blob/90dev/templates/panos/snippets/.meta-cnc.yaml
-.. |panossnippets| replace:: https://github.com/PaloAltoNetworks/HomeSkillet/tree/90dev/templates/panos/snippets
-.. |panosloadorder| replace:: https://github.com/PaloAltoNetworks/HomeSkillet/blob/90dev/templates/panos/snippets/.meta-cnc.yaml
-.. |skilletpanostemplates| replace: https://HomeSkillet.readthedocs.io/en/90dev/panos_template_guide.html
+.. |repourl| replace:: https://github.com/PaloAltoNetworks/HomeSkillet/tree/panos_v9.0
+.. |panosxpaths| replace:: https://github.com/PaloAltoNetworks/HomeSkillet/blob/panos_v9.0/templates/panos/snippets/.meta-cnc.yaml
+.. |panossnippets| replace:: https://github.com/PaloAltoNetworks/HomeSkillet/tree/panos_v9.0/templates/panos/snippets
+.. |panosloadorder| replace:: https://github.com/PaloAltoNetworks/HomeSkillet/blob/panos_v9.0/templates/panos/snippets/.meta-cnc.yaml
+.. |skilletpanostemplates| replace: https://HomeSkillet.readthedocs.io/en/panos_v9.0/panos_template_guide.html
 """
 
