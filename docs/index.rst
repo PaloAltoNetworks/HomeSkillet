@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to MSSP template documentation!
-=======================================
+Welcome to Home Skillet documentation!
+======================================
 
 .. toctree::
    :maxdepth: 1
@@ -12,5 +12,5 @@ Welcome to MSSP template documentation!
 
    overview
    internet_gateway_templates
-   template_format
+   ironskillet_deltas
    release_history
