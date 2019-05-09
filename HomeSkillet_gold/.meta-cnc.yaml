@@ -2,7 +2,7 @@
 # includes an additional security rule for strict file blocking of unknown url category
 
 name: homeskillet_gold_panos_v90
-label: v9.0 HomeSkillet Gold Security network and policy
+label: v9.0 Step 2 - HomeSkillet Gold Security network and policy
 description: "** LOAD BASELINE FIRST ** v9.0 Home Skillet Gold Internet Gateway that loads after HomeSKillet baseline"
 type: panos
 extends:
