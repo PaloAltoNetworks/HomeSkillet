@@ -22,7 +22,7 @@ variables:
   - name: IP_12
     description: Trust interface ip address
     default: 192.168.10.1/24
-    type_hint: ip_address
+    type_hint: text
   - name: ZONE_TRUST
     description: trust zone
     default: trust
