@@ -3,7 +3,7 @@
 # snippet folder name
 name: homeskillet_base_panos_v90
 # label used for menu selection
-label: v9.0 HomeSkillet baseline based on IronSkillet
+label: v9.0 Step 1 - HomeSkillet baseline based on IronSkillet
 description: "** LOAD ME FIRST ** HomeSKillet baseline configuration extracted from IronSkillet"
 dependency:
 # type of device configuration
