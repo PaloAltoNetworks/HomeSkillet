@@ -8,7 +8,9 @@ type: panos
 extends:
 
 labels:
-  collection: homeskillet
+    collection:
+      - Homeskillet
+      - Configure
 
 variables:
   - name: INTF_UNTRUST

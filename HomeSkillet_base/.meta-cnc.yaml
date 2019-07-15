@@ -12,7 +12,9 @@ extends:
 
 # grouping of like snippets for dynamic menu creation in pan-cnc
 labels:
-    collection: homeskillet
+    collection:
+      - Homeskillet
+      - Configure
 
 # variables used in the configuration templates
 # type_hint defines the form field type in pan-cnc
