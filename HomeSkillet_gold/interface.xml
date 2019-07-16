@@ -19,7 +19,7 @@
         <dhcp-client/>
         {% elif UNTRUST_TYPE == "static" %}
         <ip>
-          <entry name="{{ IP_12 }}"/>
+          <entry name="{{ IP_11 }}"/>
         </ip>
         {% endif %}
       </layer3>
