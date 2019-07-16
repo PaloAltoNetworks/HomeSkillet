@@ -27,13 +27,21 @@ variables:
       - key: static
         value: static
   - name: IP_11
-    description: Trust interface ip address [if static]
+    description: Trust interface ip address [if static untrust]
     default: 192.168.55.20/24
     type_hint: text
   - name: UNTRUST_DG
-    description: untrust routing default gateway [if static]
+    description: untrust routing default gateway [if static untrust]
     default: 192.168.55.2
     type_hint: text
+  - name: dhcp_DNS_1 [if static]
+    description: primary dns server
+    default: 8.8.8.8
+    type_hint: ip_address
+  - name: dhcp_DNS_2 [if static]
+    description: secondary dns server
+    default: 8.8.4.4
+    type_hint: ip_address
   - name: INTF_TRUST
     description: trust Interface
     default: ethernet1/2
@@ -62,6 +70,14 @@ variables:
     description: dhcp pool ip address range
     default: 192.168.10.100-192.168.10.250
     type_hint: text
+  - name: dhcp_DNS_1 [if static untrust]
+    description: primary dns server
+    default: 8.8.8.8
+    type_hint: ip_address
+  - name: dhcp_DNS_2 [if static untrust]
+    description: secondary dns server
+    default: 8.8.4.4
+    type_hint: ip_address
 
 snippets:
   - name: network_profiles-network-profiles

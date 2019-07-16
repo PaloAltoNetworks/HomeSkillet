@@ -12,8 +12,8 @@
         </inheritance>
         {% elif UNTRUST_TYPE == "static" %}
         <dns>
-          <primary>{{ DNS_1 }}</primary>
-          <secondary>{{ DNS_2 }}</secondary>
+          <primary>{{ dhcp_DNS_1 }}</primary>
+          <secondary>{{ dhcp_DNS_2 }}</secondary>
         </dns>
         {% endif %}
         <lease>
