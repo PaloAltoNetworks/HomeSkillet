@@ -15,7 +15,13 @@
           <enable>no</enable>
         </lldp>
         <interface-management-profile>MSSP management untrust</interface-management-profile>
+        {%- if UNTRUST_TYPE == "dhcp" %}
         <dhcp-client/>
+        {% elif UNTRUST_TYPE == "static" %}
+        <ip>
+          <entry name="{{ IP_12 }}"/>
+        </ip>
+        {% endif %}
       </layer3>
       <comment>Untrust interface using DHCP client access</comment>
     </entry>

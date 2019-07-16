@@ -4,6 +4,9 @@
         <dynamic-ip-and-port>
           <interface-address>
             <interface>{{ INTF_UNTRUST }}</interface>
+            {%- if UNTRUST_TYPE == "static" %}
+            <ip>{{ IP_11 }}</ip>
+            {% endif %}
           </interface-address>
         </dynamic-ip-and-port>
       </source-translation>
