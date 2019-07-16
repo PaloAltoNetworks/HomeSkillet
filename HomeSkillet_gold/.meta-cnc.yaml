@@ -27,11 +27,11 @@ variables:
       - key: static
         value: static
   - name: IP_11
-    description: Trust interface ip address [if static untrust]
+    description: Untrust interface ip address [if static untrust]
     default: 192.168.55.20/24
     type_hint: text
   - name: UNTRUST_DG
-    description: untrust routing default gateway [if static untrust]
+    description: Untrust routing default gateway [if static untrust]
     default: 192.168.55.2
     type_hint: text
   - name: INTF_TRUST
