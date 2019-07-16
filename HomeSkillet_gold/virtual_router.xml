@@ -44,7 +44,7 @@
           <bfd>
             <profile>None</profile>
           </bfd>
-          <interface>{{ UNTRUST_INTF }}</interface>
+          <interface>{{ INTF_UNTRUST }}</interface>
           <metric>10</metric>
           <destination>0.0.0.0/0</destination>
           <route-table>
