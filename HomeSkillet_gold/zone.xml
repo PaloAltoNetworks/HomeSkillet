@@ -13,6 +13,7 @@
       </layer3>
       <zone-protection-profile>Recommended_Zone_Protection</zone-protection-profile>
     </network>
+  </entry>
   <entry name="{{ ZONE_SERVER }}">
     <network>
      <layer3>

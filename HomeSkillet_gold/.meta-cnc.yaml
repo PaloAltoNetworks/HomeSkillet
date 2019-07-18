@@ -20,7 +20,7 @@ variables:
     type_hint: text
   - name: UNTRUST_TYPE
     description: Untrust interface address type [dhcp or static]
-    default: dhcp
+    default: static
     type_hint: dropdown
     dd_list:
       - key: dhcp
