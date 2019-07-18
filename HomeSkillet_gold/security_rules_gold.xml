@@ -5,6 +5,7 @@
     </to>
     <from>
       <member>{{ ZONE_TRUST }}</member>
+      <member>{{ ZONE_SERVER }}</member>
     </from>
     <source>
       <member>any</member>
@@ -46,6 +47,7 @@ ns to help capture url values of encrypted sessions</description>
         </to>
         <from>
           <member>{{ ZONE_TRUST }}</member>
+          <member>{{ ZONE_SERVER }}</member>
         </from>
         <source>
           <member>any</member>
@@ -83,6 +85,7 @@ URL's.</description>
         </to>
         <from>
           <member>{{ ZONE_TRUST }}</member>
+          <member>{{ ZONE_SERVER }}</member>
         </from>
         <source>
           <member>any</member>
@@ -126,6 +129,7 @@ all</description>
         </to>
         <from>
           <member>{{ ZONE_TRUST }}</member>
+          <member>{{ ZONE_SERVER }}</member>
         </from>
         <source>
           <member>any</member>
@@ -168,6 +172,7 @@ he proper application determined. Once determined, the session will shift to the
         </to>
         <from>
           <member>{{ ZONE_TRUST }}</member>
+          <member>{{ ZONE_SERVER }}</member>
         </from>
         <source>
           <member>any</member>
@@ -210,6 +215,7 @@ he proper application determined. Once determined, the session will shift to the
         </to>
         <from>
           <member>{{ ZONE_TRUST }}</member>
+          <member>{{ ZONE_SERVER }}</member>
         </from>
         <source>
           <member>any</member>

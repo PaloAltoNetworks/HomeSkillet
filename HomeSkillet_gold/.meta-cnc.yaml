@@ -1,18 +1,19 @@
 # gold security templates for top level security including threat, URL, or WF subscriptions
 # includes an additional security rule for strict file blocking of unknown url category
 
-name: homeskillet_gold_panos_v90
-label: v9.0 Step 2 - HomeSkillet Gold Security network and policy
-description: "** LOAD BASELINE FIRST ** v9.0 Home Skillet Gold Internet Gateway that loads after HomeSkillet baseline"
+name: labinabox_v90
+label: v9.0 Step 2 - Lab in a Box variant of HomeSkillet - IronBox
+description: "** LOAD BASELINE FIRST ** v9.0 IronBox Lab in a Box that tastes like HomeSkillet"
 type: panos
 extends:
 
 labels:
     collection:
-      - Homeskillet
+      - IronBox
       - Configure
 
 variables:
+#untrust interface - dhcp or static
   - name: INTF_UNTRUST
     description: Untrust Interface
     default: ethernet1/1
@@ -30,10 +31,12 @@ variables:
     description: Untrust interface ip address [if static untrust]
     default: 192.168.55.20/24
     type_hint: text
+# virtual router dg for static route if not dhcp inherited
   - name: UNTRUST_DG
     description: Untrust routing default gateway [if static untrust]
     default: 192.168.55.2
     type_hint: text
+# trust interface - static only
   - name: INTF_TRUST
     description: trust Interface
     default: ethernet1/2
@@ -42,6 +45,16 @@ variables:
     description: Trust interface ip address
     default: 192.168.45.20/24
     type_hint: text
+# server connected interface
+  - name: INTF_SERVER
+    description: server connected Interface
+    default: ethernet1/3
+    type_hint: text
+  - name: IP_13
+    description: Trust interface ip address
+    default: 192.168.35.20/24
+    type_hint: text
+# untrust - trust - servers zones
   - name: ZONE_TRUST
     description: trust zone
     default: trust
@@ -50,25 +63,31 @@ variables:
     description: untrust zone name
     default: untrust
     type_hint: text
+  - name: ZONE_SERVER
+    description: server zone name
+    default: server
+    type_hint: text
+# dhcp server configuration
   - name: DHCP_NETMASK
     description: dhcp pool netmask
     default: 255.255.255.0
     type_hint: ip_address
   - name: DHCP_GATEWAY
     description: dhcp pool default gateway ip address
-    default: 192.168.10.1
+    default: 192.168.45.20
     type_hint: ip_address
   - name: DHCP_POOL_RANGE
     description: dhcp pool ip address range
-    default: 192.168.10.100-192.168.10.250
+    default: 192.168.45.100-192.168.45.250
     type_hint: text
+# static dns if not inherited as dhcp client
   - name: dhcp_DNS_1
     description: primary dns server [if static untrust]
-    default: 8.8.8.8
+    default: 192.168.55.2
     type_hint: ip_address
   - name: dhcp_DNS_2
     description: secondary dns server [if static untrust]
-    default: 8.8.4.4
+    default: 8.8.8.8
     type_hint: ip_address
 
 snippets:

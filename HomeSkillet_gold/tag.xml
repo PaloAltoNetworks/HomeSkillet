@@ -1,3 +1,12 @@
 	<entry name="Gold">
 		<color>color4</color>
 	</entry>
+	<entry name="trust">
+		<color>color3</color>
+	</entry>
+	<entry name="untrust">
+		<color>color1</color>
+	</entry>
+	<entry name="server">
+		<color>color2</color>
+	</entry>

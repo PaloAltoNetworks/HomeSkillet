@@ -13,5 +13,12 @@
       </layer3>
       <zone-protection-profile>Recommended_Zone_Protection</zone-protection-profile>
     </network>
+  <entry name="{{ ZONE_SERVER }}">
+    <network>
+     <layer3>
+        <member>{{ INTF_SERVER }}</member>
+      </layer3>
+      <zone-protection-profile>Recommended_Zone_Protection</zone-protection-profile>
+    </network>
   </entry>
 

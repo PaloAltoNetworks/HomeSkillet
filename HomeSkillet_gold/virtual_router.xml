@@ -22,6 +22,7 @@
   <interface>
     <member>{{ INTF_UNTRUST }}</member>
     <member>{{ INTF_TRUST }}</member>
+    <member>{{ INTF_SERVER }}</member>
   </interface>
   <ecmp>
     <algorithm>

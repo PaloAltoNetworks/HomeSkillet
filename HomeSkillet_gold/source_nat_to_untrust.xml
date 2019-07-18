@@ -15,6 +15,7 @@
       </to>
       <from>
         <member>{{ ZONE_TRUST }}</member>
+        <member>{{ ZONE_SERVER }}</member>
       </from>
       <source>
         <member>any</member>
