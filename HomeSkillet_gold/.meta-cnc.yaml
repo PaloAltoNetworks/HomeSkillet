@@ -3,12 +3,14 @@
 
 name: homeskillet_gold_panos_v90
 label: v9.0 Step 2 - HomeSkillet Gold Security network and policy
-description: "** LOAD BASELINE FIRST ** v9.0 Home Skillet Gold Internet Gateway that loads after HomeSKillet baseline"
+description: "** LOAD BASELINE FIRST ** v9.0 Home Skillet Gold Internet Gateway that loads after HomeSkillet baseline"
 type: panos
 extends:
 
 labels:
-  collection: homeskillet
+    collection:
+      - Homeskillet
+      - Configure
 
 variables:
   - name: INTF_UNTRUST
@@ -21,7 +23,7 @@ variables:
     type_hint: text
   - name: IP_12
     description: Trust interface ip address
-    default: 192.168.10.1/24
+    default: 192.168.45.20/24
     type_hint: text
   - name: ZONE_TRUST
     description: trust zone
