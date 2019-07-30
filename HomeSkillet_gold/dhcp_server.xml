@@ -2,7 +2,6 @@
   <entry name="{{ INTF_TRUST }}">
     <server>
       <option>
-        {%- if UNTRUST_TYPE == "dhcp" %}
         <dns>
           <primary>inherited</primary>
           <secondary>inherited</secondary>
@@ -10,12 +9,6 @@
         <inheritance>
           <source>{{ INTF_UNTRUST }}</source>
         </inheritance>
-        {% elif UNTRUST_TYPE == "static" %}
-        <dns>
-          <primary>{{ dhcp_DNS_1 }}</primary>
-          <secondary>{{ dhcp_DNS_2 }}</secondary>
-        </dns>
-        {% endif %}
         <lease>
           <timeout>1440</timeout>
         </lease>
