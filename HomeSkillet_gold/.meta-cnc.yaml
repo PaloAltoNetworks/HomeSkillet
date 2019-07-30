@@ -17,23 +17,6 @@ variables:
     description: Untrust Interface
     default: ethernet1/1
     type_hint: text
-  - name: UNTRUST_TYPE
-    description: Untrust interface address type [dhcp or static]
-    default: dhcp
-    type_hint: dropdown
-    dd_list:
-      - key: dhcp
-        value: dhcp
-      - key: static
-        value: static
-  - name: IP_11
-    description: Untrust interface ip address [if static untrust]
-    default: 192.168.55.20/24
-    type_hint: text
-  - name: UNTRUST_DG
-    description: Untrust routing default gateway [if static untrust]
-    default: 192.168.55.2
-    type_hint: text
   - name: INTF_TRUST
     description: trust Interface
     default: ethernet1/2
@@ -62,14 +45,6 @@ variables:
     description: dhcp pool ip address range
     default: 192.168.10.100-192.168.10.250
     type_hint: text
-  - name: dhcp_DNS_1
-    description: primary dns server [if static untrust]
-    default: 8.8.8.8
-    type_hint: ip_address
-  - name: dhcp_DNS_2
-    description: secondary dns server [if static untrust]
-    default: 8.8.4.4
-    type_hint: ip_address
 
 snippets:
   - name: network_profiles-network-profiles
