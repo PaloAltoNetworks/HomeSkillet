@@ -21,19 +21,3 @@ of interfaces and zones. This element is managed by the system when doing
 standard GUI/CLI edits yet required for a working xml configuration.
 
 
-### This template assumes the device has the following licenses:
-
-* Threat Protection
-
-* URL Filtering
-
-* Wildfire
-
-This provides the highest level of security aligned with best practices.
-
-Outbound rules are created using the recommended profile settings from
-the IronSkillet day one configuration.
-
-In addition, a security rule to provide more aggressive file-blocking
-for unknown category URLs has been added.
-

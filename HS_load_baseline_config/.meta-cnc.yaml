@@ -1,0 +1,72 @@
+name: import_baseline_config_HomeSkillet
+# label used for menu selection
+label: Import and Load Starter Baseline Configuration
+
+description: |
+  This skillet imports, loads, and commits a starter baseline config for skillet loading and testing
+
+type: python3
+
+# more complex skillets may express a dependency on another skillet that should be loaded before this one.
+# For example, a set of skillets may build off of a single 'golden config' that contains shared configuration
+# As this skillet is very simple, there is no need to build on another one.
+extends:
+
+# Labels allow grouping and type specific options and are generally only used in advanced cases
+labels:
+    collection:
+      - Homeskillet
+      - Configure
+
+# variables define the things an operator may customize in this skillet. Things like DNS servers, NTP addresses, etc
+# may be customized for each deployment. Each variable will be rendered as a form field in the panhandler application
+variables:
+  - name: TARGET_IP
+    description: NGFW IP or Hostname
+    default: 192.168.55.10
+    type_hint: fqdn_or_ip
+  - name: TARGET_USERNAME
+    description: NGFW Username
+    default: admin
+    type_hint: text
+  - name: TARGET_PASSWORD
+    description: NGFW Password
+    default: admin
+    type_hint: password
+  - name: FW_NAME
+    description: NGFW hostname
+    default: homeSkilletFirewall
+    type_hint: text
+  - name: MGMT_TYPE
+    description: firewall management IP type
+    default: dhcp-client
+    type_hint: dropdown
+    dd_list:
+      - key: dhcp-client
+        value: dhcp-client
+      - key: static
+        value: static
+  - name: MGMT_MASK
+    description: management interface netmask [ if static ]
+    default: 192.0.6.1
+    type_hint: text
+  - name: MGMT_DG
+    description: management interface default gateway [ if static ]
+    default: 255.255.255.0
+    type_hint: text
+  - name: DNS_1
+    description: primary dns server
+    default: 8.8.8.8
+    type_hint: text
+  - name: DNS_2
+    description: secondary dns server
+    default: 4.2.2.2
+    type_hint: text
+
+# Snippets is an ordered list of configuration xml fragments that will be pushed to the PAN-OS NGFW. The xpath
+# determines where in the configuration hierarchy the xml fragment will be set. 'file' indicates the name of the file
+# to load and parse. Jinja2 style variables will be variable interpolated using the values of the 'variables' defined
+# in the 'variables' section.
+snippets:
+  - name: load_baseline
+    file: load_baseline.py

@@ -5,10 +5,8 @@ name: homeskillet_base_panos_v90
 # label used for menu selection
 label: v9.0 Step 1 - HomeSkillet baseline based on IronSkillet
 description: "** LOAD ME FIRST ** Homeskillet baseline configuration extracted from IronSkillet"
-dependency:
 # type of device configuration
 type: panos
-extends:
 
 # grouping of like snippets for dynamic menu creation in pan-cnc
 labels:
@@ -17,7 +15,7 @@ labels:
       - Configure
 
 # variables used in the configuration templates
-# type_hint defines the form field type in pan-cnc
+# this is based on IronSkillet and commented out vars are not used in HomeSkillet
 variables:
   - name: FW_NAME
     description: Firewall hostname
@@ -116,13 +114,19 @@ variables:
 
 # snippets used for api configuration including xpath and element as file name
 # files will load in the order listed
+# this is based on IronSkillet and commented out snippets are not used in HomeSkillet
 snippets:
   - name: device_system
     xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/system
-    file: hs_device_system.xml
+    file: device_system.xml
+# load IronSkillet device system as-is then allow http range
+  - name: hs_device_system_allow_httprange
+    xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/system
+    file: hs_device_system_allow_httprange.xml
   - name: device_setting
     xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/setting
     file: device_setting.xml
+# use existing configure mgmt user
 #  - name: mgt_config_users
 #    xpath: /config/mgt-config/users
 #    file: mgt_config_users.xml
@@ -131,7 +135,7 @@ snippets:
     file: password_complexity.xml
   - name: shared_log_settings
     xpath: /config/shared/log-settings
-    file: hs_shared_log_settings.xml
+    file: shared_log_settings.xml
   - name: address
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
     file: address.xml
@@ -140,7 +144,7 @@ snippets:
     file: tag.xml
   - name: log_settings_profiles
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/log-settings/profiles
-    file: hs_log_settings_profiles.xml
+    file: log_settings_profiles.xml
   - name: profiles_custom_url_category
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/custom-url-category
     file: profiles_custom_url_category.xml
@@ -176,7 +180,11 @@ snippets:
     file: rulebase_security.xml
   - name: decryption_rules
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/decryption
-    file: hs_rulebase_decryption.xml
+    file: rulebase_decryption.xml
+# load IronSkillet decrypt rule as reference but disable to avoid home device cert issues
+  - name: hs_rulebase_decryption_disable
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/decryption
+    file: hs_rulebase_decryption_disable.xml
   - name: zone_protection_profile
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/profiles/zone-protection-profile
     file: zone_protection_profile.xml
