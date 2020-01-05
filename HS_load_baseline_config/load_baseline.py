@@ -187,7 +187,6 @@ def main():
     parser.add_argument("-m", "--MGMT_MASK", help="management netmask", type=str)
     parser.add_argument("-dg", "--MGMT_DG", help="management default gateway", type=str)
 
-
     args = parser.parse_args()
 
     if len(sys.argv) < 2:
@@ -227,7 +226,6 @@ def main():
     commit(fw)
 
     print('baseline load complete')
-
 
 if __name__ == '__main__':
     main()
