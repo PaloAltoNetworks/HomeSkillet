@@ -2,27 +2,29 @@
 # includes an additional security rule for strict file blocking of unknown url category
 
 name: homeskillet_gold_panos_v90
-label: v9.0 HomeSkillet Gold Security network and policy
-description: v9.0 Home Skillet Gold Internet Gateway that loads after HomeSKillet baseline
+label: v9.0 Step 2 - HomeSkillet Gold Security network and policy
+description: "** LOAD BASELINE FIRST ** v9.0 Home Skillet Gold Internet Gateway that loads after HomeSkillet baseline"
 type: panos
 extends:
 
 labels:
-  collection: homeskillet
+    collection:
+      - Homeskillet
+      - Configure
 
 variables:
-  - name: INTF_TRUST
-    description: Trust Interface
-    default: ethernet1/1
-    type_hint: text
   - name: INTF_UNTRUST
     description: Untrust Interface
+    default: ethernet1/1
+    type_hint: text
+  - name: INTF_TRUST
+    description: trust Interface
     default: ethernet1/2
     type_hint: text
   - name: IP_12
-    description: IP 12
-    default: 192.168.10.1/24
-    type_hint: ip_address
+    description: Trust interface ip address
+    default: 192.168.45.20/24
+    type_hint: text
   - name: ZONE_TRUST
     description: trust zone
     default: trust

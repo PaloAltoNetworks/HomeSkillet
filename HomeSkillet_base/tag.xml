@@ -7,6 +7,6 @@
 <entry name="Internal">
 	<comments>Internal to Internal</comments>
 </entry>
-<entry name="homeskillet-version">
-	<comments>version 0.0.1 for 9.0: version of this HomeSkillet template file</comments>
+<entry name="iron-skillet-version">
+	<comments>version 0.0.2 for 9.0: version of this IronSkillet template file</comments>
 </entry>

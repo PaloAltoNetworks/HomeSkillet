@@ -25,6 +25,19 @@ Template Content
 
     + no local content changes - new features come from IronSkillet 9.0 baseline
 
+0.2.0
+~~~~~
+
+Released July 15th, 2019 (dev branch)
+
+Template Content
+
+    + updated to match new IronSkillet version
+
+        * password complexity profile and admin lockout
+        * GlobalProtect dynamic updates
+        * remove Bogon elements and opt-in for the EDL policies
+
 
 Documentation Revisions
 -----------------------
@@ -37,6 +50,11 @@ Mar 15, 2019
 ~~~~~~~~~~~~
 
     + create 9.0 branch and associated documentation
+
+Jul 15, 2019
+~~~~~~~~~~~~
+
+    + release-based updates mapping to IronSkillet
 
 
 
