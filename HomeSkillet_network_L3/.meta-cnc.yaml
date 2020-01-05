@@ -1,11 +1,11 @@
 # gold security templates for top level security including threat, URL, or WF subscriptions
 # includes an additional security rule for strict file blocking of unknown url category
 
-name: homeskillet_gold_panos_v90
-label: v9.0 Step 2 - HomeSkillet Gold Security network and policy
-description: "** LOAD BASELINE FIRST ** v9.0 Home Skillet Gold Internet Gateway that loads after HomeSkillet baseline"
+name: homeskillet_L3network_panos_v90
+label: v9.0 Step 2 - HomeSkillet network configuration - L3 simple routing
+description: "** LOAD BASELINE FIRST ** v9.0 Home Skillet Internet Gateway network that loads after HomeSkillet baseline"
+
 type: panos
-extends:
 
 labels:
     collection:
@@ -27,11 +27,11 @@ variables:
     type_hint: text
   - name: ZONE_TRUST
     description: trust zone
-    default: trust
+    default: internal
     type_hint: text
   - name: ZONE_UNTRUST
     description: untrust zone name
-    default: untrust
+    default: external
     type_hint: text
   - name: DHCP_NETMASK
     description: dhcp pool netmask
@@ -62,17 +62,5 @@ snippets:
   - name: nat-source-nat-to-untrust
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/nat
     file: source_nat_to_untrust.xml
-  - name: profile_group_unknown_url
-    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profile-group
-    file: profile_group_unknown_url.xml
-  - name: tag
-    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/tag
-    file: tag.xml
-  - name: security_rules-security-rules-gold
-    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security
-    file: security_rules_gold.xml
-  - name: dhcp_server
-    xpath: /config/devices/entry[@name='localhost.localdomain']/network/dhcp
-    file: dhcp_server.xml
 
 
