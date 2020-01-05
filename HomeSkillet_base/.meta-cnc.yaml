@@ -15,33 +15,12 @@ labels:
       - Configure
 
 # variables used in the configuration templates
-# this is based on IronSkillet and commented out vars are not used in HomeSkillet
+# this is based on IronSkillet and all vars are not used in HomeSkillet
 variables:
   - name: FW_NAME
     description: Firewall hostname
     default: panos-01
     type_hint: text
-#  - name: MGMT_TYPE
-#    description: firewall management IP type
-#    default: dhcp-client
-#    type_hint: dropdown
-#    dd_list:
-#      - key: dhcp-client
-#        value: dhcp-client
-#      - key: static
-#        value: static
-#  - name: MGMT_IP
-#    description: NGFW management IP
-#    default: 192.0.2.6
-#    type_hint: ip_address
-#  - name: MGMT_MASK
-#    description: NGFW management netmask
-#    type_hint: ip_address
-#    default: 255.255.255.0
-#  - name: MGMT_DG
-#    description: NGFW management default gateway
-#    default: 192.0.2.7
-#    type_hint: ip_address
   - name: NTP_1
     description: Network Time Protocol Server
     default: 0.pool.ntp.org
@@ -50,22 +29,6 @@ variables:
     description: Network Time Protocol Server 2
     default: 1.pool.ntp.org
     type_hint: text
-#  - name: ADMINISTRATOR_USERNAME
-#    description: admin username
-#    default: admin
-#    type_hint: text
-#  - name: ADMINISTRATOR_PASSWORD
-#    description: admin password
-#    default: admin
-#    type_hint: text
-#  - name: DNS_1
-#    description: primary dns server
-#    default: 8.8.8.8
-#    type_hint: ip_address
-#  - name: DNS_2
-#    description: secondary dns server
-#    default: 8.8.4.4
-#    type_hint: ip_address
   - name: SINKHOLE_IPV4
     description: sinkhole FQDN IPv4
     default: sinkhole.paloaltonetworks.com
@@ -74,22 +37,6 @@ variables:
     description: sinkhole address IPv6
     default: 2600:5200::1
     type_hint: ip_address
-#  - name: INTERNET_ZONE
-#    description: untrust zone to filter out in reports
-#    default: untrust
-#    type_hint: text
-#  - name: EMAIL_PROFILE_GATEWAY
-#    description: email gateway address for critical alerts
-#    default: 192.0.2.1
-#    type_hint: text
-#  - name: EMAIL_PROFILE_FROM
-#    description: from address in email alerts
-#    default: sentfrom@yourdomain.com
-#    type_hint: text
-#  - name: EMAIL_PROFILE_TO
-#    description: to address in email alerts
-#    default: sendto@yourdomain.com
-#    type_hint: text
   - name: SYSLOG_SERVER
     description: syslog server ip address
     default: 192.0.2.2
@@ -114,7 +61,7 @@ variables:
 
 # snippets used for api configuration including xpath and element as file name
 # files will load in the order listed
-# this is based on IronSkillet and commented out snippets are not used in HomeSkillet
+# this is based on IronSkillet noting all snippets are not used in HomeSkillet
 snippets:
   - name: device_system
     xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/system
@@ -129,10 +76,6 @@ snippets:
   - name: hs_device_setting_allow_httprange
     xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/setting
     file: hs_device_setting_allow_httprange.xml
-# use existing configure mgmt user
-#  - name: mgt_config_users
-#    xpath: /config/mgt-config/users
-#    file: mgt_config_users.xml
   - name: password_complexity
     xpath: /config/mgt-config/password-complexity
     file: password_complexity.xml
@@ -197,6 +140,3 @@ snippets:
   - name: report_group_simple
     xpath: /config/shared/report-group
     file: report_group_simple.xml
-#  - name: email_scheduler_simple
-#    xpath: /config/shared/email-scheduler
-#    file: email_scheduler_simple.xml
