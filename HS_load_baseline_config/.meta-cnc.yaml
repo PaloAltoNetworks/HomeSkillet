@@ -25,7 +25,7 @@ variables:
     description: NGFW IP or Hostname
     default: 192.168.55.10
     type_hint: fqdn_or_ip
-    #help_text: if management interface type is static this ip address will be used
+    help_text: if management interface type is static this ip address will be used
   - name: TARGET_USERNAME
     description: NGFW Username
     default: admin
@@ -52,15 +52,15 @@ variables:
     default: 192.0.6.1
     type_hint: text
     toggle_hint:
-      - source: MGMT_TYPE
-      - value: static
+      source: MGMT_TYPE
+      value: static
   - name: MGMT_DG
     description: management interface default gateway
     default: 255.255.255.0
     type_hint: text
     toggle_hint:
-      - source: MGMT_TYPE
-      - value: static
+      source: MGMT_TYPE
+      value: static
   - name: DNS_1
     description: primary dns server
     default: 8.8.8.8
