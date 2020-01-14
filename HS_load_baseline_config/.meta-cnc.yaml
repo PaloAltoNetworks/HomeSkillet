@@ -50,16 +50,16 @@ variables:
     description: management interface netmask
     default: 192.0.6.1
     type_hint: text
-    #toggle_hint:
-    #  - source: MGMT_TYPE
-    #  - value: static
+    toggle_hint:
+      - source: MGMT_TYPE
+      - value: static
   - name: MGMT_DG
     description: management interface default gateway
     default: 255.255.255.0
     type_hint: text
-    #toggle_hint:
-    #  - source: MGMT_TYPE
-    #  - value: static
+    toggle_hint:
+      - source: MGMT_TYPE
+      - value: static
   - name: DNS_1
     description: primary dns server
     default: 8.8.8.8
