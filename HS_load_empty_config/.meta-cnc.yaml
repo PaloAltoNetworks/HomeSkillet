@@ -41,8 +41,8 @@ variables:
   - name: MGMT_TYPE
     description: firewall management IP type
     default: dhcp-client
-    type_hint: dropdown
-    dd_list:
+    type_hint: radio
+    rad_list:
       - key: dhcp-client
         value: dhcp-client
       - key: static
