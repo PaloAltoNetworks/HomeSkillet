@@ -21,9 +21,9 @@ variables:
   default: 'yes'
   type_hint: radio
   rad_list:
-    - key: 'Yes'
+    - key: 'yes'
       value: 'yes'
-    - key: 'No'
+    - key: 'no'
       value: 'no'
 # if selected will load content updates
 - name: load_content_updates
@@ -31,17 +31,19 @@ variables:
   default: 'yes'
   type_hint: radio
   rad_list:
-    - key: 'Yes'
+    - key: 'yes'
       value: 'yes'
-    - key: 'No'
+    - key: 'no'
       value: 'no'
 
 snippets:
 # workflow stages for full refresh and configuration
 # reset config to empty state
   - name: import_empty_config_HomeSkillet
+    when: revert_config == 'yes'
 # content updates to latest version
   - name: ngfw_content_update
+    when: load_content_updates == 'yes'
 # post step 1 validation to ensure last step dependencies are met
   - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
 # day 1 baseline configuration

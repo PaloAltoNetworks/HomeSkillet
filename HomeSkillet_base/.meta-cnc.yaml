@@ -51,15 +51,6 @@ variables:
   - name: INCLUDE_PAN_EDL
     description: include the predefined Palo Alto Networks external lists security rules
     default: 'no'
-    type_hint: dropdown
-    dd_list:
-      - key: 'yes'
-        value: 'yes'
-      - key: 'no'
-        value: 'no'
-  - name: revert_config
-    description: include the predefined Palo Alto Networks external lists security rules
-    default: 'no'
     type_hint: radio
     rad_list:
       - key: 'yes'
