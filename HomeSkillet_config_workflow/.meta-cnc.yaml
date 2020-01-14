@@ -20,7 +20,7 @@ snippets:
 # day 1 baseline configuration
   - name: homeskillet_base_panos_v90
 # post step 1 validation to ensure last step dependencies are met
-  - name: validate-HomeSkillet-step2-efe8e66e-1edb-411f-aaec-924b00890637
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
 # network layer and zone configuration
   - name: homeskillet_L3network_panos_v90
 # security policies
