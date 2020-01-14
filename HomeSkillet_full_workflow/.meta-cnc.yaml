@@ -39,18 +39,18 @@ variables:
 snippets:
 # workflow stages for full refresh and configuration
 # reset config to empty state
-  - name: import_empty_config_HomeSkillet
+  - name: import_empty_config_HomeSkillet_ab8f807b-6c2d-4e0a-b302-88d225072b58
     when: revert_config == 'yes'
 # content updates to latest version
-  - name: ngfw_content_update
+  - name: ngfw_content_update_25467032-6196-41c2-982f-9794e42f9aef
     when: load_content_updates == 'yes'
 # post step 1 validation to ensure last step dependencies are met
   - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
 # day 1 baseline configuration
-  - name: homeskillet_base_panos_v90
+  - name: homeskillet_base_panos_v90_5fdbc623-2891-4937-a577-d0aea59065cc
 # post step 1 validation to ensure last step dependencies are met
   - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
 # network layer and zone configuration
-  - name: homeskillet_L3network_panos_v90
+  - name: homeskillet_demo_workflow_panos_v90_5e0bb6b4-a407-4029-95e2-5d7389568bff
 # security policies
-  - name: homeskillet_policies_panos_v90
+  - name: homeskillet_policies_panos_v90_466aeb8c-64a7-4aa5-acab-58cc6402f648
