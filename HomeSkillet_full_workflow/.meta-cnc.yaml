@@ -1,9 +1,9 @@
 # workflow demo that cleans the config, does a content update, then configures a basic internet gateway
 
-name: homeskillet_demo_workflow_panos_v90_5e0bb6b4-a407-4029-95e2-5d7389568bff
-label: v9.0 Full clear config, update and configure workflow
+name: homeskillet_setup_workflow_panos_v90_5e0bb6b4-a407-4029-95e2-5d7389568bff
+label: v9.0 full setup for HomeSkillet
 description: |
-  this workflow steps through a rollback to starter config, content updates, and then load in
+  this workflow steps through a reset to starter config, content updates, load in
   the IronSkillet-like day 1, network and zones, then security policies
 
 type: workflow
@@ -15,48 +15,24 @@ labels:
 
 variables:
 # in the future can let the user choose the network layer option as a workflow stage
-# if selected will import-load-commit a starter empty config
-- name: revert_config
-  description: revert to empty config
-  default: 'yes'
-  type_hint: dropdown
-  dd_list:
-    - key: 'yes'
-      value: 'yes'
-    - key: 'no'
-      value: 'no'
-# if selected will load content updates
-- name: load_content_updates
-  description: load latest content updates
-  default: 'yes'
-  type_hint: dropdown
-  dd_list:
-    - key: 'yes'
-      value: 'yes'
-    - key: 'no'
-      value: 'no'
-- name: select_options
-  description: select options
-  default: True
+- name: add_options
+  description: select additonal HomeSkillet options
+  default: []
   type_hint: checkbox
   cbx_list:
-    - key: revert config
-      value: revert-config
-    - key: load content updates
-      value: load-updates
-
-
+    - key: revert config to new install
+      value: revert_config
+    - key: load threat and content updates
+      value: load_updates
 
 snippets:
 # workflow stages for full refresh and configuration
-# used for var viewing
-  - name: vars_test_homeSkillet
 # reset config to empty state
   - name: import_empty_config_HomeSkillet_ab8f807b-6c2d-4e0a-b302-88d225072b58
-    when: revert_config == 'yes'
+    when: "'revert_config' in add_options"
 # content updates to latest version
   - name: ngfw_content_update_25467032-6196-41c2-982f-9794e42f9aef
-    when: load_content_updates == 'yes'
+    when: "'load_updates' in add_options"
 # post step 1 validation to ensure last step dependencies are met
   - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
 # day 1 baseline configuration
