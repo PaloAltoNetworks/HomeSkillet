@@ -56,7 +56,8 @@ snippets:
 # workflow stages for full refresh and configuration
 # reset config to empty state
   - name: import_empty_config_HomeSkillet_ab8f807b-6c2d-4e0a-b302-88d225072b58
-    when: revert_config == 'yes'
+    #when: revert_config == 'yes'
+    when: 'enable bgp' in select_options
 # content updates to latest version
   - name: ngfw_content_update_25467032-6196-41c2-982f-9794e42f9aef
     when: load_content_updates == 'yes'
