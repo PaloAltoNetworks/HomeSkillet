@@ -14,13 +14,15 @@ labels:
 
 variables:
   - name: INTF_UNTRUST
-    description: Untrust Interface
+    description: untrust Interface
     default: ethernet1/1
-    type_hint: text
+    type_hint: dropdown
+    source: interface_names
   - name: INTF_TRUST
     description: trust Interface
     default: ethernet1/2
-    type_hint: text
+    type_hint: dropdown
+    source: interface_names
   - name: IP_12
     description: Trust interface ip address
     default: 192.168.45.20/24

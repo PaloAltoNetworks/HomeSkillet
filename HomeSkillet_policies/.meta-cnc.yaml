@@ -19,7 +19,7 @@ variables:
     source: zones_list
   - name: ZONE_UNTRUST
     description: internet zone name
-    default: external
+    default: internet
     type_hint: dropdown
     source: zones_list
 
