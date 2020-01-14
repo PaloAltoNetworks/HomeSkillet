@@ -12,10 +12,15 @@ labels:
     - Validation
 
 variables:
-  - name: FW_NAME
-    description: Some Parameter
-    default: yes
-    type_hint: text
+  - name: loaded_step_1
+    description: You actually loaded step 1 right???
+    default: of course
+    type_hint: dropdown
+    dd_list:
+      - key: of course
+        value: likely
+      - key: ummmm...maybe
+        value: not
 
 snippets:
 
