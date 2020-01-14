@@ -19,8 +19,8 @@ variables:
     dd_list:
       - key: of course
         value: likely
-      - key: ummmm__maybe
-        value: not
+      - key: highly unlikely
+        value: unlikely
 
 snippets:
 
