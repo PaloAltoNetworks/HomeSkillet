@@ -38,10 +38,17 @@ variables:
 - name: enable_bgp
   description: enable bgp
   default: True
-  type_hint: radio
+  type_hint: checkbox
   rad_list:
     - key: True
       value: True
+- name: select_options
+  description: select options
+  #default: True
+  type_hint: checkbox
+  cbx_list:
+    - key: enable bgp
+      value: enable bgp
 
 
 
