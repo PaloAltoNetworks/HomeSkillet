@@ -11,6 +11,10 @@ labels:
     - HomeSkillet
 
 variables:
+  - name: test_var_name
+    description: test var name
+    default: some var
+    type_hint: text
 
 snippets:
   - name: vars_output

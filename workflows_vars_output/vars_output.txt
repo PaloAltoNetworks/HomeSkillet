@@ -1,5 +1,8 @@
 List of current variables
 
+test var name
+{{ test_var_name }}
+
 select options
 {{ select_options }}
 
