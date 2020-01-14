@@ -1,0 +1,17 @@
+name: vars_test_homeSkillet
+label: see active vars
+description: vars testing
+
+type: template
+
+extends:
+
+labels:
+  collection:
+    - HomeSkillet
+
+variables:
+
+snippets:
+  - name: vars_output
+    file: vars_output.txt

@@ -1,0 +1,7 @@
+List of current variables
+
+select options
+{{ select_options }}
+
+load content updates
+{{ load_content_updates }}
