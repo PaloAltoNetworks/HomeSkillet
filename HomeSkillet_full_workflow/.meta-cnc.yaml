@@ -23,6 +23,10 @@ variables:
       value: revert_config
     - key: load threat and content updates
       value: load_updates
+    - key: validation check prior to day 1 load to show fail
+      value: pre_validation
+    - key: validation check after day 1 load to show pass
+      value: post_validation
 
 snippets:
 # workflow stages for full refresh and configuration
@@ -32,12 +36,14 @@ snippets:
 # content updates to latest version
   - name: ngfw_content_update_25467032-6196-41c2-982f-9794e42f9aef
     when: "'load_updates' in add_options"
-# post step 1 validation to ensure last step dependencies are met
-#  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+# pre step 1 validation to ensure last step dependencies are met
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+    when: "'pre_validation' in add_options"
 # day 1 baseline configuration
   - name: homeskillet_base_panos_v90_5fdbc623-2891-4937-a577-d0aea59065cc
 # post step 1 validation to ensure last step dependencies are met
-#  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+    when: "'post_validation' in add_options"
 # grab list of interfaces
   - name: get_interface_lists_812E106E-EF84-48CC-A2CB-96F9D7DA7296
 # network layer and zone configuration
