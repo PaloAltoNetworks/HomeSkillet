@@ -1,6 +1,6 @@
-name: import_baseline_config_HomeSkillet
+name: import_empty_config_HomeSkillet
 # label used for menu selection
-label: Import and Load Starter Baseline Configuration
+label: Import and Load Empty Starter Configuration
 
 description: |
   This skillet imports, loads, and commits a starter baseline config for skillet loading and testing
