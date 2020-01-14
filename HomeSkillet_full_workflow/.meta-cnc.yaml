@@ -43,3 +43,5 @@ snippets:
   - name: homeskillet_demo_workflow_panos_v90_5e0bb6b4-a407-4029-95e2-5d7389568bff
 # security policies
   - name: homeskillet_policies_panos_v90_466aeb8c-64a7-4aa5-acab-58cc6402f648
+# quick and dirty output to show completion
+  - name: workflow_last_page_7d5ea4c0-fea9-458d-ae86-92821114b19f
