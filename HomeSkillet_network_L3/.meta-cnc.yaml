@@ -14,17 +14,17 @@ labels:
 
 variables:
   - name: INTF_UNTRUST
-    description: untrust Interface
+    description: internet Interface
     default: ethernet1/1
     type_hint: dropdown
     source: interface_names
   - name: INTF_TRUST
-    description: trust Interface
+    description: internal Interface
     default: ethernet1/2
     type_hint: dropdown
     source: interface_names
   - name: IP_12
-    description: Trust interface ip address
+    description: internal interface ip address
     default: 192.168.45.20/24
     type_hint: text
   - name: ZONE_TRUST
@@ -33,7 +33,7 @@ variables:
     type_hint: text
   - name: ZONE_UNTRUST
     description: internet zone name
-    default: external
+    default: internet
     type_hint: text
   - name: DHCP_NETMASK
     description: dhcp pool netmask
