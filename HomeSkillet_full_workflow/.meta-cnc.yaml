@@ -40,7 +40,7 @@ snippets:
 # post step 1 validation to ensure last step dependencies are met
   - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
 # network layer and zone configuration
-  - name: homeskillet_demo_workflow_panos_v90_5e0bb6b4-a407-4029-95e2-5d7389568bff
+  - name: homeskillet_L3network_panos_v90_aae24a56-b4fc-4387-abc5-6694db5f49ee
 # security policies
   - name: homeskillet_policies_panos_v90_466aeb8c-64a7-4aa5-acab-58cc6402f648
 # quick and dirty output to show completion
