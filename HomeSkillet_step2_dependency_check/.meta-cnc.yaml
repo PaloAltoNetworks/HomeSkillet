@@ -19,7 +19,7 @@ variables:
     dd_list:
       - key: of course
         value: likely
-      - key: ummmm...maybe
+      - key: ummmm__maybe
         value: not
 
 snippets:
