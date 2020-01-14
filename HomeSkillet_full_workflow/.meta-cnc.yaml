@@ -35,6 +35,15 @@ variables:
       value: 'yes'
     - key: 'no'
       value: 'no'
+- name: enable_bgp
+  description: enable bgp
+  default: True
+  type_hint: radio
+  rad_list:
+    - key: True
+      value: True
+
+
 
 snippets:
 # workflow stages for full refresh and configuration
