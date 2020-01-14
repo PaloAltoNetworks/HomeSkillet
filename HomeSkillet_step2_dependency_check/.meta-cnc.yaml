@@ -13,7 +13,7 @@ labels:
 
 variables:
   - name: loaded_step_1
-    description: You actually loaded step 1 right???
+    description: You actually loaded step 1 and did a commit right???
     default: of course
     type_hint: dropdown
     dd_list:
