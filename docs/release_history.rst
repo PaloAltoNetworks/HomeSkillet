@@ -38,6 +38,19 @@ Template Content
         * GlobalProtect dynamic updates
         * remove Bogon elements and opt-in for the EDL policies
 
+0.3.0
+~~~~~
+
+Released January 14, 2020
+
+Template Content
+
+    + addition of load empty starter config and content update skillets
+    + inclusion of post step 1 validation skillet - ensure dependencies met
+    + full and config-only workflows
+    + ability to hide/show ip addresses based on mgmt interface type
+
+
 
 Documentation Revisions
 -----------------------
