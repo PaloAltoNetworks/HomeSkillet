@@ -34,13 +34,17 @@ snippets:
   - name: ngfw_content_update_25467032-6196-41c2-982f-9794e42f9aef
     when: "'load_updates' in add_options"
 # post step 1 validation to ensure last step dependencies are met
-  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+#  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
 # day 1 baseline configuration
   - name: homeskillet_base_panos_v90_5fdbc623-2891-4937-a577-d0aea59065cc
 # post step 1 validation to ensure last step dependencies are met
-  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+#  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+# grab list of interfaces
+  - name: get_interface_lists_812E106E-EF84-48CC-A2CB-96F9D7DA7296
 # network layer and zone configuration
   - name: homeskillet_L3network_panos_v90_aae24a56-b4fc-4387-abc5-6694db5f49ee
+# grab list of zones
+  - name: get_zone_names_812E106E-EF84-48CC-A2CB-96F9D7DA7296
 # security policies
   - name: homeskillet_policies_panos_v90_466aeb8c-64a7-4aa5-acab-58cc6402f648
 # quick and dirty output to show completion

@@ -13,13 +13,15 @@ labels:
 
 variables:
   - name: ZONE_TRUST
-    description: trust zone
+    description: internal zone
     default: internal
-    type_hint: text
+    type_hint: dropdown
+    source: zones_list
   - name: ZONE_UNTRUST
-    description: untrust zone name
+    description: internet zone name
     default: external
-    type_hint: text
+    type_hint: dropdown
+    source: zones_list
 
 snippets:
   - name: profile_group_unknown_url

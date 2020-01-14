@@ -26,11 +26,11 @@ variables:
     default: 192.168.45.20/24
     type_hint: text
   - name: ZONE_TRUST
-    description: trust zone
+    description: internal zone name
     default: internal
     type_hint: text
   - name: ZONE_UNTRUST
-    description: untrust zone name
+    description: internet zone name
     default: external
     type_hint: text
   - name: DHCP_NETMASK
