@@ -19,8 +19,8 @@ variables:
 - name: revert_config
   description: revert to empty config
   default: 'yes'
-  type_hint: radio
-  rad_list:
+  type_hint: dropdown
+  dd_list:
     - key: 'yes'
       value: 'yes'
     - key: 'no'
@@ -29,8 +29,8 @@ variables:
 - name: load_content_updates
   description: load latest content updates
   default: 'yes'
-  type_hint: radio
-  rad_list:
+  type_hint: dropdown
+  dd_list:
     - key: 'yes'
       value: 'yes'
     - key: 'no'
