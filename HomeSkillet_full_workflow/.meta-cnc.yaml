@@ -35,20 +35,15 @@ variables:
       value: 'yes'
     - key: 'no'
       value: 'no'
-- name: enable_bgp
-  description: enable bgp
-  default: True
-  type_hint: checkbox
-  rad_list:
-    - key: True
-      value: True
 - name: select_options
   description: select options
-  #default: True
+  default: True
   type_hint: checkbox
   cbx_list:
-    - key: enable bgp
-      value: enable bgp
+    - key: revert config
+      value: revert-config
+    - key: load content updates
+      value: load-updates
 
 
 
@@ -56,7 +51,7 @@ snippets:
 # workflow stages for full refresh and configuration
 # reset config to empty state
   - name: import_empty_config_HomeSkillet_ab8f807b-6c2d-4e0a-b302-88d225072b58
-    when: 'enable bgp' in select_options
+    when: revert_config == 'yes'
 # content updates to latest version
   - name: ngfw_content_update_25467032-6196-41c2-982f-9794e42f9aef
     when: load_content_updates == 'yes'
