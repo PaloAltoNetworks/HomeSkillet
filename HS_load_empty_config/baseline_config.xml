@@ -62,7 +62,7 @@
             <disable-telnet>yes</disable-telnet>
             <disable-http>yes</disable-http>
           </service>
-          <hostname>{{ hostname }}</hostname>
+          <hostname>{{ FW_NAME }}</hostname>
           {%- if MGMT_TYPE == "static" %}
           <type>
             <static/>

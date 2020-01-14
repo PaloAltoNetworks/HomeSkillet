@@ -1,6 +1,6 @@
-name: import_baseline_config_HomeSkillet
+name: import_empty_config_HomeSkillet_ab8f807b-6c2d-4e0a-b302-88d225072b58
 # label used for menu selection
-label: Import and Load Starter Baseline Configuration
+label: Import and Load Empty Starter Configuration
 
 description: |
   This skillet imports, loads, and commits a starter baseline config for skillet loading and testing
@@ -15,7 +15,7 @@ extends:
 # Labels allow grouping and type specific options and are generally only used in advanced cases
 labels:
     collection:
-      - Homeskillet
+      - HomeSkillet
       - Configure
 
 # variables define the things an operator may customize in this skillet. Things like DNS servers, NTP addresses, etc
@@ -25,6 +25,7 @@ variables:
     description: NGFW IP or Hostname
     default: 192.168.55.10
     type_hint: fqdn_or_ip
+    help_text: if management interface type is static this ip address will be used
   - name: TARGET_USERNAME
     description: NGFW Username
     default: admin
@@ -47,13 +48,19 @@ variables:
       - key: static
         value: static
   - name: MGMT_MASK
-    description: management interface netmask [ if static ]
-    default: 192.0.6.1
-    type_hint: text
-  - name: MGMT_DG
-    description: management interface default gateway [ if static ]
+    description: management interface netmask
     default: 255.255.255.0
     type_hint: text
+    toggle_hint:
+      source: MGMT_TYPE
+      value: static
+  - name: MGMT_DG
+    description: management interface default gateway
+    default: 192.0.6.1
+    type_hint: text
+    toggle_hint:
+      source: MGMT_TYPE
+      value: static
   - name: DNS_1
     description: primary dns server
     default: 8.8.8.8

@@ -1,0 +1,34 @@
+# workflow demo that cleans the config, does a content update, then configures a basic internet gateway
+
+name: homeskillet_demo_workflow_panos_v90_5e0bb6b4-a407-4029-95e2-5d7389568bff
+label: v9.0 Full clear config, update and configure workflow
+description: |
+  this workflow steps through a rollback to starter config, content updates, and then load in
+  the IronSkillet-like day 1, network and zones, then security policies
+
+type: workflow
+
+labels:
+    collection:
+      - HomeSkillet
+      - Configure
+
+variables:
+# in the future can let the user choose the network layer option as a workflow stage
+
+snippets:
+# workflow stages for full refresh and configuration
+# reset config to empty state
+  - name: import_empty_config_HomeSkillet
+# content updates to latest version
+  - name: ngfw_content_update
+# post step 1 validation to ensure last step dependencies are met
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+# day 1 baseline configuration
+  - name: homeskillet_base_panos_v90
+# post step 1 validation to ensure last step dependencies are met
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+# network layer and zone configuration
+  - name: homeskillet_L3network_panos_v90
+# security policies
+  - name: homeskillet_policies_panos_v90

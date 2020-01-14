@@ -1,0 +1,137 @@
+name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+label: HomeSkillet - validation ability to load steps 2 and 3 - panos_v9.0
+
+description: |
+  This skillet checks the running config for HomeSkillet step 2 and 3 dependencies that should be loaded
+  as part of step 1 using the IronSkillet day one baseline
+
+type: pan_validation
+labels:
+  collection:
+    - HomeSkillet
+    - Validation
+
+variables:
+  - name: loaded_step_1
+    description: You actually loaded step 1 and did a commit right???
+    default: of course
+    type_hint: dropdown
+    dd_list:
+      - key: of course
+        value: likely
+      - key: ummmm...maybe
+        value: not
+
+snippets:
+
+  - name: device_config_file
+    cmd: parse
+    variable: config
+    outputs:
+      - name: zone_protect_profile
+        capture_object: /config/devices/entry[@name='localhost.localdomain']/network/profiles/zone-protection-profile
+
+  - name: zone_protect_profile
+    label: Recommended_Zone_Protection zone protection profile exists
+    test: zone_protect_profile | attribute_present('entry', 'name', 'Recommended_Zone_Protection')
+    fail_message: missing zone protection profile Recommended_Zone_Protection used in HomeSkillet zone configuration
+    documentation_link: https://iron-skillet.readthedocs.io/en/docs_dev/viz_guide_panos.html#zone-protection
+
+  # sectional grouping of all the profile checks: security, decrypt, logging
+  - name: profile_objects
+    cmd: parse
+    variable: config
+    outputs:
+      # capture all the object related profile information and match configured names
+      - name: av_profiles
+        capture_object: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/virus
+      - name: vp_profiles
+        capture_object: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/vulnerability
+      - name: as_profiles
+        capture_object: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/spyware
+      - name: wf_profiles
+        capture_object: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/wildfire-analysis
+      - name: profile_group
+        capture_object: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profile-group
+      - name: profile_logging
+        capture_object: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/log-settings/profiles
+
+  # calling out the security profiles used in the unknown-url profile group
+  # has its own url-filtering and file-blocking set to strict
+  - name: av_profile_check
+    label: Outbound-AV antivirus profile exists
+    test: |
+      (
+      av_profiles | attribute_present('entry', 'name', 'Outbound-AV')
+      )
+    fail_message: |
+
+      Missing antivirus profile Outbound-AV used in HomeSkillet profile group. Ensure step 1 has been loaded
+      or update security profiles to include Outbound-AV.
+
+    documentation_link: https://iron-skillet.readthedocs.io/en/docs_dev/viz_guide_panos.html#object-security-profiles-antivirus-blocking
+
+  - name: vp_profile_check
+    label: Outbound-VP vulnerability profile exists
+    test: |
+      (
+      vp_profiles | attribute_present('entry', 'name', 'Outbound-VP')
+      )
+    fail_message: |
+
+      Missing vulnerability profile Outbound-VP used in HomeSkillet profile group. Ensure step 1 has been loaded
+      or update security profiles to include Outbound-VP.
+
+    documentation_link: https://iron-skillet.readthedocs.io/en/docs_dev/viz_guide_panos.html#vulnerability
+
+  - name: as_profile_check
+    label: Outbound-AS anti-spyware profile exists
+    test: |
+      (
+      as_profiles | attribute_present('entry', 'name', 'Outbound-AS')
+      )
+    fail_message: |
+
+      Missing anti-spyware profile Outbound-AS used in HomeSkillet profile group. Ensure step 1 has been loaded
+      or update security profiles to include Outbound-AS.
+
+    documentation_link: https://iron-skillet.readthedocs.io/en/docs_dev/viz_guide_panos.html#anti-spyware
+
+  - name: wf_profile_check
+    label: Outbound-WF wildfire profile exists
+    test: |
+      (
+      wf_profiles | attribute_present('entry', 'name', 'Outbound-WF')
+      )
+    fail_message: |
+
+      Missing wildfire profile Outbound-WF used in HomeSkillet profile group. Ensure step 1 has been loaded
+      or update security profiles to include Outbound-WF.
+
+    documentation_link: https://iron-skillet.readthedocs.io/en/docs_dev/viz_guide_panos.html#wildfire-analysis
+
+  - name: profile_group_check
+    label: Outbound and Inbound profile groups exist
+    test: |
+      (
+      profile_group | attribute_present('entry', 'name', 'Outbound')
+      )
+    fail_message: |
+
+      Missing profile-group Outbound used in HomeSkillet security policies. Ensure step 1 has been loaded
+      or update security profile groups to include Outbound.
+
+    documentation_link: https://iron-skillet.readthedocs.io/en/docs_dev/viz_guide_panos.html#security-profile-groups
+
+  - name: profile_logging
+    label: default logging profile exists
+    test: |
+      (
+      profile_logging | attribute_present('entry', 'name', 'default')
+      )
+    fail_message: |
+
+      Missing logging profile default used in HomeSkillet security policies. Ensure step 1 has been loaded
+      or update logging profile include default.
+
+    documentation_link: https://iron-skillet.readthedocs.io/en/docs_dev/viz_guide_panos.html#object-log-forwarding-default

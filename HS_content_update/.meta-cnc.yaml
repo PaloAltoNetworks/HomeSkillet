@@ -1,4 +1,4 @@
-name: ngfw_content_update
+name: ngfw_content_update_25467032-6196-41c2-982f-9794e42f9aef
 # label used for menu selection
 label: NGFW Content Updates
 
@@ -15,7 +15,7 @@ extends:
 # Labels allow grouping and type specific options and are generally only used in advanced cases
 labels:
   collection:
-    - Homeskillet
+    - HomeSkillet
     - Configure
 
 # variables define the things an operator may customize in this skillet. Things like DNS servers, NTP addresses, etc
