@@ -1,6 +1,6 @@
 # workflow demo that cleans the config, does a content update, then configures a basic internet gateway
 
-name: homeskillet_demo_workflow_panos_v90
+name: homeskillet_demo_workflow_panos_v90_5e0bb6b4-a407-4029-95e2-5d7389568bff
 label: v9.0 Full clear config, update and configure workflow
 description: |
   this workflow steps through a rollback to starter config, content updates, and then load in
@@ -10,7 +10,7 @@ type: workflow
 
 labels:
     collection:
-      - Homeskillet
+      - HomeSkillet
       - Configure
 
 variables:

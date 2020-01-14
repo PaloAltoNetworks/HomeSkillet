@@ -1,14 +1,14 @@
 # gold security templates for top level security including threat, URL, or WF subscriptions
 # includes an additional security rule for strict file blocking of unknown url category
 
-name: homeskillet_policies_panos_v90
+name: homeskillet_policies_panos_v90_466aeb8c-64a7-4aa5-acab-58cc6402f648
 label: v9.0 Step 3 - HomeSkillet Security policy configuration
 description: "** LOAD STEP 2 FIRST ** v9.0 Home Skillet Internet Gateway that loads after Step 2 network"
 type: panos
 
 labels:
     collection:
-      - Homeskillet
+      - HomeSkillet
       - Configure
 
 variables:

@@ -1,7 +1,7 @@
 # snippets is used to load a full NGFW configuration
 
 # snippet folder name
-name: homeskillet_base_panos_v90
+name: homeskillet_base_panos_v90_5fdbc623-2891-4937-a577-d0aea59065cc
 # label used for menu selection
 label: v9.0 Step 1 - HomeSkillet baseline based on IronSkillet
 description: "** LOAD ME FIRST ** Homeskillet baseline configuration extracted from IronSkillet"
@@ -11,7 +11,7 @@ type: panos
 # grouping of like snippets for dynamic menu creation in pan-cnc
 labels:
     collection:
-      - Homeskillet
+      - HomeSkillet
       - Configure
 
 # variables used in the configuration templates
