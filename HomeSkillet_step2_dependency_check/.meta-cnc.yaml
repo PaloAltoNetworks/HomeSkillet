@@ -1,5 +1,5 @@
-name: validate-HomeSkillet-step2-efe8e66e-1edb-411f-aaec-924b00890638
-label: HomeSkillet - check steps 2 and 3 are loadable based on step 1 dependencies - panos_v9.0
+name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+label: HomeSkillet - validation ability to load steps 2 and 3 - panos_v9.0
 
 description: |
   This skillet checks the running config for HomeSkillet step 2 and 3 dependencies that should be loaded
