@@ -39,5 +39,5 @@ snippets:
       [@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone&key={{ api_key }}
     output_type: xml
     outputs:
-      - name: all_zones
+      - name: zones_list
         capture_pattern: ./completions/completion//@value
