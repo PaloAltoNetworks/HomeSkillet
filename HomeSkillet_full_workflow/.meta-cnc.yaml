@@ -11,7 +11,6 @@ type: workflow
 labels:
     collection:
       - HomeSkillet
-      - Configure
 
 variables:
 # in the future can let the user choose the network layer option as a workflow stage
