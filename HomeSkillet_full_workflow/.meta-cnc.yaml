@@ -1,0 +1,80 @@
+# workflow demo that cleans the config, does a content update, then configures a basic internet gateway
+
+name: homeskillet_setup_workflow_panos_v90_5e0bb6b4-a407-4029-95e2-5d7389568bff
+label: v9.0 full setup for HomeSkillet
+description: |
+  this workflow steps through a reset to starter config, content updates, load in
+  the IronSkillet-like day 1, network and zones, then security policies
+
+type: workflow
+
+labels:
+    collection:
+      - HomeSkillet
+
+variables:
+# in the future can let the user choose the network layer option as a workflow stage
+  - name: TARGET_IP
+    description: NGFW IP or Hostname
+    default: 192.168.55.10
+    type_hint: fqdn_or_ip
+  - name: TARGET_USERNAME
+    description: NGFW Username
+    default: admin
+    type_hint: text
+  - name: TARGET_PASSWORD
+    description: NGFW Password
+    default: admin
+    type_hint: password
+  - name: add_options
+    description: select HomeSkillet options
+    default: ['load_config']
+    type_hint: checkbox
+    cbx_list:
+      - key: load configuration elements
+        value: load_config
+      - key: add dhcp-based userid
+        value: dhcp_userid
+      - key: revert config to new install
+        value: revert_config
+      - key: load threat and content updates
+        value: load_updates
+      - key: validation check prior to day 1 load to show fail
+        value: pre_validation
+      - key: validation check after day 1 load to show pass
+        value: post_validation
+
+snippets:
+# workflow stages for full refresh and configuration
+# reset config to empty state
+  - name: import_empty_config_HomeSkillet_ab8f807b-6c2d-4e0a-b302-88d225072b58
+    when: "'revert_config' in add_options"
+# content updates to latest version
+  - name: ngfw_content_update_25467032-6196-41c2-982f-9794e42f9aef
+    when: "'load_updates' in add_options"
+# pre step 1 validation to ensure last step dependencies are met
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+    when: "'pre_validation' in add_options"
+# day 1 baseline configuration
+  - name: homeskillet_base_panos_v90_5fdbc623-2891-4937-a577-d0aea59065cc
+    when: "'load_config' in add_options"
+# post step 1 validation to ensure last step dependencies are met
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+    when: "'post_validation' in add_options"
+# grab list of interfaces
+  - name: get_interface_lists_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+    when: "'load_config' in add_options"
+# network layer and zone configuration
+  - name: homeskillet_L3network_panos_v90_aae24a56-b4fc-4387-abc5-6694db5f49ee
+    when: "'load_config' in add_options"
+# grab list of zones
+  - name: get_zone_names_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+    when: "'load_config' in add_options"
+# security policies
+  - name: homeskillet_policies_panos_v90_466aeb8c-64a7-4aa5-acab-58cc6402f648
+    when: "'load_config' in add_options"
+# poor mans userid based on local DHCP log events
+  - name: dhcp_userid_panos_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+    when: "'dhcp_userid' in add_options"
+# quick and dirty output to show completion
+  - name: workflow_last_page_7d5ea4c0-fea9-458d-ae86-92821114b19f

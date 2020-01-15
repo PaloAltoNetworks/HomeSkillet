@@ -1,0 +1,5 @@
+<rules>
+  <entry name="NO-Decrypt Rule">
+    <disabled>yes</disabled>
+  </entry>
+</rules>

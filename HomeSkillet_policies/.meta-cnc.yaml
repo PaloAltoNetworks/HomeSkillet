@@ -1,0 +1,36 @@
+# gold security templates for top level security including threat, URL, or WF subscriptions
+# includes an additional security rule for strict file blocking of unknown url category
+
+name: homeskillet_policies_panos_v90_466aeb8c-64a7-4aa5-acab-58cc6402f648
+label: v9.0 Step 3 - HomeSkillet Security policy configuration
+description: "** LOAD STEP 2 FIRST ** v9.0 Home Skillet Internet Gateway that loads after Step 2 network"
+type: panos
+
+labels:
+    collection:
+      - HomeSkillet lib
+
+variables:
+  - name: ZONE_TRUST
+    description: internal zone
+    default: internal
+    type_hint: dropdown
+    source: zones_list
+  - name: ZONE_UNTRUST
+    description: internet zone name
+    default: internet
+    type_hint: dropdown
+    source: zones_list
+
+snippets:
+  - name: profile_group_unknown_url
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profile-group
+    file: profile_group_unknown_url.xml
+  - name: tag
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/tag
+    file: tag.xml
+  - name: security_rules-security-rules
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security
+    file: security_rules.xml
+
+

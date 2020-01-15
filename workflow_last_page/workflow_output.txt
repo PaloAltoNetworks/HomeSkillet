@@ -1,0 +1,14 @@
+HomeSkillet workflow is complete for device {{ FW_NAME }}
+
+For more information about HomeSkillet visit
+https://homeskillet.readthedocs.io/en/90dev/overview.html
+
+If you have issues or suggestions re: this skillet please open an issue at
+https://github.com/PaloAltoNetworks/HomeSkillet/issues
+
+Last items to check:
+
+* latest software not updated with this workflow; update as needed
+
+* you may have to modify your logging configuration based on home use
+
