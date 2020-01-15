@@ -8,8 +8,7 @@ description: |
 type: pan_validation
 labels:
   collection:
-    - HomeSkillet
-    - Validation
+    - HomeSkillet lib
 
 variables:
   - name: loaded_step_1
@@ -19,8 +18,8 @@ variables:
     dd_list:
       - key: of course
         value: likely
-      - key: ummmm...maybe
-        value: not
+      - key: highly unlikely
+        value: unlikely
 
 snippets:
 

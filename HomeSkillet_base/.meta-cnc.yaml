@@ -11,8 +11,7 @@ type: panos
 # grouping of like snippets for dynamic menu creation in pan-cnc
 labels:
     collection:
-      - HomeSkillet
-      - Configure
+      - HomeSkillet lib
 
 # variables used in the configuration templates
 # this is based on IronSkillet and all vars are not used in HomeSkillet

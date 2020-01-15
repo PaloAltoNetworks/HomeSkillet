@@ -9,29 +9,30 @@ type: panos
 
 labels:
     collection:
-      - HomeSkillet
-      - Configure
+      - HomeSkillet lib
 
 variables:
   - name: INTF_UNTRUST
-    description: Untrust Interface
+    description: internet Interface
     default: ethernet1/1
-    type_hint: text
+    type_hint: dropdown
+    source: interface_names
   - name: INTF_TRUST
-    description: trust Interface
+    description: internal Interface
     default: ethernet1/2
-    type_hint: text
+    type_hint: dropdown
+    source: interface_names
   - name: IP_12
-    description: Trust interface ip address
+    description: internal interface ip address
     default: 192.168.45.20/24
     type_hint: text
   - name: ZONE_TRUST
-    description: trust zone
+    description: internal zone name
     default: internal
     type_hint: text
   - name: ZONE_UNTRUST
-    description: untrust zone name
-    default: external
+    description: internet zone name
+    default: internet
     type_hint: text
   - name: DHCP_NETMASK
     description: dhcp pool netmask

@@ -15,16 +15,11 @@ Provides an end-to-end experience using the following skillets:
     + step 2 network configuration
     + step 3 security policy configuration
 
+Selection options at the beginning of the workflow
 
-Configuration Only Workflow
----------------------------
+    + choose to revert to empty config
+    + choose to apply content updates
 
-Provides config-only setup using the following skillets:
-
-    + step 1 day one configuration
-    + post step 1 validation showing all 'Pass' test results
-    + step 2 network configuration
-    + step 3 security policy configuration
 
 
 

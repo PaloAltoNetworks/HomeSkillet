@@ -15,8 +15,7 @@ extends:
 # Labels allow grouping and type specific options and are generally only used in advanced cases
 labels:
     collection:
-      - HomeSkillet
-      - Configure
+      - HomeSkillet lib
 
 # variables define the things an operator may customize in this skillet. Things like DNS servers, NTP addresses, etc
 # may be customized for each deployment. Each variable will be rendered as a form field in the panhandler application
@@ -41,6 +40,7 @@ variables:
   - name: MGMT_TYPE
     description: firewall management IP type
     default: dhcp-client
+    help_text: same type as currently configured preferred to avoid losing connectivity
     type_hint: dropdown
     dd_list:
       - key: dhcp-client
