@@ -19,6 +19,10 @@ labels:
 # variables used in the configuration templates
 # type_hint defines the form field type in pan-cnc
 variables:
+  - name: TARGET_IP
+    description: ip address of managment interface
+    default: 192.0.6.1
+    type_hint: disabled
   - name: ZONE_TRUST
     description: name of untrust zone to enable userid
     default: trust
