@@ -24,7 +24,7 @@ variables:
     default: 192.0.6.1
     type_hint: disabled
   - name: ZONE_TRUST
-    description: name of untrust zone to enable userid
+    description: name of internal zone to enable userid
     default: trust
     type_hint: disabled
 
