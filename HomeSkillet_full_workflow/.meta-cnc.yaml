@@ -33,6 +33,8 @@ variables:
     cbx_list:
       - key: load configuration elements
         value: load_config
+      - key: add dhcp-based userid
+        value: dhcp_userid
       - key: revert config to new install
         value: revert_config
       - key: load threat and content updates
@@ -71,5 +73,8 @@ snippets:
 # security policies
   - name: homeskillet_policies_panos_v90_466aeb8c-64a7-4aa5-acab-58cc6402f648
     when: "'load_config' in add_options"
+# poor mans userid based on local DHCP log events
+  - name: dhcp_userid_panos_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+    when: "'dhcp_userid' in add_options"
 # quick and dirty output to show completion
   - name: workflow_last_page_7d5ea4c0-fea9-458d-ae86-92821114b19f
