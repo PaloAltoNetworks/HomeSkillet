@@ -8,7 +8,7 @@ description: |
 type: pan_validation
 labels:
   collection:
-    - HomeSkillet lib
+    - lib
 
 variables:
   - name: loaded_step_1
