@@ -35,4 +35,4 @@ snippets:
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
     outputs:
       - name: zones
-        capture_pattern: ./@value
+        capture_pattern: ./entry/@name
