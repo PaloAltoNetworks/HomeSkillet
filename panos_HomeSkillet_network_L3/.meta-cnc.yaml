@@ -9,7 +9,7 @@ type: panos
 
 labels:
     collection:
-      - HomeSkillet lib
+      - lib
 
 variables:
   - name: INTF_UNTRUST

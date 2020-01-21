@@ -21,7 +21,7 @@ Relationship to the IronSkillet Project
 ----------------------------------------
 The configuration is based extensively on the IronSkillet configuration with a few variations designed for basic home use.
 
-The variations include:
+The config element omitted from HomeSkillet include:
 
         * No certificate checks for the no-decrypt traffic that may cause issues with in-home devices
         * No email alert configuration elements
