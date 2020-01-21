@@ -8,18 +8,13 @@ description: |
 type: pan_validation
 labels:
   collection:
-    - HomeSkillet lib
+    - lib
 
 variables:
   - name: loaded_step_1
-    description: You actually loaded step 1 and did a commit right???
-    default: of course
-    type_hint: dropdown
-    dd_list:
-      - key: of course
-        value: likely
-      - key: highly unlikely
-        value: unlikely
+    description: check the configuration against the step 1 IronSkillet base to validate steps 2 and 3 are loadable
+    default: you will see all FAIL if step 1 not loaded
+    type_hint: disabled
 
 snippets:
 

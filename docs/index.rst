@@ -11,10 +11,10 @@ Welcome to Home Skillet documentation!
    :caption: Contents:
 
    overview
+   workflows
    ironskillet_deltas
    network_layer
    security_policies
    validations
    supporting_skillets
-   workflows
    release_history

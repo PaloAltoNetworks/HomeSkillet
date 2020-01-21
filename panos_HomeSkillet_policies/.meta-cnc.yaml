@@ -8,7 +8,7 @@ type: panos
 
 labels:
     collection:
-      - HomeSkillet lib
+      - lib
 
 variables:
   - name: ZONE_TRUST

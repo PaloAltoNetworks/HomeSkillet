@@ -8,7 +8,7 @@ type: rest
 
 labels:
   collection:
-    - HomeSkillet lib
+    - lib
 
 variables:
   - name: TARGET_IP

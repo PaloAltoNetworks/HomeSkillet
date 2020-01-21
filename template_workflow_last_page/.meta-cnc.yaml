@@ -8,7 +8,7 @@ extends:
 
 labels:
   collection:
-    - HomeSkillet lib
+    - lib
 
 variables:
   - name: FW_NAME
