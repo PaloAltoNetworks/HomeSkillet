@@ -22,9 +22,17 @@ snippets:
       - name: expired_licenses
         capture_object: ./entry
         filter_items: item | element_value('entry.expired') == 'yes'
+
   - name: get_interfaces
     cmd: show
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface/ethernet
     outputs:
       - name: interfaces
         capture_pattern: ./entry/@name
+
+  - name: get_zones
+    cmd: show
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
+    outputs:
+      - name: zones
+        capture_pattern: ./@value
