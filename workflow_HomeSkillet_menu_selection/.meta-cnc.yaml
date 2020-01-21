@@ -29,7 +29,7 @@ variables:
     type_hint: password
   - name: workflow_options
     description: select HomeSkillet workflow options
-    default: ['load_config']
+    default: []
     type_hint: checkbox
     cbx_list:
       - key: (1) revert config to new install
