@@ -36,3 +36,10 @@ snippets:
     outputs:
       - name: zones
         capture_pattern: ./entry/@name
+
+  - name: get_zones_again
+    cmd: parse
+    variable: config
+    outputs:
+      - name: zones
+        capture_pattern: ./devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone/entry//@name
