@@ -76,4 +76,4 @@ variables:
 # in the 'variables' section.
 snippets:
   - name: load_baseline
-    file: load_baseline.py
+    file: ../scripts/load_baseline.py
