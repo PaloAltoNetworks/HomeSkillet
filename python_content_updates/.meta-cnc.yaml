@@ -1,0 +1,43 @@
+name: ngfw_content_update_25467032-6196-41c2-982f-9794e42f9aef
+# label used for menu selection
+label: NGFW Content Updates
+
+description: |
+  This skillet will use the firewall API to check, download, and install latest updates
+
+type: python3
+
+# more complex skillets may express a dependency on another skillet that should be loaded before this one.
+# For example, a set of skillets may build off of a single 'golden config' that contains shared configuration
+# As this skillet is very simple, there is no need to build on another one.
+extends:
+
+# Labels allow grouping and type specific options and are generally only used in advanced cases
+labels:
+  collection:
+    - lib
+
+# variables define the things an operator may customize in this skillet. Things like DNS servers, NTP addresses, etc
+# may be customized for each deployment. Each variable will be rendered as a form field in the panhandler application
+variables:
+  - name: TARGET_IP
+    description: NGFW IP or Hostname
+    default: 192.168.55.10
+    type_hint: hidden
+  - name: TARGET_USERNAME
+    description: NGFW Username
+    default: admin
+    type_hint: hidden
+  - name: TARGET_PASSWORD
+    description: NGFW Password
+    default:
+    type_hint: hidden
+
+
+# Snippets is an ordered list of configuration xml fragments that will be pushed to the PAN-OS NGFW. The xpath
+# determines where in the configuration hierarchy the xml fragment will be set. 'file' indicates the name of the file
+# to load and parse. Jinja2 style variables will be variable interpolated using the values of the 'variables' defined
+# in the 'variables' section.
+snippets:
+  - name: content_update
+    file: content_update.py

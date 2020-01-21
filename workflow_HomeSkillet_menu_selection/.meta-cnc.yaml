@@ -1,0 +1,97 @@
+# workflow demo that cleans the config, does a content update, then configures a basic internet gateway
+
+name: homeskillet_setup_workflow_panos_v90_5e0bb6b4-a407-4029-95e2-5d7389568bff
+label: v9.0 full setup for HomeSkillet
+description: |
+  this workflow steps through a reset to starter config, content updates, load in
+  the IronSkillet-like day 1, network and zones, then security policies. addditional
+  config elements are also provided to show add-ons beyond basic HomeSkillet
+
+type: workflow
+
+labels:
+    collection:
+      - HomeSkillet
+
+variables:
+# in the future can let the user choose the network layer option as a workflow stage
+  - name: TARGET_IP
+    description: NGFW IP or Hostname
+    default: 192.168.55.10
+    type_hint: fqdn_or_ip
+  - name: TARGET_USERNAME
+    description: NGFW Username
+    default: admin
+    type_hint: text
+  - name: TARGET_PASSWORD
+    description: NGFW Password
+    default: admin
+    type_hint: password
+  - name: workflow_options
+    description: select HomeSkillet workflow options
+    default: []
+    type_hint: checkbox
+    cbx_list:
+      - key: (1) revert config to new install
+        value: revert_config
+      - key: (2) load threat and content updates
+        value: load_updates
+      - key: (3) validation check prior to step 1 config - see FAIL output
+        value: pre_validation
+      - key: (4) load step 1 IronSkillet-based configuration (commit required for online validation test)
+        value: load_step1
+      - key: (5) validation check after day 1 load - see PASS output
+        value: post_validation
+      - key: (6) load step 2 network and zone config elements
+        value: load_step2
+      - key: (7) load step 3 security policy config elements
+        value: load_step3
+  - name: network_type
+    description: choose the skillet-supported network deployment type
+    default: l3_gateway
+    type_hint: dropdown
+    dd_list:
+      - key: 2 interface and 2 zone L3 gateway
+        value: l3_gateway
+  - name: add_options
+    description: select additional HomeSkillet configuration options
+    default: []
+    type_hint: checkbox
+    cbx_list:
+      - key: add dhcp-based userid
+        value: dhcp_userid
+
+snippets:
+# workflow stages for full refresh and configuration
+# reset config to empty state
+  - name: import_empty_config_HomeSkillet_ab8f807b-6c2d-4e0a-b302-88d225072b58
+    when: "'revert_config' in workflow_options"
+# content updates to latest version
+  - name: ngfw_content_update_25467032-6196-41c2-982f-9794e42f9aef
+    when: "'load_updates' in workflow_options"
+# pre step 1 validation to ensure last step dependencies are met
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+    when: "'pre_validation' in workflow_options"
+# day 1 baseline configuration
+  - name: homeskillet_base_panos_v90_5fdbc623-2891-4937-a577-d0aea59065cc
+    when: "'load_step1' in workflow_options"
+# post step 1 validation to ensure last step dependencies are met
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+    when: "'post_validation' in workflow_options"
+# grab list of interfaces
+  - name: get_interface_lists_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+    when: "'load_step2' in workflow_options"
+# network layer and zone configuration
+  - name: homeskillet_L3network_panos_v90_aae24a56-b4fc-4387-abc5-6694db5f49ee
+    when: "'load_step2' in workflow_options and network_type == 'l3_gateway'"
+# grab list of zones
+  - name: get_zone_names_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+    when: "'load_step3' in workflow_options"
+# security policies
+  - name: homeskillet_policies_panos_v90_466aeb8c-64a7-4aa5-acab-58cc6402f648
+    when: "'load_step3' in workflow_options"
+# poor mans userid based on local DHCP log events
+  - name: dhcp_userid_panos_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+    when: "'dhcp_userid' in add_options"
+# quick and dirty output to show completion
+  - name: workflow_last_page_7d5ea4c0-fea9-458d-ae86-92821114b19f

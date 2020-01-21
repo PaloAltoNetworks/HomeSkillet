@@ -11,3 +11,5 @@ IronSkillet configuration:
     + remove the superuser admin/password config - assumes user has setup their own login access
 
     + remove the management interface IP and DNS configuration - assumes already online for initial updates
+
+    + allows for http range to avoid issues with home use

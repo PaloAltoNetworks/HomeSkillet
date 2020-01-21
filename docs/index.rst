@@ -11,6 +11,10 @@ Welcome to Home Skillet documentation!
    :caption: Contents:
 
    overview
-   internet_gateway_templates
+   workflows
    ironskillet_deltas
+   network_layer
+   security_policies
+   validations
+   supporting_skillets
    release_history

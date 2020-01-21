@@ -9,7 +9,7 @@ Key features of the skillet
 ---------------------------
 
         * IronSkillet foundation providing security profiles and device hardening
-        * 2 zones and interfaces, one untrust and one trust
+        * 2 zones and interfaces, one internet and one internal
         * L3 routed mode with virtual router configuration
         * Outbound port-based NAT policy
         * Outbound security policies referencing the Outbound security profile group
@@ -21,14 +21,13 @@ Relationship to the IronSkillet Project
 ----------------------------------------
 The configuration is based extensively on the IronSkillet configuration with a few variations designed for basic home use.
 
-The variations include:
+The config element omitted from HomeSkillet include:
 
         * No certificate checks for the no-decrypt traffic that may cause issues with in-home devices
         * No email alert configuration elements
+        * allows http range that when disabled can impact video streaming services
 
-More information about IronSkillet can be found at:
-
-|IronSkilletdocs|
+More information about IronSkillet can be found at: https://iron-skillet.readthedocs.io
 
 
 Required Subscriptions
@@ -45,9 +44,9 @@ Using HomeSkillet
 -----------------
 
 This skillet is designed for xml-based API configuration. It requires the uses of the panhandler application for variable
-substitution and API interfactions.
+substitution and API interactions.
 
-More information can be found at panhandler.readthedocs.io
+More information can be found at https://panhandler.readthedocs.io
 
 
 
