@@ -38,7 +38,7 @@ variables:
         value: load_updates
       - key: (3) validation check prior to step 1 config - see FAIL output
         value: pre_validation
-      - key: (4) load step 1 IronSkillet-based configuration
+      - key: (4) load step 1 IronSkillet-based configuration (commited required for 2nd test in online mode)
         value: load_step1
       - key: (5) validation check after day 1 load - see PASS output
         value: post_validation
