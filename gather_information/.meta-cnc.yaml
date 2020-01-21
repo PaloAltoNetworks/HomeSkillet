@@ -1,0 +1,24 @@
+name: gather_panos_information_3A840DB6-2AF0-4F10-9B52-2F9DD0BB0C08
+
+label: Gathers PAN-OS Information
+
+description: |
+  Gathers License, interface, and Zone information.
+
+type: panos
+
+labels:
+  collection: lib
+
+variables:
+
+snippets:
+  - name: get_license_info
+    cmd: op
+    cmd_str: <request><license><info></info></license></request>
+    outputs:
+      - name: license
+        capture_object: ./entry
+      - name: expired_licenses
+        capture_object: ./entry
+        filter_items: item | element_value('entry.expired') == 'yes'
