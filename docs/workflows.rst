@@ -7,18 +7,17 @@ Full End-to-End Workflow
 
 Provides an end-to-end experience using the following skillets:
 
-    + revert to an empty configuration
-    + download and apply the latest content updates
+    + revert to an empty starter configuration
+    + download and apply the latest threat and AV content updates
     + post step 1 validation showing all 'Fail' test results
-    + step 1 day one configuration
-    + post step 1 validation showing all 'Pass' test results
-    + step 2 network configuration
-    + step 3 security policy configuration
+    + step 1 day one configuration based on a subset of IronSkillet
+    + post step 1 validation showing all 'Pass' test results and able to load steps 2 and 3
+    + step 2 network configuration currently based on a 2-zone, 2-interface L3 gateway
+    + step 3 security policy configuration for outbound Internet traffic
 
-Selection options at the beginning of the workflow
+Add-on configuration options
 
-    + choose to revert to empty config
-    + choose to apply content updates
+    + simple DHCP-based userID using local firewall DHCP and logs to create userID dynamic entries
 
 
 
