@@ -27,14 +27,14 @@ snippets:
     cmd: show
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface/ethernet
     outputs:
-      - name: interfaces
+      - name: interface_names
         capture_pattern: ./entry/@name
 
   - name: get_zones
     cmd: show
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
     outputs:
-      - name: zones
+      - name: zones_list
         capture_pattern: ./entry/@name
 
   - name: get_zones_again
