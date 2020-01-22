@@ -62,9 +62,11 @@ variables:
         value: dhcp_userid
 
 snippets:
+  # gather license and interface information
   - name: gather_panos_information_3A840DB6-2AF0-4F10-9B52-2F9DD0BB0C08
+  # install license only when needed
   - name: install_license_32B395B7-0AA5-4046-BF51-C69A3B92B175
-    when: ( installed_license_list is defined and installed_license_list|length )
+    when: ( installed_license_list is defined and installed_license_list == None )
 # reset config to empty state
   - name: import_empty_config_HomeSkillet_ab8f807b-6c2d-4e0a-b302-88d225072b58
     when: "'revert_config' in workflow_options"
