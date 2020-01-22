@@ -15,8 +15,6 @@
 
 # Authors: Edward Arcuri, Nathan Embery
 
-import time
-
 import click
 from skilletlib import Panos
 from skilletlib.exceptions import LoginException
@@ -30,10 +28,7 @@ from skilletlib.exceptions import SkilletLoaderException
 @click.option("-p", "--TARGET_PASSWORD", help="Firewall Password (admin)", type=str, default="admin")
 def cli(target_ip, target_port, target_username, target_password):
     """
-    Load a baseline configuration. Takes a content_type argument that specifies what type of content to update.
-    Valid options are 'content', 'anti-virus', 'global-protect-client', 'wildfire'
-    for more information, see here:
-    https://docs.paloaltonetworks.com/pan-os/8-0/pan-os-panorama-api/pan-os-xml-api-use-cases/automatically-check-for-and-install-content-updates-api#
+    Load a baseline configuration. Defaults values in parenthesis.
     """
 
     try:
@@ -44,12 +39,7 @@ def cli(target_ip, target_port, target_username, target_password):
                        api_port=target_port
                        )
 
-        if not device.update_dynamic_content('content'):
-            exit(1)
-
-        time.sleep(10)
-
-        if not device.update_dynamic_content('anti-virus'):
+        if not device.load_baseline():
             exit(1)
 
         exit(0)
