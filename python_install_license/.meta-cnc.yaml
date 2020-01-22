@@ -1,0 +1,37 @@
+name: install_license_32B395B7-0AA5-4046-BF51-C69A3B92B175
+
+# label used for menu selection
+label: Fetch Licenses using an Authorization Code
+
+description: |
+  This skillet fetches a license using an auth code.
+
+type: python3
+
+labels:
+    collection:
+      - lib
+
+variables:
+  - name: TARGET_IP
+    description: NGFW IP or Hostname
+    default: 192.168.55.10
+    type_hint: hidden
+  - name: TARGET_USERNAME
+    description: NGFW Username
+    default: admin
+    type_hint: hidden
+  - name: TARGET_PASSWORD
+    description: NGFW Password
+    default:
+    type_hint: hidden
+  - name: AUTH_CODE
+    description: Authorization Code
+    default:
+    type_hint: text
+    help_text: Enter a valid authorizatioon code for your NGFW
+
+
+snippets:
+  - name: load_baseline
+    file: ../scripts/install_license.py

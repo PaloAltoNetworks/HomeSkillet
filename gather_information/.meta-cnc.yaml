@@ -17,7 +17,7 @@ snippets:
     cmd: op
     cmd_str: <request><license><info></info></license></request>
     outputs:
-      - name: license
+      - name: installed_license_list
         capture_object: ./entry
       - name: expired_licenses
         capture_object: ./entry
