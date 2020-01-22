@@ -19,6 +19,7 @@ import click
 from skilletlib import Panos
 from skilletlib.exceptions import LoginException
 from skilletlib.exceptions import SkilletLoaderException
+import time
 
 
 @click.command()
@@ -45,6 +46,14 @@ def cli(target_ip, target_port, target_username, target_password, auth_code):
 
         if not device.fetch_license(auth_code):
             exit(1)
+
+        print('License fetched successfully, sleeping for 120 seconds until pan services restart')
+
+        count = 1
+        while count < 12:
+            time.sleep(10)
+            print('...')
+            count = count + 1
 
         exit(0)
 
