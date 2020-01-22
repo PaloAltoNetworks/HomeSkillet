@@ -37,9 +37,6 @@ def cli(target_ip, target_port, target_username, target_password, auth_code):
             print('No Authorization code found in the environment!')
             exit(1)
 
-        print('Not installing license right now')
-        exit(1)
-
         device = Panos(api_username=target_username,
                        api_password=target_password,
                        hostname=target_ip,
