@@ -3,9 +3,9 @@
 name: homeskillet_setup_workflow_panos_v90_5e0bb6b4-a407-4029-95e2-5d7389568bff
 label: v9.0 full setup for HomeSkillet
 description: |
-  this workflow steps through a reset to starter config, content updates, load in
-  the IronSkillet-like day 1, network and zones, then security policies. addditional
-  config elements are also provided to show add-ons beyond basic HomeSkillet
+  This workflow steps through a reset to starter config, content updates, load in
+  the IronSkillet-like day 1, network and zones, then security policies. Addditional
+  config elements are also provided to show add-ons beyond basic HomeSkillet.
 
 type: workflow
 
