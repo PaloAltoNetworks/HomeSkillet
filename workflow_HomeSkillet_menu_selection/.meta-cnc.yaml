@@ -30,9 +30,9 @@ variables:
     type_hint: password
   - name: workflow_options
     description: Select HomeSkillet workflow options
-    default: []
+    default: ['pre_validation', 'load_step1', 'post_validation', 'load_step2', 'load_step3']
     type_hint: checkbox
-    help_text: Each item you select will be executed in order. For best results,
+    help_text: Each item you select will be executed in order. For best results, select all items below.
     cbx_list:
       - key: (1) revert config to new install
         value: revert_config
@@ -52,6 +52,7 @@ variables:
     description: Choose the skillet-supported network deployment type
     default: l3_gateway
     type_hint: dropdown
+    help_text: This is a list of supported deployment types. Feel free to contribute more!
     dd_list:
       - key: 2 interface and 2 zone L3 gateway
         value: l3_gateway
