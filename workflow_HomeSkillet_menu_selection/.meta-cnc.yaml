@@ -32,7 +32,7 @@ variables:
     description: Select HomeSkillet workflow options
     default: ['pre_validation', 'load_step1', 'post_validation', 'load_step2', 'load_step3']
     type_hint: checkbox
-    help_text: Each item you select will be executed in order. For best results, select all items below.
+    help_text: Each item you select will be executed in order. For best results, select all items above.
     cbx_list:
       - key: (1) revert config to new install
         value: revert_config
