@@ -3,13 +3,15 @@
 
 name: homeskillet_L3network_panos_v90_aae24a56-b4fc-4387-abc5-6694db5f49ee
 label: v9.0 Step 2 - HomeSkillet network configuration - L3 simple routing
-description: "** LOAD BASELINE FIRST ** v9.0 Home Skillet Internet Gateway network that loads after HomeSkillet baseline"
+description: |
+  "** LOAD BASELINE FIRST ** v9.0 Home Skillet Internet Gateway network that loads after HomeSkillet baseline"
 
 type: panos
 
 labels:
-    collection:
-      - lib
+  help_link: https://homeskillet.readthedocs.io/en/90dev/network_layer.html
+  collection:
+    - lib
 
 variables:
   - name: INTF_UNTRUST
