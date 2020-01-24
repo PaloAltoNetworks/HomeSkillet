@@ -23,23 +23,26 @@ snippets:
         capture_object: ./entry
         filter_items: item | element_value('entry.expired') == 'yes'
 
-  - name: get_interfaces
-    cmd: show
-    xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface/ethernet
-    outputs:
-      - name: interface_names
-        capture_pattern: ./entry/@name
-
-  - name: get_zones
-    cmd: show
-    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
-    outputs:
-      - name: zones_list
-        capture_pattern: ./entry/@name
-
-  - name: get_zones_again
-    cmd: parse
-    variable: config
-    outputs:
-      - name: FW_NAME
-        capture_pattern: ./devices/entry[@name='localhost.localdomain']/deviceconfig/system/hostname
+#
+# These are actually not needed and only here for example purposes
+#
+#  - name: get_interfaces
+#    cmd: show
+#    xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface/ethernet
+#    outputs:
+#      - name: interface_names
+#        capture_pattern: ./entry/@name
+#
+#  - name: get_zones
+#    cmd: show
+#    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
+#    outputs:
+#      - name: zones_list
+#        capture_pattern: ./entry/@name
+#
+#  - name: get_zones_again
+#    cmd: parse
+#    variable: config
+#    outputs:
+#      - name: FW_NAME
+#        capture_pattern: ./devices/entry[@name='localhost.localdomain']/deviceconfig/system/hostname

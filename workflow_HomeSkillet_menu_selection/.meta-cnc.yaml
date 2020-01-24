@@ -10,8 +10,9 @@ description: |
 type: workflow
 
 labels:
-    collection:
-      - HomeSkillet
+  help_link: https://homeskillet.readthedocs.io/en/90dev/
+  collection:
+    - HomeSkillet
 
 variables:
 # in the future can let the user choose the network layer option as a workflow stage
@@ -28,9 +29,10 @@ variables:
     default: admin
     type_hint: password
   - name: workflow_options
-    description: select HomeSkillet workflow options
+    description: Select HomeSkillet workflow options
     default: []
     type_hint: checkbox
+    help_text: Each item you select will be executed in order. For best results,
     cbx_list:
       - key: (1) revert config to new install
         value: revert_config
@@ -47,16 +49,17 @@ variables:
       - key: (7) load step 3 security policy config elements
         value: load_step3
   - name: network_type
-    description: choose the skillet-supported network deployment type
+    description: Choose the skillet-supported network deployment type
     default: l3_gateway
     type_hint: dropdown
     dd_list:
       - key: 2 interface and 2 zone L3 gateway
         value: l3_gateway
   - name: add_options
-    description: select additional HomeSkillet configuration options
+    description: Select additional HomeSkillet configuration options
     default: []
     type_hint: checkbox
+    help_text: Optional Add-ons
     cbx_list:
       - key: add dhcp-based userid
         value: dhcp_userid
