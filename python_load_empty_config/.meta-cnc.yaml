@@ -32,6 +32,42 @@ variables:
     description: NGFW Password
     default:
     type_hint: hidden
+  - name: FW_NAME
+    description: NGFW hostname
+    default: homeSkilletFirewall
+    type_hint: text
+  - name: MGMT_TYPE
+    description: firewall management IP type
+    default: dhcp-client
+    help_text: same type as currently configured preferred to avoid losing connectivity
+    type_hint: dropdown
+    dd_list:
+      - key: dhcp-client
+        value: dhcp-client
+      - key: static
+        value: static
+  - name: MGMT_MASK
+    description: management interface netmask
+    default: 255.255.255.0
+    type_hint: text
+    toggle_hint:
+      source: MGMT_TYPE
+      value: static
+  - name: MGMT_DG
+    description: management interface default gateway
+    default: 192.0.6.1
+    type_hint: text
+    toggle_hint:
+      source: MGMT_TYPE
+      value: static
+  - name: DNS_1
+    description: primary dns server
+    default: 8.8.8.8
+    type_hint: text
+  - name: DNS_2
+    description: secondary dns server
+    default: 4.2.2.2
+    type_hint: text
 
 # Snippets is an ordered list of configuration xml fragments that will be pushed to the PAN-OS NGFW. The xpath
 # determines where in the configuration hierarchy the xml fragment will be set. 'file' indicates the name of the file
