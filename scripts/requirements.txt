@@ -7,3 +7,5 @@ pan-python==0.14.0
 passlib==1.7.1
 requests==2.22.0
 urllib3==1.25.3
+git+git://github.com/paloaltonetworks/skilletlib.git#egg=skilletlib
+Click==7.0

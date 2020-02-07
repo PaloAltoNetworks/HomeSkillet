@@ -3,15 +3,16 @@
 name: homeskillet_setup_workflow_panos_v90_5e0bb6b4-a407-4029-95e2-5d7389568bff
 label: v9.0 full setup for HomeSkillet
 description: |
-  this workflow steps through a reset to starter config, content updates, load in
-  the IronSkillet-like day 1, network and zones, then security policies. addditional
-  config elements are also provided to show add-ons beyond basic HomeSkillet
+  This workflow steps through a reset to starter config, content updates, load in
+  the IronSkillet-like day 1, network and zones, then security policies. Addditional
+  config elements are also provided to show add-ons beyond basic HomeSkillet.
 
 type: workflow
 
 labels:
-    collection:
-      - HomeSkillet
+  help_link: https://homeskillet.readthedocs.io/en/90dev/
+  collection:
+    - HomeSkillet
 
 variables:
 # in the future can let the user choose the network layer option as a workflow stage
@@ -28,9 +29,10 @@ variables:
     default: admin
     type_hint: password
   - name: workflow_options
-    description: select HomeSkillet workflow options
-    default: []
+    description: Select HomeSkillet workflow options
+    default: ['pre_validation', 'load_step1', 'post_validation', 'load_step2', 'load_step3']
     type_hint: checkbox
+    help_text: Each item you select will be executed in order. For best results, select all items above.
     cbx_list:
       - key: (1) revert config to new install
         value: revert_config
@@ -47,22 +49,28 @@ variables:
       - key: (7) load step 3 security policy config elements
         value: load_step3
   - name: network_type
-    description: choose the skillet-supported network deployment type
+    description: Choose the skillet-supported network deployment type
     default: l3_gateway
     type_hint: dropdown
+    help_text: This is a list of supported deployment types. Feel free to contribute more!
     dd_list:
       - key: 2 interface and 2 zone L3 gateway
         value: l3_gateway
   - name: add_options
-    description: select additional HomeSkillet configuration options
+    description: Select additional HomeSkillet configuration options
     default: []
     type_hint: checkbox
+    help_text: Optional Add-ons
     cbx_list:
       - key: add dhcp-based userid
         value: dhcp_userid
 
 snippets:
-# workflow stages for full refresh and configuration
+  # gather license and interface information
+  - name: gather_panos_information_3A840DB6-2AF0-4F10-9B52-2F9DD0BB0C08
+  # install license only when needed
+  - name: install_license_32B395B7-0AA5-4046-BF51-C69A3B92B175
+    when: ( installed_license_list is defined and installed_license_list == None )
 # reset config to empty state
   - name: import_empty_config_HomeSkillet_ab8f807b-6c2d-4e0a-b302-88d225072b58
     when: "'revert_config' in workflow_options"

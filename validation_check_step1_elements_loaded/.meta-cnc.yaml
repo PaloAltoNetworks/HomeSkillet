@@ -2,7 +2,7 @@ name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
 label: HomeSkillet - validation ability to load steps 2 and 3 - panos_v9.0
 
 description: |
-  This skillet checks the running config for HomeSkillet step 2 and 3 dependencies that should be loaded
+  Checks the running config for HomeSkillet step 2 and 3 dependencies that should be loaded
   as part of step 1 using the IronSkillet day one baseline
 
 type: pan_validation
@@ -12,8 +12,8 @@ labels:
 
 variables:
   - name: loaded_step_1
-    description: check the configuration against the step 1 IronSkillet base to validate steps 2 and 3 are loadable
-    default: you will see all FAIL if step 1 not loaded
+    description: Check the configuration against the basic HomeSkillet Configuration
+    default: You will see all FAIL if HomeSkillet is not loaded properly
     type_hint: disabled
 
 snippets:
@@ -28,7 +28,7 @@ snippets:
   - name: zone_protect_profile
     label: Recommended_Zone_Protection zone protection profile exists
     test: zone_protect_profile | attribute_present('entry', 'name', 'Recommended_Zone_Protection')
-    fail_message: missing zone protection profile Recommended_Zone_Protection used in HomeSkillet zone configuration
+    fail_message: Missing zone protection profile Recommended_Zone_Protection used in HomeSkillet zone configuration
     documentation_link: https://iron-skillet.readthedocs.io/en/docs_dev/viz_guide_panos.html#zone-protection
 
   # sectional grouping of all the profile checks: security, decrypt, logging
