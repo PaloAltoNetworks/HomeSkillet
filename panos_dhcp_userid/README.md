@@ -1,11 +1,12 @@
-# set commands
+# DHCP only UserID
 
-This is a simple CLI copy-paste version.
+A simple userID configuration that sends local DHCP server log information
+to the firewall and parses out user information.
 
-If no render tools (eg. panhandler are available) then simple search-replace
-can be used for the following variables:
+This only works with DHCP devices. No coverage for static IP addresses.
 
+## Variables
 
-* ```{{ TRUST_ZONE }}``` to enable user ID on that zone interface
+* TARGET_IP: IP address of the management interfaces
 
-* ```{{ MGMT_IP }}``` as the management interface IP
+* TRUST_ZONE: Internet interface where userID will be enabled
