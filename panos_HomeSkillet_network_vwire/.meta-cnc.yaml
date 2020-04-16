@@ -38,9 +38,9 @@ snippets:
   - name: interface
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface
     file: interface.xml
-  - name: virtual_router
-    xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-router
-    file: virtual_router.xml
+  #- name: virtual_router
+  #  xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-router
+  #  file: virtual_router.xml
   - name: zone
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
     file: zone.xml
