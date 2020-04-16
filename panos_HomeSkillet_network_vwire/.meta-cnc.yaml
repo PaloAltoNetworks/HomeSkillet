@@ -44,5 +44,3 @@ snippets:
   - name: vwire
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-wire
     file: vwire.xml
-
-
