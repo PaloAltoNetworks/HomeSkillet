@@ -1,7 +1,6 @@
 <ethernet>
     <entry name="{{ INTF_UNTRUST }}">
-      <layer3>
-        <virtual-wire/>
+      <virtual-wire/>
       <comment>Untrust interface using vwire</comment>
     </entry>
     <entry name="{{ INTF_TRUST }}">
