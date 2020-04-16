@@ -4,11 +4,9 @@ This set of snippets are loaded prior to the security tier selection.
 
 The snippets included are:
 
-* interface: simple dual interface Internet Gateway model
+* interface: simple vwire interface model
 
-* virtual router: sets of basic routing with a default-gateway to the internet
-
-* zone: 2-zone model with internet and trust zones
+* * zone: 2-zone model with internet and trust zones
 
 * network profiles: management interface profile
 
