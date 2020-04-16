@@ -41,5 +41,8 @@ snippets:
   - name: zone
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
     file: zone.xml
+  - name: vwire
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-wire
+    file: vwire.xml
 
 
