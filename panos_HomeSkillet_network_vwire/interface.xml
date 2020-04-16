@@ -5,5 +5,6 @@
     </entry>
     <entry name="{{ INTF_TRUST }}">
       <virtual-wire/>
+      <comment>Trust interface using vwire</comment>
     </entry>
 </ethernet>
