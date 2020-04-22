@@ -42,7 +42,7 @@ variables:
         value: load_step1
       - key: (5) validation check after day 1 load - see PASS output
         value: post_validation
-      - key: (6) network and zone config elements
+      - key: (6) network and zone config elements  (choose your networking option below)
         value: load_step2
       - key: (7) security policy config elements
         value: load_step3
@@ -51,9 +51,9 @@ variables:
     default: l3_gateway
     type_hint: dropdown
     dd_list:
-      - key: Layer 3 --  2 zone 2 interface configuration
+      - key: Layer 3 --  2 zone & 2 interface configuration
         value: l3_gateway
-      - key: vwire -- 2 zone vwire configuration
+      - key: vwire -- 2 zone & vwire configuration
         value: vwire_gateway
   - name: add_options
     description: select additional HomeSkillet configuration options
