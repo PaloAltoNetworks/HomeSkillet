@@ -51,9 +51,9 @@ variables:
     default: l3_gateway
     type_hint: dropdown
     dd_list:
-      - key: 2 interface and 2 zone L3 gateway
+      - key: Layer 3 --  2 zone 2 interface configuration
         value: l3_gateway
-      - key: 2 interface vwire
+      - key: vwire -- 2 zone vwire configuration
         value: vwire_gateway
   - name: add_options
     description: select additional HomeSkillet configuration options
