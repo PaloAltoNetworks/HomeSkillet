@@ -24,7 +24,7 @@ Workflow Options
 Network Deployment Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Selected choice will apply to the configuration mode in step (6)
+  Selected choice will apply to the configuration mode in step (6)
 
     * L3 routing mode with 2 zones and 2 interfaces
     * Virtual router mode with 2 zones and 2 interfaces
@@ -33,6 +33,13 @@ Add-on configuration options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     + simple DHCP-based userID using DHCP log parsing
+
+REST device queries
+~~~~~~~~~~~~~~~~~~~
+
+  Not shown in the menus yet part of the skillet framework are REST skillet types.
+  These are used to query the firewall and get the interface and zone name information to be
+  used as dropdown options in the deployment and security policy web forms.
 
 
 
