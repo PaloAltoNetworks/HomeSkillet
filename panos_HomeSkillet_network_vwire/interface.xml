@@ -1,0 +1,10 @@
+<ethernet>
+    <entry name="{{ INTF_UNTRUST }}">
+      <virtual-wire/>
+      <comment>Untrust interface using vwire</comment>
+    </entry>
+    <entry name="{{ INTF_TRUST }}">
+      <virtual-wire/>
+      <comment>Trust interface using vwire</comment>
+    </entry>
+</ethernet>

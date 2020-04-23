@@ -38,21 +38,23 @@ variables:
         value: load_updates
       - key: (3) validation check prior to step 1 config - see FAIL output
         value: pre_validation
-      - key: (4) load step 1 IronSkillet-based configuration (commit required for online validation test)
+      - key: (4) IronSkillet-based configuration (commit required for online validation test)
         value: load_step1
       - key: (5) validation check after day 1 load - see PASS output
         value: post_validation
-      - key: (6) load step 2 network and zone config elements
+      - key: (6) network and zone config elements  (choose your networking option below)
         value: load_step2
-      - key: (7) load step 3 security policy config elements
+      - key: (7) security policy config elements
         value: load_step3
   - name: network_type
     description: choose the skillet-supported network deployment type
     default: l3_gateway
     type_hint: dropdown
     dd_list:
-      - key: 2 interface and 2 zone L3 gateway
+      - key: Layer 3 --  2 zone & 2 interface configuration
         value: l3_gateway
+      - key: vwire -- 2 zone & vwire configuration
+        value: vwire_gateway
   - name: add_options
     description: select additional HomeSkillet configuration options
     default: []
@@ -81,9 +83,12 @@ snippets:
 # grab list of interfaces
   - name: get_interface_lists_812E106E-EF84-48CC-A2CB-96F9D7DA7296
     when: "'load_step2' in workflow_options"
-# network layer and zone configuration
+# network layer and zone configuration L3
   - name: homeskillet_L3network_panos_v90_aae24a56-b4fc-4387-abc5-6694db5f49ee
     when: "'load_step2' in workflow_options and network_type == 'l3_gateway'"
+# network layer and zone configuration vwire
+  - name: homeskillet_vwire_panos_v90
+    when: "'load_step2' in workflow_options and network_type == 'vwire_gateway'"
 # grab list of zones
   - name: get_zone_names_812E106E-EF84-48CC-A2CB-96F9D7DA7296
     when: "'load_step3' in workflow_options"

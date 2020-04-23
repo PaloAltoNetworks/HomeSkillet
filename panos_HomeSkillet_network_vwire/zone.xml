@@ -1,0 +1,17 @@
+<entry name="{{ ZONE_UNTRUST }}">
+    <network>
+        <virtual-wire>
+        <member>{{ INTF_UNTRUST }}</member>
+      </virtual-wire>
+      <zone-protection-profile>Recommended_Zone_Protection</zone-protection-profile>
+    </network>
+  </entry>
+  <entry name="{{ ZONE_TRUST }}">
+    <network>
+     <virtual-wire>
+        <member>{{ INTF_TRUST }}</member>
+      </virtual-wire>
+      <zone-protection-profile>Recommended_Zone_Protection</zone-protection-profile>
+    </network>
+  </entry>
+
