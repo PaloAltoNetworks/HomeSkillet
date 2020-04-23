@@ -1,0 +1,4 @@
+<entry name="HomeSkillet-vwire">
+            <interface1>{{ INTF_UNTRUST }}</interface1>
+            <interface2>{{ INTF_TRUST }}</interface2>
+          </entry>
