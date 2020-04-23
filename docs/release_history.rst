@@ -50,7 +50,13 @@ Template Content
     + full and config-only workflows
     + ability to hide/show ip addresses based on mgmt interface type
 
+Released April 23, 2020
 
+Template Content
+
+    + added vwire deployment option
+    + fixed missing DHCP server snippet
+    + menu text clean up
 
 Documentation Revisions
 -----------------------
@@ -68,6 +74,12 @@ Jul 15, 2019
 ~~~~~~~~~~~~
 
     + release-based updates mapping to IronSkillet
+
+Apr 23, 2020
+~~~~~~~~~~~~
+
+    + restructure the content
+    + add panHandler quickstart link
 
 
 

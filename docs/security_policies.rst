@@ -9,14 +9,14 @@ Outbound Only Configuration
 Unknown URL Category Profile Group
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This adds additional protections with a more aggressive file blocking posture when the URL category is unknown. It is
-referenced in the gold security rules.
+  This adds additional protections with a more aggressive file blocking posture when the URL category is unknown. It is
+  referenced in the gold security rules.
 
 
 Security Rules
 ~~~~~~~~~~~~~~
 
-These are outbound-specific rules levering the IronSkillet security profile groups.
+  These are outbound-specific rules levering the IronSkillet security profile groups.
 
     + Block quic to force usage of SSL to assist URL-filtering category discovery
 
