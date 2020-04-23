@@ -9,7 +9,7 @@ The security policy provides for outbound policies using IronSkillet
 best practice security profiles and groups.
 
 More details can be found at the
-[Home Skillet docs page](https://HomeSkillet.readthedocs.io)
+[HomeSkillet docs page](https://HomeSkillet.readthedocs.io)
 
 ## HomeSkillet and panhandler
 
@@ -17,7 +17,9 @@ HomeSkillet is designed to be used with the panhandler application to API
 load structured configurations. It also captures web form data to semi-customize
 the configuration for local use.
 
-[panhandler](https://panhandler.readthedocs.io)
+[Quick start guide](https://live.paloaltonetworks.com/t5/Skillet-Tools/Install-and-Get-Started-With-Panhandler/ta-p/307916)
+
+[panhandler docs](https://panhandler.readthedocs.io)
 
 
 ## Support Policy

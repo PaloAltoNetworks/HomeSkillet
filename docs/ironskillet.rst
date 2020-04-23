@@ -1,5 +1,11 @@
-What are the changes from standard IronSkillet?
-===============================================
+IronSkillet Baseline
+====================
+
+The initial configuration adds most of the IronSkillet configuration to the firewall to harden
+and add needed security policies and groups referenced in later workflow stages.
+
+IronSkillet Deltas
+------------------
 
 In order to create a simplified in-home template, the following elements have been removed from the standard
 IronSkillet configuration:

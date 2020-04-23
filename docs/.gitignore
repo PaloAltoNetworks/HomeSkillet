@@ -1,0 +1,9 @@
+# rtd docs local content
+_build/
+_static/
+_templates/
+
+#python virtual env
+env
+venv
+
