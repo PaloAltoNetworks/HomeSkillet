@@ -91,7 +91,3 @@ Zones
 
   Zones created with type = virtual wire
 
-Source NAT
-~~~~~~~~~~
-
-  Provides dynamic ip and port mapping using the public internet interface address.
