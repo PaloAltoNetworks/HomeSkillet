@@ -1,5 +1,5 @@
 # Minimal makefile for Sphinx documentation
-#
+# used for readthedocs content
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
