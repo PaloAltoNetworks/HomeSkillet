@@ -40,4 +40,4 @@ variables:
 # in the 'variables' section.
 snippets:
   - name: content_update
-    file: content_update.py
+    file: ../scripts/content_update.py
