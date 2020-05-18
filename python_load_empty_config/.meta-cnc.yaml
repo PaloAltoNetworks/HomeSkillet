@@ -23,52 +23,15 @@ variables:
   - name: TARGET_IP
     description: NGFW IP or Hostname
     default: 192.168.55.10
-    type_hint: fqdn_or_ip
-    help_text: if management interface type is static this ip address will be used
+    type_hint: hidden
   - name: TARGET_USERNAME
     description: NGFW Username
     default: admin
-    type_hint: text
+    type_hint: hidden
   - name: TARGET_PASSWORD
     description: NGFW Password
-    default: admin
-    type_hint: password
-  - name: FW_NAME
-    description: NGFW hostname
-    default: homeSkilletFirewall
-    type_hint: text
-  - name: MGMT_TYPE
-    description: firewall management IP type
-    default: dhcp-client
-    help_text: same type as currently configured preferred to avoid losing connectivity
-    type_hint: dropdown
-    dd_list:
-      - key: dhcp-client
-        value: dhcp-client
-      - key: static
-        value: static
-  - name: MGMT_MASK
-    description: management interface netmask
-    default: 255.255.255.0
-    type_hint: text
-    toggle_hint:
-      source: MGMT_TYPE
-      value: static
-  - name: MGMT_DG
-    description: management interface default gateway
-    default: 192.0.6.1
-    type_hint: text
-    toggle_hint:
-      source: MGMT_TYPE
-      value: static
-  - name: DNS_1
-    description: primary dns server
-    default: 8.8.8.8
-    type_hint: text
-  - name: DNS_2
-    description: secondary dns server
-    default: 4.2.2.2
-    type_hint: text
+    default:
+    type_hint: hidden
 
 # Snippets is an ordered list of configuration xml fragments that will be pushed to the PAN-OS NGFW. The xpath
 # determines where in the configuration hierarchy the xml fragment will be set. 'file' indicates the name of the file
@@ -76,4 +39,4 @@ variables:
 # in the 'variables' section.
 snippets:
   - name: load_baseline
-    file: load_baseline.py
+    file: ../scripts/load_baseline.py
