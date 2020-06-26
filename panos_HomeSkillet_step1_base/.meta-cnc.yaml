@@ -1,9 +1,9 @@
 # snippets is used to load a full NGFW configuration
 
 # snippet folder name
-name: homeskillet_base_panos_v90_5fdbc623-2891-4937-a577-d0aea59065cc
+name: homeskillet_base_panos_v10_5fdbc623-2891-4937-a577-d0aea59065cc
 # label used for menu selection
-label: v9.0 Step 1 - HomeSkillet baseline based on IronSkillet
+label: v10.0 Step 1 - HomeSkillet baseline based on IronSkillet
 description: "** LOAD ME FIRST ** Homeskillet baseline configuration extracted from IronSkillet"
 # type of device configuration
 type: panos
@@ -66,30 +66,18 @@ snippets:
     xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/system
     file: device_system.xml
 # load IronSkillet device system as-is then allow http range
-  - name: hs_device_setting_allow_httprange
-    xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/setting
-    file: hs_device_setting_allow_httprange.xml
   - name: device_setting
     xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/setting
     file: device_setting.xml
-  - name: hs_device_setting_allow_httprange
-    xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/setting
-    file: hs_device_setting_allow_httprange.xml
   - name: password_complexity
     xpath: /config/mgt-config/password-complexity
     file: password_complexity.xml
   - name: shared_log_settings
     xpath: /config/shared/log-settings
     file: shared_log_settings.xml
-  - name: address
-    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
-    file: address.xml
   - name: tag
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/tag
     file: tag.xml
-  - name: log_settings_profiles
-    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/log-settings/profiles
-    file: log_settings_profiles.xml
   - name: profiles_custom_url_category
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profiles/custom-url-category
     file: profiles_custom_url_category.xml
@@ -127,9 +115,6 @@ snippets:
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/decryption
     file: rulebase_decryption.xml
 # load IronSkillet decrypt rule as reference but disable to avoid home device cert issues
-  - name: hs_rulebase_decryption_disable
-    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/decryption
-    file: hs_rulebase_decryption_disable.xml
   - name: zone_protection_profile
     xpath: /config/devices/entry[@name='localhost.localdomain']/network/profiles/zone-protection-profile
     file: zone_protection_profile.xml
