@@ -17,17 +17,12 @@ snippet loading:
 * log_settings_profiles_email
 * mgt_config_users
 * shared_log_settings_email
-
-Instead of remove the decryption configuration it is left for reference but
-disabled using the snippet:
-
+* hs_device_setting_allow_httprange
+* address
 * hs_rulebase_decryption_disable
 
-This can easily be enabled as required
+  
+    
+   
 
-The following are edits based on observed issues in home configurations.
-
-* hs_device_setting_allow_httprange: this is enabled to ensure home streaming 
-and other applications are not impacted. This has been observed with
-Amazon Prime video streaming.
 

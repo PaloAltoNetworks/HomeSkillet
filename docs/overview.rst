@@ -3,7 +3,7 @@ HomeSkillet Overview
 
 The HomeSkillet configuration templates are for a simple Internet Gateway, 2-zone configuration.
 
-It is based on PAN-OS version 9.0 and should work for 9.1.
+It is based on PAN-OS version 10.0.
 
 Key features of the skillet
 ---------------------------

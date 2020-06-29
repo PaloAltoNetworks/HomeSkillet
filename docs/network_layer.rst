@@ -53,7 +53,7 @@ DHCP Server
     + inherits DNS information from the untrust interface
 
   .. Note::
-        This skillet does not include Dynamic DNS (DDNS) although it is a supported feature in PAN-OS v9.0.
+        This skillet does not include Dynamic DNS (DDNS) although it is a supported feature in PAN-OS v10.0.
         DDNS is recommended if GlobalProtect or other configurations using the public IP are used.
 
 
