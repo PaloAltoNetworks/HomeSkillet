@@ -25,6 +25,7 @@
     <entry name="apk">
       <size-limit>30</size-limit>
     </entry>
+    
     <entry name="pdf">
       <size-limit>3072</size-limit>
     </entry>
