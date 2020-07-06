@@ -83,6 +83,14 @@ snippets:
 # pre step 1 validation to ensure last step dependencies are met
   - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
     when: "'pre_validation' in workflow_options"
+
+# IronSkillet base load version
+  - name: skillet_panos_v90
+    when: "'load_step1' in workflow_options and sw_version == 'v9.0'"
+  
+  # Specific to version 10.0
+  - name: homeskillet_base_panos_v10_5fdbc623-2891-4937-a577-d0aea59065cc
+    when: "'load_step1' in workflow_options and sw_version == 'v10.0'"
 # day 1 baseline configuration
   - name: homeskillet_base_panos_v10_5fdbc623-2891-4937-a577-d0aea59065cc
     when: "'load_step1' in workflow_options"
@@ -109,12 +117,8 @@ snippets:
     when: "'dhcp_userid' in add_options"
 # quick and dirty output to show completion
   - name: workflow_last_page_7d5ea4c0-fea9-458d-ae86-92821114b19f
-# IronSkillet base load version
-  - name: skillet_panos_v90
-    when: "'load_step1' in workflow_options and sw_version == 'v9.0'"
 
-  - name: homeskillet_base_panos_v10_5fdbc623-2891-4937-a577-d0aea59065cc
-    when: "'load_step1' in workflow_options and sw_version == 'v10.0'"
+  
 
 
 
