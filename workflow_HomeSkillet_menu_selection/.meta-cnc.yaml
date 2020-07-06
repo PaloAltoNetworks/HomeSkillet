@@ -111,10 +111,10 @@ snippets:
   - name: workflow_last_page_7d5ea4c0-fea9-458d-ae86-92821114b19f
 # IronSkillet base load version
   - name: skillet_panos_v90
-    when: " sw_version == 'v9.0'"
+    when: "'revert_config' in workflow_options and sw_version == 'v9.0'"
 
   - name: homeskillet_base_panos_v10_5fdbc623-2891-4937-a577-d0aea59065cc
-    when: " sw_version == 'v10.0'"
+    when: "'revert_config' in workflow_options and sw_version == 'v10.0'"
 
 
 
