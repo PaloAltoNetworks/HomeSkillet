@@ -37,8 +37,8 @@ Add-on configuration options
 Version Selection Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  Selected choice will be apply to the configuration mode in step (4)
-  
+  Selected choice will apply to the configuration mode in step (4)
+
     + v9.x - loads IronSkillet 9.0 snippets
     + v10.x - loads IronSkillet 10.0 snippets
 
