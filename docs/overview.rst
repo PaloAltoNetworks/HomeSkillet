@@ -25,7 +25,7 @@ The config element omitted from HomeSkillet include:
 
         * No certificate checks for the no-decrypt traffic that may cause issues with in-home devices
         * No email alert configuration elements
-        * allows http range that when disabled can impact video streaming services
+        * No http range that when disabled can impact video streaming services
 
 More information about IronSkillet can be found at: https://iron-skillet.readthedocs.io
 
