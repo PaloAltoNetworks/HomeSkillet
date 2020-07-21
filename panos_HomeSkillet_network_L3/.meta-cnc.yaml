@@ -40,11 +40,11 @@ variables:
     type_hint: ip_address
   - name: DHCP_GATEWAY
     description: dhcp pool default gateway ip address
-    default: 192.168.10.1
+    default: 192.168.45.1
     type_hint: ip_address
   - name: DHCP_POOL_RANGE
     description: dhcp pool ip address range
-    default: 192.168.10.100-192.168.10.250
+    default: 192.168.45.100-192.168.45.250
     type_hint: text
 
 snippets:
