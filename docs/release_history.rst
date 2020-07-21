@@ -80,6 +80,11 @@ Apr 23, 2020
 
     + restructure the content
     + add panHandler quickstart link
+July 21, 2020 
+~~~~~~~~~~~~~
+    + IronSkillet 10.0 based feauture updates
+
+    
 
 
 
