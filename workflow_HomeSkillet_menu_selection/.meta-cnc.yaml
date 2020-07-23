@@ -1,7 +1,7 @@
 # workflow demo that cleans the config, does a content update, then configures a basic internet gateway
 
-name: homeskillet_setup_workflow_panos_v90_5e0bb6b4-a407-4029-95e2-5d7389568bff
-label: v9.0 full setup for HomeSkillet
+name: homeskillet_setup_workflow_panos_v10_5e0bb6b4-a407-4029-95e2-5d7389568bff
+label: v10.0 full setup for HomeSkillet
 description: |
   this workflow steps through a reset to starter config, content updates, load in
   the IronSkillet-like day 1, network and zones, then security policies. addditional
@@ -27,6 +27,17 @@ variables:
     description: NGFW Password
     default: admin
     type_hint: password
+
+  - name: sw_version
+    description: choose the IronSkillet version you want to load
+    default: v10.0
+    type_hint: dropdown
+    dd_list:
+      - key: v9.x
+        value: v9.0
+      - key: v10.x
+        value: v10.0
+
   - name: workflow_options
     description: select HomeSkillet workflow options
     default: []
@@ -62,6 +73,7 @@ variables:
     cbx_list:
       - key: add dhcp-based userid
         value: dhcp_userid
+  
 
 snippets:
 # workflow stages for full refresh and configuration
@@ -74,9 +86,13 @@ snippets:
 # pre step 1 validation to ensure last step dependencies are met
   - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
     when: "'pre_validation' in workflow_options"
-# day 1 baseline configuration
-  - name: homeskillet_base_panos_v90_5fdbc623-2891-4937-a577-d0aea59065cc
-    when: "'load_step1' in workflow_options"
+# IronSkillet base load version 9.0
+  - name: skillet_panos_v90
+    when: "'load_step1' in workflow_options and sw_version == 'v9.0'"
+# Iron Skillet base load version 10.0
+  - name: homeskillet_base_panos_v10_5fdbc623-2891-4937-a577-d0aea59065cc
+    when: "'load_step1' in workflow_options and sw_version == 'v10.0'"
+
 # post step 1 validation to ensure last step dependencies are met
   - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
     when: "'post_validation' in workflow_options"
@@ -84,19 +100,24 @@ snippets:
   - name: get_interface_lists_812E106E-EF84-48CC-A2CB-96F9D7DA7296
     when: "'load_step2' in workflow_options"
 # network layer and zone configuration L3
-  - name: homeskillet_L3network_panos_v90_aae24a56-b4fc-4387-abc5-6694db5f49ee
+  - name: homeskillet_L3network_panos_v10_aae24a56-b4fc-4387-abc5-6694db5f49ee
     when: "'load_step2' in workflow_options and network_type == 'l3_gateway'"
 # network layer and zone configuration vwire
-  - name: homeskillet_vwire_panos_v90
+  - name: homeskillet_vwire_panos_v10
     when: "'load_step2' in workflow_options and network_type == 'vwire_gateway'"
 # grab list of zones
   - name: get_zone_names_812E106E-EF84-48CC-A2CB-96F9D7DA7296
     when: "'load_step3' in workflow_options"
 # security policies
-  - name: homeskillet_policies_panos_v90_466aeb8c-64a7-4aa5-acab-58cc6402f648
+  - name: homeskillet_policies_panos_v10_466aeb8c-64a7-4aa5-acab-58cc6402f648
     when: "'load_step3' in workflow_options"
 # poor mans userid based on local DHCP log events
   - name: dhcp_userid_panos_812E106E-EF84-48CC-A2CB-96F9D7DA7296
     when: "'dhcp_userid' in add_options"
 # quick and dirty output to show completion
   - name: workflow_last_page_7d5ea4c0-fea9-458d-ae86-92821114b19f
+
+  
+
+
+

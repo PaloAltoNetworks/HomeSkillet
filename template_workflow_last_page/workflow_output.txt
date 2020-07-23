@@ -1,7 +1,7 @@
 HomeSkillet workflow is complete for device {{ FW_NAME }}
 
 For more information about HomeSkillet visit
-https://homeskillet.readthedocs.io/en/90dev/overview.html
+https://homeskillet.readthedocs.io/en/10dev/overview.html
 
 If you have issues or suggestions re: this skillet please open an issue at
 https://github.com/PaloAltoNetworks/HomeSkillet/issues
