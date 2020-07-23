@@ -14,12 +14,12 @@ The following snippets and associated variables have been omitted from the
 snippet loading:
 
 v9.0
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* device_system_dns
-* email_scheduler_simple
-* log_settings_profiles_email
-* mgt_config_users
-* shared_log_settings_email
+
+    * device_system_dns
+    * email_scheduler_simple
+    * log_settings_profiles_email
+    * mgt_config_users
+    * shared_log_settings_email
 
 Instead of remove the decryption configuration it is left for reference but
 disabled using the snippet:
@@ -35,17 +35,16 @@ Amazon Prime video streaming.
 
 
 
-
 v10.0
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* device_system_dns
-* email_scheduler_simple
-* log_settings_profiles_email
-* mgt_config_users
-* shared_log_settings_email
-* hs_device_setting_allow_httprange
-* address
-* hs_rulebase_decryption_disable
+
+    * device_system_dns
+    * email_scheduler_simple
+    * log_settings_profiles_email
+    * mgt_config_users
+    * shared_log_settings_email
+    * hs_device_setting_allow_httprange
+    * address
+    * hs_rulebase_decryption_disable
 
   
     
