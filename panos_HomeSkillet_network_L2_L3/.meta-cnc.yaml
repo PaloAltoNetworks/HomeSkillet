@@ -1,0 +1,325 @@
+# skillet preamble information used by panhandler
+# ---------------------------------------------------------------------
+# unique snippet name
+name: L2_L3_Network
+# label used for menu selection
+label: L2_L3 Network
+description: this is what my skillet does
+# type of device configuration
+# common types are panorama, panos, and template
+# https://github.com/PaloAltoNetworks/panhandler/blob/develop/docs/metadata_configuration.rst
+type: panos
+# preload static or default-based templates
+extends:
+# grouping of like snippets for dynamic menu creation in panhandler
+labels:
+  collection:
+    - myCollection
+# ---------------------------------------------------------------------
+# end of preamble section
+# variables section
+# ---------------------------------------------------------------------
+# variables used in the configuration templates
+# type_hint defines the form field used by panhandler
+# type_hints can be text, ip_address, or dropdown
+variables:
+  - name: hostname
+    description: Firewall hostname
+    default: myFirewall
+    type_hint: text
+  - name: choices
+    description: sample dropdown list
+    default: choices
+    type_hint: dropdown
+    dd_list:
+      - key: option1
+        value: option1
+      - key: option2
+        value: option2
+# ---------------------------------------------------------------------
+# end of variables section
+# snippets section
+# ---------------------------------------------------------------------
+# snippets used for api configuration including xpath and element as file name
+# files will load in the order listed
+# NOTE: The following snippets are auto-generated and ordered automatically.
+# Changing the content of the snippet may be necessary, but do NOT change the order
+# There is a variable called snippets that we can use to auto-generate this section for us
+snippets:
+  - name: interface-management-profile-310012
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/profiles
+    element: |-
+        <interface-management-profile>
+                    <entry name="internal">
+                      <ping>yes</ping>
+                    </entry>
+                  </interface-management-profile>
+  - name: entry-72518
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface/ethernet
+    element: |-
+        <entry name="ethernet1/1">
+                      <layer3>
+                        <ndp-proxy>
+                          <enabled>no</enabled>
+                        </ndp-proxy>
+                        <lldp>
+                          <enable>no</enable>
+                        </lldp>
+                        <dhcp-client/>
+                        <interface-management-profile>internal</interface-management-profile>
+                      </layer3>
+                    </entry>
+  - name: entry-691807
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface/ethernet
+    element: |-
+        <entry name="ethernet1/2">
+                      <layer2>
+                        <lldp>
+                          <enable>no</enable>
+                        </lldp>
+                      </layer2>
+                    </entry>
+  - name: entry-70393
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface/ethernet
+    element: |-
+        <entry name="ethernet1/3">
+                      <layer2>
+                        <lldp>
+                          <enable>no</enable>
+                        </lldp>
+                      </layer2>
+                    </entry>
+  - name: vlan-784987
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface
+    element: |-
+        <vlan>
+                    <units>
+                      <entry name="vlan.1">
+                        <ipv6>
+                          <neighbor-discovery>
+                            <router-advertisement>
+                              <enable>no</enable>
+                            </router-advertisement>
+                          </neighbor-discovery>
+                        </ipv6>
+                        <ndp-proxy>
+                          <enabled>no</enabled>
+                        </ndp-proxy>
+                        <adjust-tcp-mss>
+                          <enable>no</enable>
+                        </adjust-tcp-mss>
+                        <ip>
+                          <entry name="192.168.74.1/24"/>
+                        </ip>
+                        <interface-management-profile>internal</interface-management-profile>
+                      </entry>
+                    </units>
+                  </vlan>
+  - name: vlan-392375
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network
+    element: |-
+        <vlan>
+                  <entry name="Vlan">
+                    <interface>
+                      <member>ethernet1/2</member>
+                      <member>ethernet1/3</member>
+                    </interface>
+                    <virtual-interface>
+                      <interface>vlan.1</interface>
+                    </virtual-interface>
+                  </entry>
+                </vlan>
+  - name: entry-820313
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/zone
+    element: |-
+        <entry name="L3-Untrust">
+                      <network>
+                        <layer3>
+                          <member>ethernet1/1</member>
+                        </layer3>
+                        <log-setting>default</log-setting>
+                      </network>
+                    </entry>
+  - name: entry-982344
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/zone
+    element: |-
+        <entry name="L3-Trust">
+                      <network>
+                        <layer3>
+                          <member>vlan.1</member>
+                        </layer3>
+                        <log-setting>default</log-setting>
+                      </network>
+                    </entry>
+  - name: entry-57914
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/zone
+    element: |-
+        <entry name="L2-Untrust">
+                      <network>
+                        <tap/>
+                        <log-setting>default</log-setting>
+                      </network>
+                    </entry>
+  - name: entry-515295
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/zone
+    element: |-
+        <entry name="L2-Trust">
+                      <network>
+                        <layer2>
+                          <member>ethernet1/2</member>
+                          <member>ethernet1/3</member>
+                        </layer2>
+                        <log-setting>default</log-setting>
+                      </network>
+                    </entry>
+  - name: routing-options-125090
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]/protocol/bgp
+    element: |-
+        <routing-options>
+                          <graceful-restart>
+                            <enable>yes</enable>
+                          </graceful-restart>
+                        </routing-options>
+  - name: rip-103745
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]/protocol
+    element: |-
+        <rip>
+                        <enable>no</enable>
+                      </rip>
+  - name: ospf-679057
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]/protocol
+    element: |-
+        <ospf>
+                        <enable>no</enable>
+                      </ospf>
+  - name: ospfv3-497137
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]/protocol
+    element: |-
+        <ospfv3>
+                        <enable>no</enable>
+                      </ospfv3>
+  - name: interface-903069
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]
+    element: |-
+        <interface>
+                      <member>ethernet1/1</member>
+                      <member>vlan.1</member>
+                    </interface>
+  - name: ecmp-187297
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]
+    element: |-
+        <ecmp>
+                      <algorithm>
+                        <ip-modulo/>
+                      </algorithm>
+                    </ecmp>
+  - name: dhcp-45519
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/network
+    element: |-
+        <dhcp>
+                  <interface>
+                    <entry name="vlan.1">
+                      <server>
+                        <option>
+                          <lease>
+                            <unlimited/>
+                          </lease>
+                          <gateway>192.168.74.1</gateway>
+                          <subnet-mask>255.255.255.0</subnet-mask>
+                          <dns>
+                            <primary>inherited</primary>
+                            <secondary>inherited</secondary>
+                          </dns>
+                          <inheritance>
+                            <source>ethernet1/1</source>
+                          </inheritance>
+                        </option>
+                        <ip-pool>
+                          <member>192.168.74.2-192.168.74.100</member>
+                        </ip-pool>
+                        <mode>auto</mode>
+                      </server>
+                    </entry>
+                  </interface>
+                </dhcp>
+  - name: import-345345
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]
+    element: |-
+        <import>
+                    <network>
+                      <interface>
+                        <member>ethernet1/1</member>
+                        <member>ethernet1/2</member>
+                        <member>ethernet1/3</member>
+                        <member>vlan.1</member>
+                      </interface>
+                    </network>
+                  </import>
+  - name: entry-395512
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/rulebase/security/rules
+    element: |-
+        <entry name="open-internet" uuid="7c22c98e-b071-4b61-ba03-9b4b27a44733">
+                          <to>
+                            <member>L3-Untrust</member>
+                          </to>
+                          <from>
+                            <member>L3-Trust</member>
+                          </from>
+                          <source>
+                            <member>any</member>
+                          </source>
+                          <destination>
+                            <member>any</member>
+                          </destination>
+                          <source-user>
+                            <member>any</member>
+                          </source-user>
+                          <category>
+                            <member>any</member>
+                          </category>
+                          <application>
+                            <member>any</member>
+                          </application>
+                          <service>
+                            <member>application-default</member>
+                          </service>
+                          <source-hip>
+                            <member>any</member>
+                          </source-hip>
+                          <destination-hip>
+                            <member>any</member>
+                          </destination-hip>
+                          <action>allow</action>
+                          <log-setting>default</log-setting>
+                        </entry>
+  - name: nat-832801
+    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/rulebase
+    element: |-
+        <nat>
+                      <rules>
+                        <entry name="internet" uuid="275ecfcb-752e-4bbc-81b0-00f67c08e8ac">
+                          <source-translation>
+                            <dynamic-ip-and-port>
+                              <interface-address>
+                                <interface>ethernet1/1</interface>
+                              </interface-address>
+                            </dynamic-ip-and-port>
+                          </source-translation>
+                          <to>
+                            <member>L3-Untrust</member>
+                          </to>
+                          <from>
+                            <member>L3-Trust</member>
+                          </from>
+                          <source>
+                            <member>any</member>
+                          </source>
+                          <destination>
+                            <member>any</member>
+                          </destination>
+                          <service>any</service>
+                        </entry>
+                      </rules>
+                    </nat>
+# ---------------------------------------------------------------------
+# end of snippets section
