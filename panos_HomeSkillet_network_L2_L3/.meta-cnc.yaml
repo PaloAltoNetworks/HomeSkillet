@@ -200,9 +200,9 @@ snippets:
         <entry name="{{ L2_ZONE_TRUST }}">
           <network>
             <layer2>
-              {%- for loop
-              <member>{{ INT_TRUST_2 }}</member>
-              {% endfor %}
+              {%- for itemin INTF_TRUST_LIST %}
+              <member>{{ item }}</member>
+              {%- endfor %}
             </layer2>
             <log-setting>default</log-setting>
           </network>
