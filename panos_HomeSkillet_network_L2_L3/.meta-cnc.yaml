@@ -162,7 +162,7 @@ snippets:
         <vlan>
           <entry name="Vlan">
             <interface>
-    # TODO create for loop
+    
             {%- for item in INTF_TRUST_LIST %}
               <member>{{ item }}</member>
             {%- endfor %}
