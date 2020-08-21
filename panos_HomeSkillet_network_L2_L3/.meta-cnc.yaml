@@ -58,14 +58,8 @@ variables:
     description: internal Interface
     default: ethernet1/2
     type_hint: checkbox
-    cbx_list:
-      - key: ethernet1/1
-        value: ethernet1/1
-      - key: ethernet1/2
-        value: ethernet1/2
-      - key: ethernet1/3
-        value: ethernet1/3
-    #source: interface_names
+    source: interface_names
+    
   # all internal interfaces in L2 mode
   - name: L2_ZONE_TRUST
     description: internal zone name
