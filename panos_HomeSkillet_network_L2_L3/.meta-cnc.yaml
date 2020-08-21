@@ -4,7 +4,7 @@
 name: L2_L3_Network
 # label used for menu selection
 label: L2_L3 Network
-description: this is what my skillet does
+description: "** LOAD BASELINE FIRST ** Hybrid L2/L3 Network Config"
 # type of device configuration
 # common types are panorama, panos, and template
 # https://github.com/PaloAltoNetworks/panhandler/blob/develop/docs/metadata_configuration.rst
@@ -23,19 +23,49 @@ labels:
 # type_hint defines the form field used by panhandler
 # type_hints can be text, ip_address, or dropdown
 variables:
-  - name: hostname
-    description: Firewall hostname
-    default: myFirewall
-    type_hint: text
-  - name: choices
-    description: sample dropdown list
-    default: choices
+ - name: INTF_UNTRUST
+    description: internet Interface
+    default: ethernet1/1
     type_hint: dropdown
-    dd_list:
-      - key: option1
-        value: option1
-      - key: option2
-        value: option2
+    source: interface_names
+  - name: INTF_TRUST_2
+    description: internal Interface
+    default: ethernet1/2
+    type_hint: dropdown
+    source: interface_names
+  - name: INTF_TRUST_3
+    description: internal Interface
+    default: ethernet1/3
+    type_hint: dropdown
+    source: interface_names
+  - name: L2_ZONE_TRUST
+    description: internal zone name
+    default: internal
+    type_hint: text
+  - name: L3_ZONE_UNTRUST
+    description: internet zone name
+    default: internet
+    type_hint: text
+  - name: L3_ZONE_TRUST
+    description: internal untrust zone name
+    default: internal
+    type_hint: text
+  - name: INTF_VLAN
+    description: vlan interface
+    default: vlan.1
+
+  - name: DHCP_NETMASK
+    description: dhcp pool netmask
+    default: 255.255.255.0
+    type_hint: ip_address
+  - name: DHCP_GATEWAY
+    description: dhcp pool default gateway ip address
+    default: 192.168.74.1/24
+    type_hint: ip_address
+  - name: DHCP_POOL_RANGE
+    description: dhcp pool ip address range
+    default: 192.168.74.2-192.168.45.100
+    type_hint: text
 # ---------------------------------------------------------------------
 # end of variables section
 # snippets section
@@ -46,7 +76,7 @@ variables:
 # Changing the content of the snippet may be necessary, but do NOT change the order
 # There is a variable called snippets that we can use to auto-generate this section for us
 snippets:
-  - name: interface-management-profile-310012
+  - name: interface_management_profile
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/profiles
     element: |-
         <interface-management-profile>
@@ -54,10 +84,11 @@ snippets:
                       <ping>yes</ping>
                     </entry>
                   </interface-management-profile>
-  - name: entry-72518
+  - name: ethernet 1/1
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface/ethernet
     element: |-
-        <entry name="ethernet1/1">
+      <ethernet>
+        <entry name="{{ INTF_UNTRUST }}">
                       <layer3>
                         <ndp-proxy>
                           <enabled>no</enabled>
@@ -69,32 +100,32 @@ snippets:
                         <interface-management-profile>internal</interface-management-profile>
                       </layer3>
                     </entry>
-  - name: entry-691807
+      </ethernet>
+  # To do: add in for loop for each interface 
+  # L2 Interface variable will be type check box list 
+
+  
+  
+  - name: ethernet 1/2
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface/ethernet
     element: |-
-        <entry name="ethernet1/2">
+      <ethernet>
+        <entry name={{ INTF_TRUST }}>
                       <layer2>
                         <lldp>
                           <enable>no</enable>
                         </lldp>
                       </layer2>
                     </entry>
-  - name: entry-70393
-    xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface/ethernet
-    element: |-
-        <entry name="ethernet1/3">
-                      <layer2>
-                        <lldp>
-                          <enable>no</enable>
-                        </lldp>
-                      </layer2>
-                    </entry>
-  - name: vlan-784987
+      </ethernet>
+  
+    
+  - name: vlan.1
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface
     element: |-
         <vlan>
                     <units>
-                      <entry name="vlan.1">
+                      <entry name="{{ INTF_VLAN }}">
                         <ipv6>
                           <neighbor-discovery>
                             <router-advertisement>
@@ -109,70 +140,61 @@ snippets:
                           <enable>no</enable>
                         </adjust-tcp-mss>
                         <ip>
-                          <entry name="192.168.74.1/24"/>
+                          <entry name="{{ DHCP_GATEWAY }}"/>
                         </ip>
                         <interface-management-profile>internal</interface-management-profile>
                       </entry>
                     </units>
                   </vlan>
-  - name: vlan-392375
+  - name: vlan-profile
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network
     element: |-
         <vlan>
                   <entry name="Vlan">
                     <interface>
-                      <member>ethernet1/2</member>
-                      <member>ethernet1/3</member>
+                      <member>{{ INTF_TRUST_2 }}</member>
+                      <member>{{ INTF_TRUST_3 }}</member>
                     </interface>
                     <virtual-interface>
-                      <interface>vlan.1</interface>
+                      <interface>{{ INTF_VLAN }}</interface>
                     </virtual-interface>
                   </entry>
                 </vlan>
-  - name: entry-820313
+  - name: L3_Untrust
     xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/zone
     element: |-
-        <entry name="L3-Untrust">
+        <entry name="{{ L3_ZONE_UNTRUST }}">
                       <network>
                         <layer3>
-                          <member>ethernet1/1</member>
+                          <member>{{ INTF_UNTRUST }}</member>
                         </layer3>
                         <log-setting>default</log-setting>
                       </network>
                     </entry>
-  - name: entry-982344
+  - name: L3_Trust
     xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/zone
     element: |-
-        <entry name="L3-Trust">
+        <entry name="{{ L3_ZONE_TRUST }}">
                       <network>
                         <layer3>
-                          <member>vlan.1</member>
+                          <member>{{ INTF_VLAN }}</member>
                         </layer3>
                         <log-setting>default</log-setting>
                       </network>
                     </entry>
-  - name: entry-57914
+  - name: L2-Trust
     xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/zone
     element: |-
-        <entry name="L2-Untrust">
-                      <network>
-                        <tap/>
-                        <log-setting>default</log-setting>
-                      </network>
-                    </entry>
-  - name: entry-515295
-    xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/zone
-    element: |-
-        <entry name="L2-Trust">
+        <entry name="{{ L2_ZONE_TRUST }}">
                       <network>
                         <layer2>
-                          <member>ethernet1/2</member>
-                          <member>ethernet1/3</member>
+                          <member>{{ INT_TRUST_2 }}</member>
+                          <member>{{ INT_TRUST_3 }}</member>
                         </layer2>
                         <log-setting>default</log-setting>
                       </network>
                     </entry>
-  - name: routing-options-125090
+  - name: routing_options
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]/protocol/bgp
     element: |-
         <routing-options>
@@ -180,32 +202,32 @@ snippets:
                             <enable>yes</enable>
                           </graceful-restart>
                         </routing-options>
-  - name: rip-103745
+  - name: rip
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]/protocol
     element: |-
         <rip>
                         <enable>no</enable>
                       </rip>
-  - name: ospf-679057
+  - name: ospf
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]/protocol
     element: |-
         <ospf>
                         <enable>no</enable>
                       </ospf>
-  - name: ospfv3-497137
+  - name: ospfv3
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]/protocol
     element: |-
         <ospfv3>
                         <enable>no</enable>
                       </ospfv3>
-  - name: interface-903069
+  - name: virtual_router_Interfaces
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]
     element: |-
         <interface>
-                      <member>ethernet1/1</member>
-                      <member>vlan.1</member>
+                      <member>{{ INT_UNTRUST }}</member>
+                      <member>{{ INTF_VLAN }}</member>
                     </interface>
-  - name: ecmp-187297
+  - name: ecmp
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/virtual-router/entry[@name="default"]
     element: |-
         <ecmp>
@@ -213,57 +235,57 @@ snippets:
                         <ip-modulo/>
                       </algorithm>
                     </ecmp>
-  - name: dhcp-45519
+  - name: dhcp
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network
     element: |-
         <dhcp>
                   <interface>
-                    <entry name="vlan.1">
+                    <entry name="{{ INTF_VLAN }}">
                       <server>
                         <option>
                           <lease>
                             <unlimited/>
                           </lease>
-                          <gateway>192.168.74.1</gateway>
-                          <subnet-mask>255.255.255.0</subnet-mask>
+                          <gateway>{{ DHCP_GATEWAY }}</gateway>
+                          <subnet-mask>{{ DHCP_NETMASK }}</subnet-mask>
                           <dns>
                             <primary>inherited</primary>
                             <secondary>inherited</secondary>
                           </dns>
                           <inheritance>
-                            <source>ethernet1/1</source>
+                            <source>{{ INTF_UNTRUST }}</source>
                           </inheritance>
                         </option>
                         <ip-pool>
-                          <member>192.168.74.2-192.168.74.100</member>
+                          <member>{{ DHCP_POOL_RANGE }}</member>
                         </ip-pool>
                         <mode>auto</mode>
                       </server>
                     </entry>
                   </interface>
                 </dhcp>
-  - name: import-345345
+  - name: import
     xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]
     element: |-
         <import>
                     <network>
                       <interface>
-                        <member>ethernet1/1</member>
-                        <member>ethernet1/2</member>
-                        <member>ethernet1/3</member>
-                        <member>vlan.1</member>
+                        <member>{{ INTF_UNTRUST }}</member>
+                        <member>e{{ INTF_TRUST_2 }}</member>
+                        <member>e{{ INTF_TRUST_3 }}</member>
+                        <member>{{ INTF_VLAN }}</member>
                       </interface>
                     </network>
                   </import>
-  - name: entry-395512
+  - name: Security_Policies
     xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/rulebase/security/rules
     element: |-
         <entry name="open-internet" uuid="7c22c98e-b071-4b61-ba03-9b4b27a44733">
                           <to>
-                            <member>L3-Untrust</member>
+                            <member>{{ L3_ZONE_UNTRUST }}</member>
                           </to>
                           <from>
-                            <member>L3-Trust</member>
+                            <member>{{ L3_ZONE_TRUST }}</member>
                           </from>
                           <source>
                             <member>any</member>
@@ -292,7 +314,7 @@ snippets:
                           <action>allow</action>
                           <log-setting>default</log-setting>
                         </entry>
-  - name: nat-832801
+  - name: NAT_Policies
     xpath: /config/devices/entry[@name="localhost.localdomain"]/vsys/entry[@name="vsys1"]/rulebase
     element: |-
         <nat>
@@ -306,10 +328,10 @@ snippets:
                             </dynamic-ip-and-port>
                           </source-translation>
                           <to>
-                            <member>L3-Untrust</member>
+                            <member>{{ L3_ZONE_UNTRUST }}</member>
                           </to>
                           <from>
-                            <member>L3-Trust</member>
+                            <member>{{ L3_ZONE_TRUST }}</member>
                           </from>
                           <source>
                             <member>any</member>
