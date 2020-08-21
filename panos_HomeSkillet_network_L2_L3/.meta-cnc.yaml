@@ -200,7 +200,7 @@ snippets:
         <entry name="{{ L2_ZONE_TRUST }}">
           <network>
             <layer2>
-              {%- for itemin INTF_TRUST_LIST %}
+              {%- for item in INTF_TRUST_LIST %}
               <member>{{ item }}</member>
               {%- endfor %}
             </layer2>
