@@ -51,7 +51,7 @@ variables:
     default: 192.168.74.1/24
     type_hint: text
   - name: ZONE_TRUST
-    description: internal untrust zone name
+    description: internal trust zone name
     default: internal
     type_hint: text
   - name: INTF_TRUST_LIST
@@ -59,7 +59,7 @@ variables:
     default: ethernet1/2
     type_hint: checkbox
     source: interface_names
-    
+
   # all internal interfaces in L2 mode
   - name: L2_ZONE_TRUST
     description: internal zone name

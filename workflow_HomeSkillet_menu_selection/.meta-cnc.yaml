@@ -66,6 +66,9 @@ variables:
         value: l3_gateway
       - key: vwire -- 2 zone & vwire configuration
         value: vwire_gateway
+      - key: Layer 2/Layer 3 hybrid network config
+      - value: hybrid_gateway
+      - # Add new key/value pair for L2/L3   
   - name: add_options
     description: select additional HomeSkillet configuration options
     default: []
@@ -105,6 +108,10 @@ snippets:
 # network layer and zone configuration vwire
   - name: homeskillet_vwire_panos_v10
     when: "'load_step2' in workflow_options and network_type == 'vwire_gateway'"
+# Add L2/L3
+  - name: L2_L3_Network
+    when: " 'load_step2' in workflow_options and network_type == hybrid_gateway"
+
 # grab list of zones
   - name: get_zone_names_812E106E-EF84-48CC-A2CB-96F9D7DA7296
     when: "'load_step3' in workflow_options"
