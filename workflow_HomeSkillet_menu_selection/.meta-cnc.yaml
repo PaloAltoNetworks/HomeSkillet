@@ -110,7 +110,7 @@ snippets:
     when: "'load_step2' in workflow_options and network_type == 'vwire_gateway'"
 # Add L2/L3
   - name: L2_L3_Network
-    when: " 'load_step2' in workflow_options and network_type == hybrid_gateway"
+    when: " 'load_step2' in workflow_options and network_type == 'hybrid_gateway' "
 
 # grab list of zones
   - name: get_zone_names_812E106E-EF84-48CC-A2CB-96F9D7DA7296
