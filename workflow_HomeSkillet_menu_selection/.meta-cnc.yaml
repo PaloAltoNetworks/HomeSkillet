@@ -68,7 +68,7 @@ variables:
         value: vwire_gateway
       - key: Layer 2/Layer 3 hybrid network config
       - value: hybrid_gateway
-      - # Add new key/value pair for L2/L3   
+     
   - name: add_options
     description: select additional HomeSkillet configuration options
     default: []
