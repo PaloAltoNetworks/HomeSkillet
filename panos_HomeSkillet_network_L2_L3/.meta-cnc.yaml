@@ -116,7 +116,7 @@ snippets:
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface/ethernet
     element: |-
         {%- for item in INTF_TRUST_LIST  %}
-        <entry name={{ item }} >
+        <entry name="{{ item }}">
           <layer2>
             <lldp>
               <enable>no</enable>
