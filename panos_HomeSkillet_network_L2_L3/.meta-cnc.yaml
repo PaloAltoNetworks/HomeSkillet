@@ -129,7 +129,7 @@ snippets:
     element: |-
         <vlan>
           <units>
-            <entry name="vlan.{{ INTF_VLAN }}">
+            <entry name=vlan.{{ INTF_VLAN }}>
               <ipv6>
                 <neighbor-discovery>
                   <router-advertisement>
@@ -162,7 +162,7 @@ snippets:
             {%- endfor %}
             </interface>
             <virtual-interface>
-              <interface> "vlan.{{ INTF_VLAN }}"</interface>
+              <interface> vlan.{{ INTF_VLAN }}</interface>
             </virtual-interface>
           </entry>
         </vlan>
@@ -183,7 +183,7 @@ snippets:
         <entry name="{{ ZONE_TRUST }}">
             <network>
               <layer3>
-                <member> "vlan.{{ INTF_VLAN }}"</member>
+                <member> vlan.{{ INTF_VLAN }}</member>
               </layer3>
               <log-setting>default</log-setting>
             </network>
@@ -227,7 +227,7 @@ snippets:
         </protocol>
         <interface>
           <member>{{ INTF_UNTRUST }}</member>
-          <member>"vlan.{{ INTF_VLAN }}"</member>
+          <member>vlan.{{ INTF_VLAN }}</member>
         </interface>
         <ecmp>
           <algorithm>
@@ -240,7 +240,7 @@ snippets:
     element: |-
         <dhcp>
           <interface>
-            <entry name= "vlan.{{ INTF_VLAN }}">
+            <entry name= vlan.{{ INTF_VLAN }}>
               <server>
                 <option>
                   <lease>
