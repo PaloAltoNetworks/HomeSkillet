@@ -123,7 +123,7 @@ snippets:
     element: |-
         <vlan>
           <units>
-            <entry name=vlan.{{ INTF_VLAN }}>
+            <entry name="vlan.{{ INTF_VLAN }}">
               <ipv6>
                 <neighbor-discovery>
                   <router-advertisement>
