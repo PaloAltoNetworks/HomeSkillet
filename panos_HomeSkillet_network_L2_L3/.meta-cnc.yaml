@@ -75,7 +75,7 @@ variables:
     type_hint: ip_address
   - name: DHCP_POOL_RANGE
     description: dhcp pool ip address range
-    default: 192.168.74.2-192.168.45.100
+    default: 192.168.74.2-192.168.74.100
     type_hint: text
 # ---------------------------------------------------------------------
 # end of variables section
@@ -158,7 +158,7 @@ snippets:
             <interface>
     
             {%- for item in INTF_TRUST_LIST %}
-              <member>{{ item }}</member>
+              <member>"{{ item }}"</member>
             {%- endfor %}
             </interface>
             <virtual-interface>
@@ -195,7 +195,7 @@ snippets:
           <network>
             <layer2>
               {%- for item in INTF_TRUST_LIST %}
-              <member>{{ item }}</member>
+              <member>"{{ item }}"</member>
               {%- endfor %}
             </layer2>
             <log-setting>default</log-setting>
