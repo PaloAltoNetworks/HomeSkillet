@@ -177,7 +177,7 @@ snippets:
         <entry name="{{ ZONE_TRUST }}">
             <network>
               <layer3>
-                <member> vlan.{{ INTF_VLAN }}</member>
+                <member>vlan.{{ INTF_VLAN }}</member>
               </layer3>
               <log-setting>default</log-setting>
             </network>
@@ -234,7 +234,7 @@ snippets:
     element: |-
         <dhcp>
           <interface>
-            <entry name= "vlan.{{ INTF_VLAN }}">
+            <entry name="vlan.{{ INTF_VLAN }}">
               <server>
                 <option>
                   <lease>
