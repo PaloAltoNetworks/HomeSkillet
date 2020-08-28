@@ -156,7 +156,7 @@ snippets:
             {%- endfor %}
             </interface>
             <virtual-interface>
-              <interface> vlan.{{ INTF_VLAN }}</interface>
+              <interface>vlan.{{ INTF_VLAN }}</interface>
             </virtual-interface>
           </entry>
         </vlan>
