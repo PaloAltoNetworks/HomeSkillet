@@ -29,7 +29,7 @@ variables:
     default: ethernet1/1
     type_hint: dropdown
     source: interface_names
-    
+
   - name: ZONE_UNTRUST
     description: internet zone name
     default: internet
@@ -138,7 +138,7 @@ snippets:
                 <enable>no</enable>
               </adjust-tcp-mss>
               <ip>
-                <entry name="{{ IP_VLAN }}"/>
+                <entry name={{ IP_VLAN }}/>
               </ip>
               <interface-management-profile>internal</interface-management-profile>
             </entry>
