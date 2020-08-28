@@ -138,7 +138,7 @@ snippets:
                 <enable>no</enable>
               </adjust-tcp-mss>
               <ip>
-                <entry name={{ IP_VLAN }}/>
+                <entry name="{{ IP_VLAN }}"/>
               </ip>
               <interface-management-profile>internal</interface-management-profile>
             </entry>
@@ -152,7 +152,7 @@ snippets:
             <interface>
     
             {%- for item in INTF_TRUST_LIST %}
-              <member>"{{ item }}"</member>
+              <member>{{ item }}</member>
             {%- endfor %}
             </interface>
             <virtual-interface>
@@ -189,7 +189,7 @@ snippets:
           <network>
             <layer2>
               {%- for item in INTF_TRUST_LIST %}
-              <member>"{{ item }}"</member>
+              <member>{{ item }}</member>
               {%- endfor %}
             </layer2>
             <log-setting>default</log-setting>
@@ -234,7 +234,7 @@ snippets:
     element: |-
         <dhcp>
           <interface>
-            <entry name= vlan.{{ INTF_VLAN }}>
+            <entry name= "vlan.{{ INTF_VLAN }}">
               <server>
                 <option>
                   <lease>
