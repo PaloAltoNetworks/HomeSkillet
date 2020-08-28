@@ -152,7 +152,7 @@ snippets:
             <interface>
     
             {%- for item in INTF_TRUST_LIST %}
-              <member>{{ item }}</member>
+              <member>"{{ item }}"</member>
             {%- endfor %}
             </interface>
             <virtual-interface>
@@ -189,7 +189,7 @@ snippets:
           <network>
             <layer2>
               {%- for item in INTF_TRUST_LIST %}
-              <member>{{ item }}</member>
+              <member>"{{ item }}"</member>
               {%- endfor %}
             </layer2>
             <log-setting>default</log-setting>
