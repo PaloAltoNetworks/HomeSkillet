@@ -14,7 +14,6 @@ labels:
       - HomeSkillet
 
 variables:
-# in the future can let the user choose the network layer option as a workflow stage
   - name: TARGET_IP
     description: NGFW IP or Hostname
     default: 192.168.55.10

@@ -104,8 +104,8 @@ snippets:
             <interface-management-profile>internal</interface-management-profile>
           </layer3>
         </entry>
-  # To do: add in for loop for each interface 
-  # L2 Interface variable will be type check box list 
+  
+  
   - name: internal_interfaces
     xpath: /config/devices/entry[@name="localhost.localdomain"]/network/interface/ethernet
     element: |-
