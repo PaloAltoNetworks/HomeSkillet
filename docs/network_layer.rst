@@ -91,3 +91,63 @@ Zones
 
   Zones created with type = virtual wire
 
+|
+
+L2/L3 Hybrid Switching/Routing
+------------------------------
+
+Interface settings
+~~~~~~~~~~~~~~~~~~
+
+Sample interface configurations with 
+
+    + Internal interfaces set to Layer 2
+    + vlan and internet interfaces set to Layer 3
+
+
+Zones
+~~~~~
+
+3 Zone configuration
+    + L2 - trust
+    + L3 - untrust
+    + L3 - trust 
+
+
+Virtual Router
+~~~~~~~~~~~~~~
+
+  The internet gateway deployment uses L3 zones and interfaces so routing configuration is required.
+
+    + contained in the vlan interface
+
+    + uses inheritance from the DHCP internet interface to create a default gateway route to the internet
+
+Source NAT
+~~~~~~~~~~
+
+  Provides dynamic ip and port mapping using the public internet interface address.
+
+
+DHCP Server
+~~~~~~~~~~~
+
+  Simple DHCP server mapped to the vlan L3 trust interface
+
+    + use of IP address range located in the trust subnet
+
+    + inherits DNS information from the untrust internet interface
+
+  .. Note::
+        This skillet does not include Dynamic DNS (DDNS) although it is a supported feature in PAN-OS v10.0.
+        DDNS is recommended if GlobalProtect or other configurations using the public IP are used.
+
+
+Network Profiles
+~~~~~~~~~~~~~~~~
+
+Interface management profiles
+
+    + sets the interface interface for ping only
+
+    + allows for configuration access from the trust interface
