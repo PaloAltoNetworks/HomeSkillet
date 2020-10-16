@@ -1,7 +1,6 @@
 <ctd>
   <strip-x-fwd-for>yes</strip-x-fwd-for>
   <x-forwarded-for>yes</x-forwarded-for>
-  <allow-http-range>no</allow-http-range>
   <tcp-bypass-exceed-queue>no</tcp-bypass-exceed-queue>
   <udp-bypass-exceed-queue>no</udp-bypass-exceed-queue>
 </ctd>
@@ -13,20 +12,26 @@
       <lifetime>{{ API_KEY_LIFETIME }}</lifetime>
     </key>
   </api>
+  <admin-lockout>
+    <failed-attempts>5</failed-attempts>
+    <lockout-time>30</lockout-time>
+  </admin-lockout>
+  <idle-timeout>10</idle-timeout>
+  <auto-acquire-commit-lock>yes</auto-acquire-commit-lock>
 </management>
 <wildfire>
-  <file-size-limit>
+   <file-size-limit>
     <entry name="pe">
-      <size-limit>10</size-limit>
+      <size-limit>16</size-limit>
     </entry>
     <entry name="apk">
       <size-limit>30</size-limit>
     </entry>
     <entry name="pdf">
-      <size-limit>1000</size-limit>
+      <size-limit>3072</size-limit>
     </entry>
     <entry name="ms-office">
-      <size-limit>2000</size-limit>
+      <size-limit>16384</size-limit>
     </entry>
     <entry name="jar">
       <size-limit>5</size-limit>
@@ -35,18 +40,18 @@
       <size-limit>5</size-limit>
     </entry>
     <entry name="MacOSX">
-      <size-limit>1</size-limit>
-    </entry>
-    <entry name="archive">
       <size-limit>10</size-limit>
     </entry>
+    <entry name="archive">
+      <size-limit>50</size-limit>
+    </entry>
     <entry name="linux">
-      <size-limit>2</size-limit>
+      <size-limit>50</size-limit>
     </entry>
     <entry name="script">
       <size-limit>2000</size-limit>
     </entry>
-  </file-size-limit>
+   </file-size-limit>
   <report-benign-file>yes</report-benign-file>
   <report-grayware-file>yes</report-grayware-file>
 </wildfire>
