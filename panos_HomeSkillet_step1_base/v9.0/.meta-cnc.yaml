@@ -71,9 +71,6 @@ snippets:
   - name: shared_log_settings
     xpath: /config/shared/log-settings
     file: shared_log_settings.xml
-  - name: address
-    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/address
-    file: address.xml
   - name: tag
     xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/tag
     file: tag.xml
