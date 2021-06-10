@@ -32,10 +32,10 @@ variables:
     default: v10.0
     type_hint: dropdown
     dd_list:
-      - key: v9.x
-        value: v9.0
-      - key: v10.x
+      - key: v10.0
         value: v10.0
+      - key: v10.1
+        value: v10.1
 
   - name: workflow_options
     description: select HomeSkillet workflow options

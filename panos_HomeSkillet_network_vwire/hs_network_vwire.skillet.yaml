@@ -1,0 +1,106 @@
+# gold security templates for top level security including threat, URL, or WF subscriptions
+# includes an additional security rule for strict file blocking of unknown url category
+
+# skillet preamble information used by panhandler
+# ---------------------------------------------------------------------
+name: homeskillet_vwire_panos_v10
+label: 10.0 Step 2 - HomeSkillet network configuration - vwire
+description: "** LOAD BASELINE FIRST ** v10.0 Home Skillet Internet Gateway network that loads after HomeSkillet baseline"
+
+type: panos
+
+labels:
+    collection:
+      - lib
+# ---------------------------------------------------------------------
+# end of preamble section
+
+# variables section
+# ---------------------------------------------------------------------
+variables:
+  - name: INTF_UNTRUST
+    description: internet Interface
+    default: ethernet1/1
+    type_hint: dropdown
+    source: interface_names
+  - name: INTF_TRUST
+    description: internal Interface
+    default: ethernet1/2
+    type_hint: dropdown
+    source: interface_names
+  - name: ZONE_TRUST
+    description: internal zone name
+    default: internal
+    type_hint: text
+  - name: ZONE_UNTRUST
+    description: internet zone name
+    default: internet
+    type_hint: text
+# ---------------------------------------------------------------------
+# end of variables section
+
+# snippets section
+# ---------------------------------------------------------------------
+snippets:
+  - name: network_profiles-network-profiles
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/profiles
+    element: |-
+      <monitor-profile>
+        <entry name="default">
+          <interval>3</interval>
+          <threshold>5</threshold>
+          <action>wait-recover</action>
+        </entry>
+      </monitor-profile>
+      <interface-management-profile>
+        <entry name="MSSP management untrust">
+          <ping>yes</ping>
+        </entry>
+        <entry name="MSSP management trust">
+          <https>yes</https>
+          <ssh>yes</ssh>
+          <ping>yes</ping>
+          <response-pages>yes</response-pages>
+        </entry>
+      </interface-management-profile>
+  - name: interface
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface
+    element: |-
+      <ethernet>
+          <entry name="{{ INTF_UNTRUST }}">
+            <virtual-wire/>
+            <comment>Untrust interface using vwire</comment>
+          </entry>
+          <entry name="{{ INTF_TRUST }}">
+            <virtual-wire/>
+            <comment>Trust interface using vwire</comment>
+          </entry>
+      </ethernet>
+  - name: zone
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
+    element: |-
+      <entry name="{{ ZONE_UNTRUST }}">
+          <network>
+              <virtual-wire>
+              <member>{{ INTF_UNTRUST }}</member>
+            </virtual-wire>
+            <zone-protection-profile>Recommended_Zone_Protection</zone-protection-profile>
+          </network>
+        </entry>
+        <entry name="{{ ZONE_TRUST }}">
+          <network>
+           <virtual-wire>
+              <member>{{ INTF_TRUST }}</member>
+            </virtual-wire>
+            <zone-protection-profile>Recommended_Zone_Protection</zone-protection-profile>
+          </network>
+        </entry>
+  - name: vwire
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-wire
+    element: |-
+      <entry name="HomeSkillet-vwire">
+                  <interface1>{{ INTF_UNTRUST }}</interface1>
+                  <interface2>{{ INTF_TRUST }}</interface2>
+                </entry>
+# ---------------------------------------------------------------------
+# end of snippets section

@@ -1,0 +1,236 @@
+# gold security templates for top level security including threat, URL, or WF subscriptions
+# includes an additional security rule for strict file blocking of unknown url category
+
+# skillet preamble information used by panhandler
+# ---------------------------------------------------------------------
+name: homeskillet_L3network_panos_v10_aae24a56-b4fc-4387-abc5-6694db5f49ee
+label: v10.0 Step 2 - HomeSkillet network configuration - L3 simple routing
+description: "** LOAD BASELINE FIRST ** v10.0 Home Skillet Internet Gateway network that loads after HomeSkillet baseline"
+
+type: panos
+
+labels:
+    collection:
+      - lib
+# ---------------------------------------------------------------------
+# end of preamble section
+
+# variables section
+# ---------------------------------------------------------------------
+variables:
+  - name: INTF_UNTRUST
+    description: internet Interface
+    default: ethernet1/1
+    type_hint: dropdown
+    source: interface_names
+  - name: INTF_TRUST
+    description: internal Interface
+    default: ethernet1/2
+    type_hint: dropdown
+    source: interface_names
+  - name: IP_12
+    description: internal interface ip address
+    default: 192.168.45.20/24
+    type_hint: text
+  - name: ZONE_TRUST
+    description: internal zone name
+    default: internal
+    type_hint: text
+  - name: ZONE_UNTRUST
+    description: internet zone name
+    default: internet
+    type_hint: text
+  - name: DHCP_NETMASK
+    description: dhcp pool netmask
+    default: 255.255.255.0
+    type_hint: ip_address
+  - name: DHCP_GATEWAY
+    description: dhcp pool default gateway ip address
+    default: 192.168.45.1
+    type_hint: ip_address
+  - name: DHCP_POOL_RANGE
+    description: dhcp pool ip address range
+    default: 192.168.45.100-192.168.45.250
+    type_hint: text
+# ---------------------------------------------------------------------
+# end of variables section
+
+# snippets section
+# ---------------------------------------------------------------------
+snippets:
+  - name: network_profiles-network-profiles
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/profiles
+    element: |-
+      <monitor-profile>
+        <entry name="default">
+          <interval>3</interval>
+          <threshold>5</threshold>
+          <action>wait-recover</action>
+        </entry>
+      </monitor-profile>
+      <interface-management-profile>
+        <entry name="MSSP management untrust">
+          <ping>yes</ping>
+        </entry>
+        <entry name="MSSP management trust">
+          <https>yes</https>
+          <ssh>yes</ssh>
+          <ping>yes</ping>
+          <response-pages>yes</response-pages>
+        </entry>
+      </interface-management-profile>
+  - name: interface
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/interface
+    element: |-
+      <ethernet>
+          <entry name="{{ INTF_UNTRUST }}">
+            <layer3>
+              <ipv6>
+                <neighbor-discovery>
+                  <router-advertisement>
+                    <enable>no</enable>
+                  </router-advertisement>
+                </neighbor-discovery>
+              </ipv6>
+              <ndp-proxy>
+                <enabled>no</enabled>
+              </ndp-proxy>
+              <lldp>
+                <enable>no</enable>
+              </lldp>
+              <interface-management-profile>MSSP management untrust</interface-management-profile>
+              <dhcp-client/>
+            </layer3>
+            <comment>Untrust interface using DHCP client access</comment>
+          </entry>
+          <entry name="{{ INTF_TRUST }}">
+            <layer3>
+              <ipv6>
+                <neighbor-discovery>
+                  <router-advertisement>
+                    <enable>no</enable>
+                  </router-advertisement>
+                </neighbor-discovery>
+              </ipv6>
+              <ndp-proxy>
+                <enabled>no</enabled>
+              </ndp-proxy>
+              <lldp>
+                <enable>no</enable>
+              </lldp>
+              <interface-management-profile>MSSP management trust</interface-management-profile>
+              <ip>
+                <entry name="{{ IP_12 }}"/>
+              </ip>
+            </layer3>
+          </entry>
+      </ethernet>
+  - name: virtual_router
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/virtual-router
+    element: |-
+      <entry name="default">
+        <protocol>
+          <bgp>
+            <enable>no</enable>
+            <dampening-profile>
+              <entry name="default">
+                <cutoff>1.25</cutoff>
+                <reuse>0.5</reuse>
+                <max-hold-time>900</max-hold-time>
+                <decay-half-life-reachable>300</decay-half-life-reachable>
+                <decay-half-life-unreachable>900</decay-half-life-unreachable>
+                <enable>yes</enable>
+              </entry>
+            </dampening-profile>
+            <routing-options>
+              <graceful-restart>
+                <enable>yes</enable>
+              </graceful-restart>
+            </routing-options>
+          </bgp>
+        </protocol>
+        <interface>
+          <member>{{ INTF_UNTRUST }}</member>
+          <member>{{ INTF_TRUST }}</member>
+        </interface>
+        <ecmp>
+          <algorithm>
+            <ip-modulo/>
+          </algorithm>
+        </ecmp>
+      </entry>
+  - name: zone
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/zone
+    element: |-
+      <entry name="{{ ZONE_UNTRUST }}">
+          <network>
+              <layer3>
+              <member>{{ INTF_UNTRUST }}</member>
+            </layer3>
+            <zone-protection-profile>Recommended_Zone_Protection</zone-protection-profile>
+          </network>
+        </entry>
+        <entry name="{{ ZONE_TRUST }}">
+          <network>
+           <layer3>
+              <member>{{ INTF_TRUST }}</member>
+            </layer3>
+            <zone-protection-profile>Recommended_Zone_Protection</zone-protection-profile>
+          </network>
+        </entry>
+  - name: nat-source-nat-to-untrust
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/nat
+    element: |-
+      <rules>
+          <entry name="Source NAT to Untrust">
+            <source-translation>
+              <dynamic-ip-and-port>
+                <interface-address>
+                  <interface>{{ INTF_UNTRUST }}</interface>
+                </interface-address>
+              </dynamic-ip-and-port>
+            </source-translation>
+            <to>
+              <member>{{ ZONE_UNTRUST }}</member>
+            </to>
+            <from>
+              <member>{{ ZONE_TRUST }}</member>
+            </from>
+            <source>
+              <member>any</member>
+            </source>
+            <destination>
+              <member>any</member>
+            </destination>
+            <service>any</service>
+          </entry>
+      </rules>
+  - name: dhcp_server
+    xpath: /config/devices/entry[@name='localhost.localdomain']/network/dhcp
+    element: |-
+      <interface>
+        <entry name="{{ INTF_TRUST }}">
+          <server>
+            <option>
+              <dns>
+                <primary>inherited</primary>
+                <secondary>inherited</secondary>
+              </dns>
+              <inheritance>
+                <source>{{ INTF_UNTRUST }}</source>
+              </inheritance>
+              <lease>
+                <timeout>1440</timeout>
+              </lease>
+              <gateway>{{ DHCP_GATEWAY }}</gateway>
+              <subnet-mask>{{ DHCP_NETMASK }}</subnet-mask>
+            </option>
+            <ip-pool>
+              <member>{{ DHCP_POOL_RANGE }}</member>
+            </ip-pool>
+            <mode>auto</mode>
+          </server>
+        </entry>
+      </interface>
+# ---------------------------------------------------------------------
+# end of snippets section

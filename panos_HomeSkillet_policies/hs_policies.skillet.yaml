@@ -1,0 +1,317 @@
+# gold security templates for top level security including threat, URL, or WF subscriptions
+# includes an additional security rule for strict file blocking of unknown url category
+
+# skillet preamble information used by panhandler
+# ---------------------------------------------------------------------
+name: homeskillet_policies_panos_v10_466aeb8c-64a7-4aa5-acab-58cc6402f648
+label: v10.0 Step 3 - HomeSkillet Security policy configuration
+description: "** LOAD STEP 2 FIRST ** v10.0 Home Skillet Internet Gateway that loads after Step 2 network"
+type: panos
+
+labels:
+    collection:
+      - lib
+# ---------------------------------------------------------------------
+# end of preamble section
+
+# variables section
+# ---------------------------------------------------------------------
+variables:
+  - name: ZONE_TRUST
+    description: internal zone
+    default: internal
+    type_hint: dropdown
+    source: zones_list
+  - name: ZONE_UNTRUST
+    description: internet zone name
+    default: internet
+    type_hint: dropdown
+    source: zones_list
+# ---------------------------------------------------------------------
+# end of variables section
+
+# snippets section
+# ---------------------------------------------------------------------
+snippets:
+  - name: profile_group_unknown_url
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/profile-group
+    element: |-
+      <entry name="Outbound-Unknown-URL">
+        <virus>
+          <member>Outbound-AV</member>
+        </virus>
+        <spyware>
+          <member>Outbound-AS</member>
+        </spyware>
+        <vulnerability>
+          <member>Outbound-VP</member>
+        </vulnerability>
+        <file-blocking>
+          <member>strict file blocking</member>
+        </file-blocking>
+        <wildfire-analysis>
+          <member>Outbound-WF</member>
+        </wildfire-analysis>
+      </entry>
+  - name: tag
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/tag
+    element: |-
+      <entry name="HomeSkillet">
+      	<color>color4</color>
+      </entry>
+  - name: security_rules-security-rules
+    xpath: /config/devices/entry[@name='localhost.localdomain']/vsys/entry[@name='vsys1']/rulebase/security
+    element: |-
+      <rules>
+        <entry name="HS-block-quic">
+          <to>
+            <member>{{ ZONE_UNTRUST }}</member>
+          </to>
+          <from>
+            <member>{{ ZONE_TRUST }}</member>
+          </from>
+          <source>
+            <member>any</member>
+          </source>
+          <destination>
+            <member>any</member>
+          </destination>
+          <source-user>
+            <member>any</member>
+          </source-user>
+          <category>
+            <member>any</member>
+          </category>
+          <application>
+            <member>quic</member>
+          </application>
+          <service>
+            <member>application-default</member>
+          </service>
+          <hip-profiles>
+            <member>any</member>
+          </hip-profiles>
+          <action>deny</action>
+          <description>blocks quic and forces use of standard ssl for web sessio
+      ns to help capture url values of encrypted sessions</description>
+          <log-setting>default</log-setting>
+           <tag>
+             <member>HomeSkillet</member>
+           </tag>
+        </entry>
+            <entry name="HS-no-unknown-URL-xfer">
+              <profile-setting>
+                <group>
+                  <member>Outbound-Unknown-URL</member>
+                </group>
+              </profile-setting>
+              <to>
+                <member>{{ ZONE_UNTRUST }}</member>
+              </to>
+              <from>
+                <member>{{ ZONE_TRUST }}</member>
+              </from>
+              <source>
+                <member>any</member>
+              </source>
+              <destination>
+                <member>any</member>
+              </destination>
+              <source-user>
+                <member>any</member>
+              </source-user>
+              <category>
+                <member>unknown</member>
+              </category>
+              <application>
+                <member>any</member>
+              </application>
+              <service>
+                <member>application-default</member>
+              </service>
+              <hip-profiles>
+                <member>any</member>
+              </hip-profiles>
+              <action>allow</action>
+              <log-end>yes</log-end>
+              <log-setting>default</log-setting>
+              <description>This rule prevents the download of WF supported and risky file types from unknown category
+      URL's.</description>
+               <tag>
+                 <member>HomeSkillet</member>
+               </tag>
+            </entry>
+            <entry name="HS-allow-outbound">
+              <to>
+                <member>{{ ZONE_UNTRUST }}</member>
+              </to>
+              <from>
+                <member>{{ ZONE_TRUST }}</member>
+              </from>
+              <source>
+                <member>any</member>
+              </source>
+              <destination>
+                <member>any</member>
+              </destination>
+              <source-user>
+                <member>any</member>
+              </source-user>
+              <category>
+                <member>any</member>
+              </category>
+              <application>
+                <member>any</member>
+              </application>
+              <service>
+                <member>application-default</member>
+              </service>
+              <hip-profiles>
+                <member>any</member>
+              </hip-profiles>
+              <action>allow</action>
+              <log-end>yes</log-end>
+              <log-setting>default</log-setting>
+              <profile-setting>
+                <group>
+                  <member>Outbound</member>
+                </group>
+              </profile-setting>
+              <description>This is a general rule to allow trust to untrust traffic. It uses application defaults to p
+      revent applications from running on non-default undefined ports. This is part of the App-ID support in the firew
+      all</description>
+               <tag>
+                 <member>HomeSkillet</member>
+               </tag>
+            </entry>
+            <entry name="HS-non-def-SSL-ports">
+              <to>
+                <member>{{ ZONE_UNTRUST }}</member>
+              </to>
+              <from>
+                <member>{{ ZONE_TRUST }}</member>
+              </from>
+              <source>
+                <member>any</member>
+              </source>
+              <destination>
+                <member>any</member>
+              </destination>
+              <source-user>
+                <member>any</member>
+              </source-user>
+              <category>
+                <member>any</member>
+              </category>
+              <application>
+                <member>ssl</member>
+              </application>
+              <service>
+                <member>any</member>
+              </service>
+              <hip-profiles>
+                <member>any</member>
+              </hip-profiles>
+              <action>allow</action>
+              <log-end>yes</log-end>
+              <log-setting>default</log-setting>
+              <profile-setting>
+                <group>
+                  <member>Outbound</member>
+                </group>
+              </profile-setting>
+              <description>This is a complement to the allow-outbound rule to ensure sessions can be established and t
+      he proper application determined. Once determined, the session will shift to the allow-outbound rule.</description>
+               <tag>
+                 <member>HomeSkillet</member>
+               </tag>
+            </entry>
+            <entry name="HS-non-def-web-ports">
+              <to>
+                <member>{{ ZONE_UNTRUST }}</member>
+              </to>
+              <from>
+                <member>{{ ZONE_TRUST }}</member>
+              </from>
+              <source>
+                <member>any</member>
+              </source>
+              <destination>
+                <member>any</member>
+              </destination>
+              <source-user>
+                <member>any</member>
+              </source-user>
+              <category>
+                <member>any</member>
+              </category>
+              <application>
+                <member>web-browsing</member>
+              </application>
+              <service>
+                <member>any</member>
+              </service>
+              <hip-profiles>
+                <member>any</member>
+              </hip-profiles>
+              <action>allow</action>
+              <log-end>yes</log-end>
+              <log-setting>default</log-setting>
+              <profile-setting>
+                <group>
+                  <member>Outbound</member>
+                </group>
+              </profile-setting>
+              <description>Provide visibility for non-default web browsing applications. Will provide security profile
+       coverage and will allow based if a non-default port for the application. VISIBILITY ONLY and not app evasion.</description>
+               <tag>
+                 <member>HomeSkillet</member>
+               </tag>
+            </entry>
+            <entry name="HS-find-non-def-apps">
+              <to>
+                <member>{{ ZONE_UNTRUST }}</member>
+              </to>
+              <from>
+                <member>{{ ZONE_TRUST }}</member>
+              </from>
+              <source>
+                <member>any</member>
+              </source>
+              <destination>
+                <member>any</member>
+              </destination>
+              <source-user>
+                <member>any</member>
+              </source-user>
+              <category>
+                <member>any</member>
+              </category>
+              <application>
+                <member>any</member>
+              </application>
+              <service>
+                <member>any</member>
+              </service>
+              <hip-profiles>
+                <member>any</member>
+              </hip-profiles>
+              <action>allow</action>
+              <profile-setting>
+                <group>
+                  <member>Outbound</member>
+                </group>
+              </profile-setting>
+              <description>This is a temporary safety net rule to find apps not on non-default ports. It still has the
+       Gold security profile to look for threats, block bad URL's, and send files to WF.</description>
+                <tag>
+                 <member>HomeSkillet</member>
+               </tag>
+              <log-end>yes</log-end>
+              <log-setting>default</log-setting>
+            </entry>
+          </rules>
+# ---------------------------------------------------------------------
+# end of snippets section
+
+
