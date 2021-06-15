@@ -1,0 +1,62 @@
+
+# snippet folder name
+name: hs_network_config
+# label used for menu selection
+label: Network Config for HomeSkillet
+description: Network Config for HomeSkillet
+
+type: panos
+
+# grouping of like snippets for dynamic menu creation in pan-cnc
+labels:
+  collection:
+    - lib
+
+# variables used in the configuration templates
+# type_hint defines the form field type in pan-cnc
+variables:
+  - name: HS_NETWORK_OPTION
+    description: Choose network config (vwire, layer3, layer3 w/ layer 2 interfaces)
+    default: 'None'
+    type_hint: dropdown
+    dd_list:
+      - key: 'None'
+        value: 'NONE'
+      - key: 'vwire'
+        value: 'VWIRE'
+      - key: 'layer3'
+        value: 'LAYER3'
+      - key: 'layer3 w/ layer2 ints'
+        value: 'LAYER3_LAYER2'
+  - name: HS_POLICY_OPTION
+    description: Config outbound security policy
+    default: []
+    type_hint: checkbox
+    cbx_list:
+      - key: load outbound security policy
+        value: load_outbound_policy
+  - name: HS_DHCP_LOGS_OPTION
+    description: Config DHCP logs to FW mgt interface
+    default: []
+    type_hint: checkbox
+    cbx_list:
+      - key: load dhcp user id logs
+        value: load_dhcp_userid
+
+snippets:
+
+  - name: panos_network_snippets_layer3_with_layer2_interfaces
+    include: panos_network_snippets_layer3_with_layer2_interfaces
+    when: "'LAYER3_LAYER2' in HS_NETWORK_OPTION"
+  - name: panos_network_snippets_layer3
+    include: panos_network_snippets_layer3
+    when: "'LAYER3' in HS_NETWORK_OPTION"
+  - name: panos_network_snippets_vwire
+    include: panos_network_snippets_vwire
+    when: "'VWIRE' in HS_NETWORK_OPTION"
+  - name: panos_policy_snippets_outbound_security_rules
+    include: panos_policy_snippets_outbound_security_rules
+    when: "'load_outbound_policy' in HS_POLICY_OPTION"
+  - name: dhcp_userid_panos_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+    include: dhcp_userid_panos_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+    when: "'load_dhcp_userid' in HS_DHCP_LOGS_OPTION"

@@ -6,7 +6,7 @@ description: |
   This workflow steps through an IronSkillet configuration, a content
   update, and HomeSkillet deployment configuration.
 
-type: workflow
+type: workflows
 
 labels:
   collection:
@@ -49,7 +49,10 @@ variables:
         value: do_content_update
       - key: Configure for IronSkillet
         value: load_iron_skillet
-# add a variable for homeskillet
+      - key: Run Validation Check
+        value: run_validation_check
+      - key: Configure for HomeSkillet
+        value: load_hs_network
 
 snippets:
   - name: import_empty_config_ab8f807b-6c2d-4e0a-b302-88d225072b58
@@ -71,6 +74,17 @@ snippets:
   - name: hs_ironskillet_v10_1
     when: "'v10.1' in panos_sw_version and 'load_iron_skillet' in subskillet_execution_options"
 
-# add another snippet for homeskillet playlist
+  - name: get_interface_lists_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+
+  - name: get_zone_names_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+    when: "'run_validation_check' in subskillet_execution_options"
+
+  - name: hs_network_config
+    when: "'load_hs_network' in subskillet_execution_options"
+
+  - name: workflow_output
+    file: workflow_output.j2
 
 
