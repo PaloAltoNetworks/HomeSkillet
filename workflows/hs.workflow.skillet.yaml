@@ -84,7 +84,7 @@ snippets:
   - name: hs_network_config
     when: "'load_hs_network' in subskillet_execution_options"
 
-  - name: workflow_output
-    file: workflow_output.j2
+  - name: workflow_last_page_7d5ea4c0-fea9-458d-ae86-92821114b19f
+
 
 
