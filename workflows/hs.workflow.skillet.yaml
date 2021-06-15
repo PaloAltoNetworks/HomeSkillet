@@ -6,7 +6,7 @@ description: |
   This workflow steps through an IronSkillet configuration, a content
   update, and HomeSkillet deployment configuration.
 
-type: workflows
+type: workflow
 
 labels:
   collection:
