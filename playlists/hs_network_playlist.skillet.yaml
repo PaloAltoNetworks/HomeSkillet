@@ -28,18 +28,13 @@ variables:
         value: 'LAYER3'
       - key: 'layer3 w/ layer2 ints'
         value: 'LAYER3_LAYER2'
-  - name: HS_POLICY_OPTION
-    description: Config outbound security policy
+  - name: HS_OTHER_OPTIONS
+    description: Choose other snippets to load (optional)
     default: []
     type_hint: checkbox
     cbx_list:
       - key: load outbound security policy
         value: load_outbound_policy
-  - name: HS_DHCP_LOGS_OPTION
-    description: Config DHCP logs to FW mgt interface
-    default: []
-    type_hint: checkbox
-    cbx_list:
       - key: load dhcp user id logs
         value: load_dhcp_userid
 
@@ -47,16 +42,16 @@ snippets:
 
   - name: panos_network_snippets_layer3_with_layer2_interfaces
     include: panos_network_snippets_layer3_with_layer2_interfaces
-    when: "'LAYER3_LAYER2' in HS_NETWORK_OPTION"
+    when: HS_NETWORK_OPTION == 'LAYER3_LAYER2'
   - name: panos_network_snippets_layer3
     include: panos_network_snippets_layer3
-    when: "'LAYER3' in HS_NETWORK_OPTION"
+    when: HS_NETWORK_OPTION == 'LAYER3'
   - name: panos_network_snippets_vwire
     include: panos_network_snippets_vwire
-    when: "'VWIRE' in HS_NETWORK_OPTION"
+    when: HS_NETWORK_OPTION == 'VWIRE'
   - name: panos_policy_snippets_outbound_security_rules
     include: panos_policy_snippets_outbound_security_rules
-    when: "'load_outbound_policy' in HS_POLICY_OPTION"
+    when: HS_OTHER_OPTIONS == 'load_outbound_policy'
   - name: dhcp_userid_panos_812E106E-EF84-48CC-A2CB-96F9D7DA7296
     include: dhcp_userid_panos_812E106E-EF84-48CC-A2CB-96F9D7DA7296
-    when: "'load_dhcp_userid' in HS_DHCP_LOGS_OPTION"
+    when: HS_OTHER_OPTIONS == 'load_dhcp_userid'
