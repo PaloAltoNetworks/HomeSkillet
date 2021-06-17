@@ -22,33 +22,21 @@ snippets:
 
   # IronSkillet baseline
   # general device system and setting configs
-  - name: panos_ngfw_device_system_mgmt_ip_10_0
-    include: panos_ngfw_device_system_mgmt_ip_10_0
-  - name: panos_ngfw_device_system_dns_10_0
-    include: panos_ngfw_device_system_dns_10_0
   - name: panos_ngfw_device_system_10_0
     include: panos_ngfw_device_system_10_0
   - name: panos_ngfw_device_setting_10_0
     include: panos_ngfw_device_setting_10_0
-  - name: panos_ngfw_mgt_config_users_10_0
-    include: panos_ngfw_mgt_config_users_10_0
   - name: panos_ngfw_password_complexity_10_0
     include: panos_ngfw_password_complexity_10_0
   # shared log settings and profile
   - name: panos_ngfw_shared_log_settings_10_0
     include: panos_ngfw_shared_log_settings_10_0
-  - name: panos_ngfw_shared_log_settings_email_profile_10_0
-    include: panos_ngfw_shared_log_settings_email_profile_10_0
-  - name: panos_ngfw_shared_log_settings_email_system_critical_10_0
-    include: panos_ngfw_shared_log_settings_email_system_critical_10_0
   # tag object
   - name: panos_ngfw_tag_10_0
     include: panos_ngfw_tag_10_0
     # log settings
   - name: panos_ngfw_log_settings_profiles_10_0
     include: panos_ngfw_log_settings_profiles_10_0
-  - name: panos_ngfw_log_settings_profiles_email_10_0
-    include: panos_ngfw_log_settings_profiles_email_10_0
   # security profiles and profile groups
   - name: panos_ngfw_profile_custom_urlFiltering_10_0
     include: panos_ngfw_profile_custom_urlFiltering_10_0
@@ -82,5 +70,3 @@ snippets:
     include: panos_ngfw_reports_simple_10_0
   - name: panos_ngfw_report_group_simple_10_0
     include: panos_ngfw_report_group_simple_10_0
-  - name: panos_ngfw_email_scheduler_10_0
-    include: panos_ngfw_email_scheduler_10_0
