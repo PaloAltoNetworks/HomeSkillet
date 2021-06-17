@@ -58,6 +58,19 @@ Template Content
     + fixed missing DHCP server snippet
     + menu text clean up
 
+
+0.4.0
+~~~~~
+
+Released June 18, 2021
+
+Template Content
+
+    + removed 9.x version
+    + added 10.1 version
+    + update to playlist/workflow model
+    + incorporate use of submodules (ironskillet, panos upgrade/downgrade, panos config elements)
+
 Documentation Revisions
 -----------------------
 
@@ -79,12 +92,19 @@ Apr 23, 2020
 ~~~~~~~~~~~~
 
     + restructure the content
-    + add panHandler quickstart link
+    + add PanHandler quickstart link
+
 July 21, 2020 
 ~~~~~~~~~~~~~
-    + IronSkillet 10.0 based feauture updates
 
-    
+    + IronSkillet 10.0 based feature updates
+
+June 18, 2021
+~~~~~~~~~~~~~
+
+    + minor docs edits
+    + update workflow
+    + add 10.1 feature updates
 
 
 

@@ -2,24 +2,26 @@
 Main Workflow
 =============
 
-HomeSkillet uses a workflow skillet to allow for menu inputs and drive the skillets to the be played.
+HomeSkillet functions as a workflow to allow for menu inputs and play the necessary skillets/submodules. This workflow
+allows the user to go from a baseline NGFW to a fully configured NGFW with proper network components, zones, policies, etc.
+including IronSkillet best practices.
 
 
 Full End-to-End Workflow
 ------------------------
 
-Provides an end-to-end experience using the following options.
+Provides an end-to-end experience using the following options:
 
 Workflow Options
 ~~~~~~~~~~~~~~~~
 
-    (1) revert config to new install
-    (2) load threat and content updates
-    (3) validation check prior to step 1 config - see FAIL output
+    (1) Load empty baseline configuration
+    (2) Perform content updates
+    (3) Validation check (pre-ironskillet) [fail expected]
     (4) IronSkillet-based configuration (commit required for online validation test)
-    (5) validation check after day 1 load - see PASS output
-    (6) network and zone config elements
-    (7) security policy config elements
+    (5) Validation check (post-ironskillet) [pass expected]
+    (6) Configure HomeSkillet network components
+    (7) Configure security policies
 
 Network Deployment Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -27,23 +29,21 @@ Network Deployment Options
   Selected choice will apply to the configuration mode in step (6)
 
     * L3 routing mode with 2 zones and 2 interfaces
-    * Virtual router mode with 2 zones and 2 interfaces
+    * Hybrid L3 with L2 interfaces
+    * Virtual Wire (vwire)
 
 Add-on configuration options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    + simple DHCP-based userID using DHCP log parsing
+    + Basic gateway security policies
 
 Version Selection Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   Selected choice will apply to the configuration mode in step (4)
 
-    + v9.x - loads IronSkillet 9.0 snippets
-    + v10.x - loads IronSkillet 10.0 snippets
-
-
-
+    + v10.0 - loads IronSkillet 10.0 snippets
+    + v10.1 - loads IronSkillet 10.1 snippets
 
 
 REST device queries

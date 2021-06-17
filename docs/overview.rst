@@ -1,16 +1,16 @@
 HomeSkillet Overview
 ====================
 
-The HomeSkillet configuration templates are for a simple Internet Gateway, 2-zone configuration.
+HomeSkillet is a home-based deployment configuration as a simple Internet Gateway using 2 zones.
 
-It is based on PAN-OS version 10.0.
+It is compatible with PAN-OS versions 10.0 and 10.1.
 
-Key features of the skillet
----------------------------
+Key Features
+------------
 
         * IronSkillet foundation providing security profiles and device hardening
         * 2 zones and interfaces, one internet and one internal
-        * L3 routed mode with virtual router configuration or virtual wire options
+        * L3, Hybrid L2/L3, and vwire options available for network configuration
         * Outbound port-based NAT policy
         * Outbound security policies referencing the Outbound security profile group
         * DHCP client interface for the untrust interface
@@ -46,7 +46,7 @@ Skillet District Content
 
 Visit the `HomeSkillet page`_ in the Live community Skillet District for additional updates and related skillets.
 
-.. _HomeSkillet page: https://live.paloaltonetworks.com/t5/Community-Skillets/HomeSkillet-Internet-Gateway/ta-p/307751
+.. _HomeSkillet page: https://live.paloaltonetworks.com/t5/quickplay-solutions-articles/homeskillet-internet-gateway/ta-p/307751
 
 
 
