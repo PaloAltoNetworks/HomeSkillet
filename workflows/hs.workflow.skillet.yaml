@@ -40,19 +40,35 @@ variables:
 
   - name: subskillet_execution_options
     description: Check the boxes for which skillets to execute
-    default: ['load_k_12_config']
+    default: ['']
     type_hint: checkbox
     cbx_list:
       - key: Load empty NGFW baseline config
         value: empty_starter_config
       - key: Perform content update
         value: do_content_update
+      - key: Pre-validation Check
+        value: pre_validation_check
       - key: Configure for IronSkillet
         value: load_iron_skillet
-      - key: Run Validation Check
-        value: run_validation_check
+      - key: Post-validation Check
+        value: post_validation_check
       - key: Configure for HomeSkillet
         value: load_hs_network
+      - key: Configure basic gateway security policies
+        value: load_security_policies
+
+  - name: HS_NETWORK_OPTION
+    description: Choose network config (vwire, layer3, layer3 w/ layer 2 interfaces)
+    default: 'layer3'
+    type_hint: dropdown
+    dd_list:
+      - key: 'vwire'
+        value: 'VWIRE'
+      - key: 'layer3'
+        value: 'LAYER3'
+      - key: 'layer3 w/ layer2 ints'
+        value: 'LAYER3_LAYER2'
 
 snippets:
   - name: import_empty_config_ab8f807b-6c2d-4e0a-b302-88d225072b58
@@ -68,21 +84,33 @@ snippets:
       - name: password
         source: TARGET_PASSWORD
 
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+    when: "'pre_validation_check' in subskillet_execution_options"
+
   - name: hs_ironskillet_v10_0
     when: "'v10.0' in panos_sw_version and 'load_iron_skillet' in subskillet_execution_options"
 
   - name: hs_ironskillet_v10_1
     when: "'v10.1' in panos_sw_version and 'load_iron_skillet' in subskillet_execution_options"
 
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+    when: "'post_validation_check' in subskillet_execution_options"
+
   - name: get_interface_lists_812E106E-EF84-48CC-A2CB-96F9D7DA7296
 
   - name: get_zone_names_812E106E-EF84-48CC-A2CB-96F9D7DA7296
 
-  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
-    when: "'run_validation_check' in subskillet_execution_options"
+  - name: panos_network_snippets_vwire
+    when: "'load_hs_network' in subskillet_execution_options and HS_NETWORK_OPTION == 'VWIRE'"
 
-  - name: hs_network_config
-    when: "'load_hs_network' in subskillet_execution_options"
+  - name: hs_network_layer3
+    when: "'load_hs_network' in subskillet_execution_options and HS_NETWORK_OPTION == 'LAYER3'"
+
+  - name: hs_network_hybridL2L3
+    when: "'load_hs_network' in subskillet_execution_options and HS_NETWORK_OPTION == 'LAYER3_LAYER2'"
+
+  - name: panos_policy_snippets_outbound_security_rules
+    when: "'load_security_policies' in subskillet_execution_options"
 
   - name: workflow_last_page_7d5ea4c0-fea9-458d-ae86-92821114b19f
 
