@@ -99,9 +99,6 @@ snippets:
   - name: get_interface_lists_812E106E-EF84-48CC-A2CB-96F9D7DA7296
     when: "'load_hs_network' in subskillet_execution_options"
 
-  - name: get_zone_names_812E106E-EF84-48CC-A2CB-96F9D7DA7296
-    when: "'load_security_policies' in subskillet_execution_options"
-
   - name: panos_network_snippets_vwire
     when: "'load_hs_network' in subskillet_execution_options and HS_NETWORK_OPTION == 'VWIRE'"
 
@@ -110,6 +107,9 @@ snippets:
 
   - name: hs_network_hybridL2L3
     when: "'load_hs_network' in subskillet_execution_options and HS_NETWORK_OPTION == 'LAYER3_LAYER2'"
+
+  - name: get_zone_names_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+    when: "'load_security_policies' in subskillet_execution_options"
 
   - name: panos_policy_snippets_outbound_security_rules
     when: "'load_security_policies' in subskillet_execution_options"
