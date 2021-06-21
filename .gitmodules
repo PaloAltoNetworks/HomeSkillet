@@ -1,0 +1,9 @@
+[submodule "submodules/ironskillet-components"]
+	path = submodules/ironskillet-components
+	url = https://github.com/PaloAltoNetworks/ironskillet-components
+[submodule "submodules/panos-ansible-upgrade-downgrade"]
+	path = submodules/panos-ansible-upgrade-downgrade
+	url = https://gitlab.com/panw-gse/tech-library/deploy/panos-ansible-upgrade-downgrade
+[submodule "submodules/panos-config-elements"]
+	path = submodules/panos-config-elements
+	url = https://gitlab.com/panw-gse/tech-library/configure/panos-config-elements

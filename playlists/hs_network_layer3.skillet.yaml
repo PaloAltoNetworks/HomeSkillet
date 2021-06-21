@@ -1,0 +1,26 @@
+name: hs_network_layer3
+
+label: HomeSkillet network config 2 zone layer 3
+description: 2 zone layer 3 network config for HomeSkillet
+
+type: panos
+
+labels:
+  collection:
+    - lib
+
+variables:
+
+
+snippets:
+  - name: panos_network_snippets_layer3
+    include: panos_network_snippets_layer3
+    include_variables: all
+  - name: panos_network_snippets_dhcp_server_basic
+    include: panos_network_snippets_dhcp_server_basic
+    include_variables: all
+  - name: panos_network_snippets_nat_dipp
+    include: panos_network_snippets_nat_dipp
+    include_variables: all
+
+

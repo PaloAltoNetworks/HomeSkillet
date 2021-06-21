@@ -1,0 +1,72 @@
+
+# snippet folder name
+name: hs_ironskillet_v10_1
+# label used for menu selection
+label: IronSkillet for Version 10.1 used in HomeSkillet Solution
+description: IronSkillet for Version 10.1 used in HomeSkillet Solution
+
+type: panos
+
+# grouping of like snippets for dynamic menu creation in pan-cnc
+labels:
+  collection:
+    - lib
+
+# variables used in the configuration templates
+# type_hint defines the form field type in pan-cnc
+variables:
+
+
+
+snippets:
+
+  # IronSkillet baseline
+  # general device system and setting configs
+  - name: panos_ngfw_device_system_10_1
+    include: panos_ngfw_device_system_10_1
+  - name: panos_ngfw_device_setting_10_1
+    include: panos_ngfw_device_setting_10_1
+  - name: panos_ngfw_password_complexity_10_1
+    include: panos_ngfw_password_complexity_10_1
+  # shared log settings and profile
+  - name: panos_ngfw_shared_log_settings_10_1
+    include: panos_ngfw_shared_log_settings_10_1
+  # tag object
+  - name: panos_ngfw_tag_10_1
+    include: panos_ngfw_tag_10_1
+    # log settings
+  - name: panos_ngfw_log_settings_profiles_10_1
+    include: panos_ngfw_log_settings_profiles_10_1
+  # security profiles and profile groups
+  - name: panos_ngfw_profile_custom_urlFiltering_10_1
+    include: panos_ngfw_profile_custom_urlFiltering_10_1
+  - name: panos_ngfw_profile_decryption_10_1
+    include: panos_ngfw_profile_decryption_10_1
+  - name: panos_ngfw_profile_antivirus_10_1
+    include: panos_ngfw_profile_antivirus_10_1
+  - name: panos_ngfw_profile_spyware_10_1
+    include: panos_ngfw_profile_spyware_10_1
+  - name: panos_ngfw_profile_vulnerability_10_1
+    include: panos_ngfw_profile_vulnerability_10_1
+  - name: panos_ngfw_profile_file-blocking_10_1
+    include: panos_ngfw_profile_file-blocking_10_1
+  - name: panos_ngfw_profile_urlFiltering_10_1
+    include: panos_ngfw_profile_urlFiltering_10_1
+  - name: panos_ngfw_profile_wildfire_analysis_10_1
+    include: panos_ngfw_profile_wildfire_analysis_10_1
+  - name: panos_ngfw_profile_group_10_1
+    include: panos_ngfw_profile_group_10_1
+  # rulebase
+  - name: panos_ngfw_rulebase_default_security_rules_10_1
+    include: panos_ngfw_rulebase_default_security_rules_10_1
+  - name: panos_ngfw_rulebase_security_10_1
+    include: panos_ngfw_rulebase_security_10_1
+  - name: panos_ngfw_rulebase_decryption_10_1
+    include: panos_ngfw_rulebase_decryption_10_1
+  - name: panos_ngfw_zone_protection_10_1
+    include: panos_ngfw_zone_protection_10_1
+  # reports and email
+  - name: panos_ngfw_reports_simple_10_1
+    include: panos_ngfw_reports_simple_10_1
+  - name: panos_ngfw_report_group_simple_10_1
+    include: panos_ngfw_report_group_simple_10_1

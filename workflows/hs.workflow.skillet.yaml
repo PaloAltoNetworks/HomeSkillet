@@ -1,0 +1,120 @@
+# HomeSkillet Workflow Skillet
+
+name: hs_workflow_skillet
+label: HomeSkillet Workflow
+description: |
+  This workflow steps through an IronSkillet configuration, a content
+  update, and HomeSkillet deployment configuration.
+
+type: workflow
+
+labels:
+  collection:
+    - lib
+
+variables:
+  - name: TARGET_IP
+    description: Next-Gen Firewall IP or Hostname
+    default: 192.168.55.10
+    type_hint: fqdn_or_ip
+
+  - name: TARGET_USERNAME
+    description: Next-Gen Firewall Username
+    default: admin
+    type_hint: text
+
+  - name: TARGET_PASSWORD
+    description: Next-Gen Firewall Password
+    default: admin
+    type_hint: password
+
+  - name: panos_sw_version
+    description: Next-Gen Firewall PAN-OS Version
+    default: v10.0
+    type_hint: dropdown
+    dd_list:
+      - key: v10.0
+        value: v10.0
+      - key: v10.1
+        value: v10.1
+
+  - name: subskillet_execution_options
+    description: Check the boxes for which skillets to execute
+    default: ['']
+    type_hint: checkbox
+    cbx_list:
+      - key: Load empty NGFW baseline config
+        value: empty_starter_config
+      - key: Perform content update
+        value: do_content_update
+      - key: Pre-validation Check
+        value: pre_validation_check
+      - key: Configure for IronSkillet
+        value: load_iron_skillet
+      - key: Post-validation Check
+        value: post_validation_check
+      - key: Configure for HomeSkillet
+        value: load_hs_network
+      - key: Configure basic gateway security policies
+        value: load_security_policies
+
+  - name: HS_NETWORK_OPTION
+    description: Choose network config (vwire, layer3, layer3 w/ layer 2 interfaces)
+    default: 'layer3'
+    type_hint: dropdown
+    dd_list:
+      - key: 'vwire'
+        value: 'VWIRE'
+      - key: 'layer3'
+        value: 'LAYER3'
+      - key: 'layer3 w/ layer2 ints'
+        value: 'LAYER3_LAYER2'
+
+snippets:
+  - name: import_empty_config_ab8f807b-6c2d-4e0a-b302-88d225072b58
+    when: "'empty_starter_config' in subskillet_execution_options"
+
+  - name: panos_ansible_content_update
+    when: "'do_content_update' in subskillet_execution_options"
+    transform:
+      - name: ip_address
+        source: TARGET_IP
+      - name: username
+        source: TARGET_USERNAME
+      - name: password
+        source: TARGET_PASSWORD
+
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+    when: "'pre_validation_check' in subskillet_execution_options"
+
+  - name: hs_ironskillet_v10_0
+    when: "'v10.0' in panos_sw_version and 'load_iron_skillet' in subskillet_execution_options"
+
+  - name: hs_ironskillet_v10_1
+    when: "'v10.1' in panos_sw_version and 'load_iron_skillet' in subskillet_execution_options"
+
+  - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
+    when: "'post_validation_check' in subskillet_execution_options"
+
+  - name: get_interface_lists_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+    when: "'load_hs_network' in subskillet_execution_options"
+
+  - name: panos_network_snippets_vwire
+    when: "'load_hs_network' in subskillet_execution_options and HS_NETWORK_OPTION == 'VWIRE'"
+
+  - name: hs_network_layer3
+    when: "'load_hs_network' in subskillet_execution_options and HS_NETWORK_OPTION == 'LAYER3'"
+
+  - name: hs_network_hybridL2L3
+    when: "'load_hs_network' in subskillet_execution_options and HS_NETWORK_OPTION == 'LAYER3_LAYER2'"
+
+  - name: get_zone_names_812E106E-EF84-48CC-A2CB-96F9D7DA7296
+    when: "'load_security_policies' in subskillet_execution_options"
+
+  - name: panos_policy_snippets_outbound_security_rules
+    when: "'load_security_policies' in subskillet_execution_options"
+
+  - name: workflow_last_page_7d5ea4c0-fea9-458d-ae86-92821114b19f
+
+
+

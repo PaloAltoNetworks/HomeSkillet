@@ -1,0 +1,26 @@
+name: hs_network_hybridL2L3
+
+label: HomeSkillet network config hybrid layer 3 with layer 2 interfaces
+description: hybrid L2 L3 network config for HomeSkillet
+
+type: panos
+
+labels:
+  collection:
+    - lib
+
+variables:
+
+
+snippets:
+  - name: panos_network_snippets_layer3_with_layer2_interfaces
+    include: panos_network_snippets_layer3_with_layer2_interfaces
+    include_variables: all
+  - name: panos_network_snippets_dhcp_server_basic
+    include: panos_network_snippets_dhcp_server_basic
+    include_variables: all
+  - name: panos_network_snippets_nat_dipp
+    include: panos_network_snippets_nat_dipp
+    include_variables: all
+
+

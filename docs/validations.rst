@@ -5,7 +5,7 @@ Validations
 Network and Policy Dependencies
 -------------------------------
 
-A set of validation checks are performed to ensure dependency required for config elements added in steps 2 and 3
+A set of validation checks are performed to ensure dependency required for config elements added in previous steps
 exist in the firewall.
 
 This validation is used twice in the workflow: once before the IronSkillet configuration with an assumed fail
