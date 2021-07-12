@@ -4,7 +4,7 @@ Using PanHandler
 This skillet is designed for XML-based API configuration. It requires the use of the PanHandler tool for variable
 substitution and API interactions.
 
-Check the Skillet District to `get started with PanHandler`_
+Check the Quickplay Solutions page to `get started with PanHandler`_
 
 .. _get started with panHandler: https://live.paloaltonetworks.com/t5/quickplay-solutions-tools/install-and-get-started-with-panhandler/ta-p/307916
 

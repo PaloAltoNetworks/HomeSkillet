@@ -5,6 +5,13 @@ HomeSkillet is a home-based deployment configuration as a simple Internet Gatewa
 
 It is compatible with PAN-OS versions 10.0 and 10.1.
 
+.. raw:: html
+
+    <iframe src="https://paloaltonetworks.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=c5289f32-5168
+    -4068-9e03-ad63001765f5&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&captions=false
+    &interactivity=all" height="350" width="600" style="border: 1px solid #464646;" allowfullscreen allow
+    ="autoplay"></iframe>
+
 Key Features
 ------------
 
@@ -41,12 +48,12 @@ The configuration assumes all subscriptions are enabled including:
         * DNS Cloud Service
 
 
-Skillet District Content
+Quickplay Solutions Content
 ------------------------
 
-Visit the `HomeSkillet page`_ in the Live community Skillet District for additional updates and related skillets.
+Visit the `Quickplay Solutions page`_ in the LIVE Community for additional updates and related skillets.
 
-.. _HomeSkillet page: https://live.paloaltonetworks.com/t5/quickplay-solutions-articles/homeskillet-internet-gateway/ta-p/307751
+.. _Quickplay Solutions page: https://live.paloaltonetworks.com/t5/quickplay-solutions-articles/homeskillet-internet-gateway/ta-p/307751
 
 
 
