@@ -1,9 +1,9 @@
 name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
-label: HomeSkillet - validation ability to load steps 2 and 3 - panos_v10.0
+label: HomeSkillet - Validation
 
 description: |
-  This skillet checks the running config for HomeSkillet step 2 and 3 dependencies that should be loaded
-  as part of step 1 using the IronSkillet day one baseline
+  This skillet checks the running config for HomeSkillet dependencies that should be loaded
+  as part of IronSkillet baseline
 
 type: pan_validation
 labels:
