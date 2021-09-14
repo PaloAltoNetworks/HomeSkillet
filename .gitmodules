@@ -3,7 +3,7 @@
 	url = https://github.com/PaloAltoNetworks/ironskillet-components
 [submodule "submodules/panos-ansible-upgrade-downgrade"]
 	path = submodules/panos-ansible-upgrade-downgrade
-	url = git@github.com:PaloAltoNetworks/panos-ansible-upgrade-downgrade.git
+	url = https://github.com/PaloAltoNetworks/panos-ansible-upgrade-downgrade.git
 [submodule "submodules/panos-config-elements"]
 	path = submodules/panos-config-elements
-	url = git@github.com:pan-community/panos-config-elements.git
+	url = https://github.com/pan-community/panos-config-elements.git
