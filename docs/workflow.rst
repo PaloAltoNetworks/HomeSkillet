@@ -44,6 +44,7 @@ Version Selection Options
 
     + v10.0 - loads IronSkillet 10.0 snippets
     + v10.1 - loads IronSkillet 10.1 snippets
+    + v10.2 - loads IronSkillet 10.2 snippets
 
 
 REST device queries
