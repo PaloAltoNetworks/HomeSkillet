@@ -38,7 +38,7 @@ variables:
       - key: v10.1
         value: v10.1
       - key: v10.2
-          value: v10.2
+        value: v10.2
 
   - name: subskillet_execution_options
     description: Check the boxes for which skillets to execute
