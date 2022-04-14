@@ -22,8 +22,8 @@ snippets:
 
   # IronSkillet baseline
   # general device system and setting configs
-  - name: panos_ngfw_device_system_10_2
-    include: panos_ngfw_device_system_10_2
+  # - name: panos_ngfw_device_system_10_2
+  #  include: panos_ngfw_device_system_10_2
   - name: panos_ngfw_device_setting_10_2
     include: panos_ngfw_device_setting_10_2
   - name: panos_ngfw_password_complexity_10_2
@@ -34,7 +34,7 @@ snippets:
   # tag object
   - name: panos_ngfw_tag_10_2
     include: panos_ngfw_tag_10_2
-    # log settings
+  # log settings
   - name: panos_ngfw_log_settings_profiles_10_2
     include: panos_ngfw_log_settings_profiles_10_2
   # security profiles and profile groups
