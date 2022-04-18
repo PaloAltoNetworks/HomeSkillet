@@ -4,3 +4,7 @@
 [submodule "submodules/panos-config-elements"]
 	path = submodules/panos-config-elements
 	url = https://github.com/pan-community/panos-config-elements.git
+[submodule "submodules/panos-ansible-upgrade-downgrade"]
+	path = submodules/panos-ansible-upgrade-downgrade
+	url = git@github.com:PaloAltoNetworks/panos-ansible-upgrade-downgrade.git
+	branch = main
