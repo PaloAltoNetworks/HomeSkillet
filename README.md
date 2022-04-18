@@ -17,7 +17,7 @@ HomeSkillet is designed to be used with the panhandler application to API
 load structured configurations. It also captures web form data to semi-customize
 the configuration for local use.
 
-[Quick start guide](https://live.paloaltonetworks.com/t5/Skillet-Tools/Install-and-Get-Started-With-Panhandler/ta-p/307916)
+[k start guide](https://live.paloaltonetworks.com/t5/Skillet-Tools/Install-and-Get-Started-With-Panhandler/ta-p/307916)
 
 [panhandler docs](https://panhandler.readthedocs.io)
 
