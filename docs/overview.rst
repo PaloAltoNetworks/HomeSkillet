@@ -48,12 +48,12 @@ The configuration assumes all subscriptions are enabled including:
         * DNS Cloud Service
 
 
-Quickplay Solutions Content
+kplay Solutions Content
 ------------------------
 
-Visit the `Quickplay Solutions page`_ in the LIVE Community for additional updates and related skillets.
+Visit the `kplay Solutions page`_ in the LIVE Community for additional updates and related skillets.
 
-.. _Quickplay Solutions page: https://live.paloaltonetworks.com/t5/quickplay-solutions-articles/homeskillet-internet-gateway/ta-p/307751
+.. _kplay Solutions page: https://live.paloaltonetworks.com/t5/kplay-solutions-articles/homeskillet-internet-gateway/ta-p/307751
 
 
 

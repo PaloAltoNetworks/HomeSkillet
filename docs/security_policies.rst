@@ -18,7 +18,7 @@ Security Rules
 
   These are outbound-specific rules levering the IronSkillet security profile groups.
 
-    + Block quic to force usage of SSL to assist URL-filtering category discovery
+    + Block  to force usage of SSL to assist URL-filtering category discovery
 
     + Aggressive file blocking including PE file types when URL category = `unknown`
 

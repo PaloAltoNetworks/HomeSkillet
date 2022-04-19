@@ -92,7 +92,7 @@ Apr 23, 2020
 ~~~~~~~~~~~~
 
     + restructure the content
-    + add PanHandler quickstart link
+    + add PanHandler kstart link
 
 July 21, 2020 
 ~~~~~~~~~~~~~

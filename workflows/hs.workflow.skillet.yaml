@@ -37,6 +37,8 @@ variables:
         value: v10.0
       - key: v10.1
         value: v10.1
+      - key: v10.2
+        value: v10.2
 
   - name: subskillet_execution_options
     description: Check the boxes for which skillets to execute
@@ -92,6 +94,9 @@ snippets:
 
   - name: hs_ironskillet_v10_1
     when: "'v10.1' in panos_sw_version and 'load_iron_skillet' in subskillet_execution_options"
+
+  - name: hs_ironskillet_v10_2
+    when: "'v10.2' in panos_sw_version and 'load_iron_skillet' in subskillet_execution_options"
 
   - name: validate-HomeSkillet-step2-e2c42c6d-a896-4445-8528-fd55a401850b
     when: "'post_validation_check' in subskillet_execution_options"
