@@ -3,7 +3,11 @@ HomeSkillet Overview
 
 HomeSkillet is a home-based deployment configuration as a simple Internet Gateway using 2 zones.
 
-It is compatible with PAN-OS versions 10.0 and 10.1.
+It is compatible with PAN-OS versions 10.0, 10.1 and 10.2.
+
+.. Note::
+    As of PAN-OS 10.2 HomeSkillet has reached End of Engineering status and future versions will
+    no longer be actively worked on or supported by Palo Alto Networks.
 
 .. raw:: html
 
